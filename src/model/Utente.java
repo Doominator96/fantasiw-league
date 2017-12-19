@@ -5,6 +5,10 @@ public class Utente {
 	private String userName;
 	private String email;
 	private String password;
+	private RosaUtente rosa;
+	
+	public Utente() {
+	}
 	
 	public Utente(String userName, String email, String password) {
 		this.userName = userName;
@@ -30,6 +34,15 @@ public class Utente {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+	public RosaUtente getRosa() {
+		return rosa;
+	}
+
+	public void setRosa(RosaUtente rosa) {
+		this.rosa = rosa;
+	}
+
 	public boolean equals(Object object) {
 		Utente utente = (Utente)object;
 		return (this.getEmail() == utente.getEmail());
