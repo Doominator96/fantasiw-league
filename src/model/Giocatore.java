@@ -15,6 +15,9 @@ public class Giocatore {
 	private Ruolo ruolo;
 	private int costo;
 	
+	public Giocatore() {
+	}
+	
 	public Giocatore(String nome, String cognome, String squadra, Ruolo ruolo, int costo) {
 		this.nome = nome;
 		this.cognome = cognome;

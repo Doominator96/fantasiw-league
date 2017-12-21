@@ -1,5 +1,6 @@
 package model;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class RosaUtente {
@@ -8,6 +9,9 @@ public class RosaUtente {
 	private String nome;
 	private StatisticheRosa statistiche;
 	private int budget;
+	
+	public RosaUtente() {
+	}
 	
 	public RosaUtente(Set<Giocatore> giocatori, String nome, StatisticheRosa statistiche, int budget) {
 		this.giocatori = giocatori;
@@ -48,7 +52,12 @@ public class RosaUtente {
 		this.budget = budget;
 	}
 	
-	
+	public void addGiocatore(Giocatore giocatore){
+		if (this.giocatori == null){
+			this.giocatori = new HashSet<Giocatore>();
+		}
+		this.giocatori.add(giocatore);
+	}
 	
 	
 
