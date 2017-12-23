@@ -13,6 +13,7 @@ import model.Giocatore;
 import model.RosaUtente;
 import model.Studente;
 import model.Utente;
+import persistence.dao.GiocatoreDao;
 import persistence.dao.RosaUtenteDao;
 
 

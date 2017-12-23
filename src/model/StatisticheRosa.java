@@ -9,6 +9,9 @@ public class StatisticheRosa {
 	private int golFatti;
 	private int golSubiti;
 	
+	public StatisticheRosa() {
+	}
+	
 	public StatisticheRosa(int punteggio, int vittorie, int pareggi, int sconfitte, int golFatti, int golSubiti) {
 		this.punteggio = punteggio;
 		this.vittorie = vittorie;
