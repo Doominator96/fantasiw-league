@@ -5,6 +5,7 @@ import java.util.Set;
 
 public class RosaUtente {
 	
+	private long id;
 	private Set<Giocatore> giocatori;
 	private String nome;
 	private StatisticheRosa statistiche;
@@ -13,7 +14,8 @@ public class RosaUtente {
 	public RosaUtente() {
 	}
 	
-	public RosaUtente(Set<Giocatore> giocatori, String nome, StatisticheRosa statistiche, int budget) {
+	public RosaUtente(long id,Set<Giocatore> giocatori, String nome, StatisticheRosa statistiche, int budget) {
+		this.id=id;
 		this.giocatori = giocatori;
 		this.nome = nome;
 		this.statistiche = statistiche;
@@ -57,6 +59,14 @@ public class RosaUtente {
 			this.giocatori = new HashSet<Giocatore>();
 		}
 		this.giocatori.add(giocatore);
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 	
 	

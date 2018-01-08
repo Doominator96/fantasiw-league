@@ -7,25 +7,25 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 
+import model.Afferisce;
 import model.Giocatore;
 import persistence.dao.GiocatoreDao;
 
-public class GiocatoreDaoJDBC implements GiocatoreDao{
+public class AfferisceDaoJDBC implements AfferisceDao{
 	private DataSource dataSource;
 
-	public GiocatoreDaoJDBC(DataSource dataSource) {
+	public AfferisceDaoJDBC(DataSource dataSource) {
 		this.dataSource = dataSource;
 	}
 
-	public void save(Giocatore giocatore) {
+	public void save(Afferisce afferisce) {
 		Connection connection = this.dataSource.getConnection();
 		try {
-			String insert = "insert into giocatore(nome, cognome, squadra, ruolo) values (?,?,?,?)";
+			String insert = "insert into Afferisce(id,giocatore, rosa) values (?,?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
-			statement.setString(1, giocatore.getNome());
-			statement.setString(2, giocatore.getCognome());
-			statement.setString(3, giocatore.getSquadra());
-			statement.setString(4, giocatore.getRuolo().toString());
+			statement.setLong(1, Afferisce.getId());
+			statement.setLong(2, Afferisce.getGiocatore().getId());
+			statement.setLong(3, Afferisce.getRosa().getId());
 			statement.executeUpdate();
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
@@ -38,9 +38,9 @@ public class GiocatoreDaoJDBC implements GiocatoreDao{
 		}
 	}  
 
-	public Giocatore findByPrimaryKey(String nome) {
+	public Afferisce findByPrimaryKey(long id) {
 		Connection connection = this.dataSource.getConnection();
-		Giocatore giocatore = null;
+		Afferisce afferisce = null;
 		try {
 			PreparedStatement statement;
 			String query = "select * from giocatore where nome = ?";

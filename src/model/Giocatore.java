@@ -2,23 +2,18 @@ package model;
 
 public class Giocatore {
 	
-	public enum Ruolo {
-		ATTACCANTE,
-		CENTROCAMPISTA,
-		DIFENSORE,
-		PORTIERE;
-	}
-	
+	private long id;
 	private String nome;
 	private String cognome;
 	private String squadra;
-	private Ruolo ruolo;
+	private String ruolo;
 	private int costo;
 	
 	public Giocatore() {
 	}
 	
-	public Giocatore(String nome, String cognome, String squadra, Ruolo ruolo, int costo) {
+	public Giocatore(long id,String nome, String cognome, String squadra, String ruolo, int costo) {
+		this.setId(id);
 		this.nome = nome;
 		this.cognome = cognome;
 		this.squadra = squadra;
@@ -44,10 +39,10 @@ public class Giocatore {
 	public void setSquadra(String squadra) {
 		this.squadra = squadra;
 	}
-	public Ruolo getRuolo() {
+	public String getRuolo() {
 		return ruolo;
 	}
-	public void setRuolo(Ruolo ruolo) {
+	public void setRuolo(String ruolo) {
 		this.ruolo = ruolo;
 	}
 	public int getCosto() {
@@ -55,6 +50,14 @@ public class Giocatore {
 	}
 	public void setCosto(int costo) {
 		this.costo = costo;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 	
 	

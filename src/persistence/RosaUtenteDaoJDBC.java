@@ -85,7 +85,7 @@ public class RosaUtenteDaoJDBC implements RosaUtenteDao{
 				statementInserisci.setString(1, giocatore.getNome());
 				statementInserisci.setString(2, giocatore.getCognome());
 				statementInserisci.setString(3, giocatore.getSquadra());
-				statementInserisci.setString(4, giocatore.getRuolo().toString());  
+				statementInserisci.setString(4, giocatore.getRuolo());  
 				statementInserisci.setInt(5, giocatore.getCosto());
 				statementInserisci.executeUpdate();
 			}

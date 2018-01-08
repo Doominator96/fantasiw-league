@@ -1,5 +1,11 @@
 package persistence;
 
+
+import persistence.dao.GiocatoreDao;
+import persistence.dao.RosaUtenteDao;
+import persistence.dao.StatisticheRosaDao;
+import persistence.dao.UtenteDao;
+
 public abstract class DAOFactory {
 
 	public static final int HSQLDB = 1;
@@ -19,6 +25,15 @@ public abstract class DAOFactory {
 	}
 	
 	public abstract UtilDao getUtilDAO();
+	
+	public abstract UtenteDao getUtenteDAO();
+	
+	public abstract RosaUtenteDao getRosaUtenteDAO();
+	
+	public abstract GiocatoreDao getGiocatoreDAO();
+	
+	public abstract StatisticheRosaDao getStatisticheRosaDAO();
+
 
 	
 }
