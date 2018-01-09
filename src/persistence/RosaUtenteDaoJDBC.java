@@ -27,24 +27,16 @@ public class RosaUtenteDaoJDBC implements RosaUtenteDao{
 	}
 
 	public void save(RosaUtente rosa) {
-		if ( (rosa.getGiocatori() == null) 
-				|| rosa.getGiocatori().isEmpty()){
-			throw new PersistenceException("Rosa non memorizzata: una rosa deve avere almeno un giocatore");
-		}
 		Connection connection = this.dataSource.getConnection();
 		try {
-			String insert = "insert into rosa(nome) values (?)";
+			Long id = IdBroker.getId(connection);
+			rosa.setId(id); 			
+			String insert = "insert into rosa(id, nome) values (?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
-			statement.setString(1, rosa.getNome());
-			
-
-			//connection.setAutoCommit(false);
-			//serve in caso i giocatori non siano stati salvati. Il DAO giocatore apre e chiude una transazione nuova.
-			//connection.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);			
+			statement.setLong(1, rosa.getId());
+			statement.setString(2, rosa.getNome());			
 			statement.executeUpdate();
-			// salviamo anche tutti i giocatori della rosa in CASACATA
-			this.updateGiocatori(rosa, connection);
-			//connection.commit();
+
 		} catch (SQLException e) {
 			if (connection != null) {
 				try {
@@ -62,77 +54,27 @@ public class RosaUtenteDaoJDBC implements RosaUtenteDao{
 		}
 	}  
 
-	private void updateGiocatori(RosaUtente rosa, Connection connection) throws SQLException {
-		GiocatoreDao giocatoreDao = new GiocatoreDaoJDBC(dataSource);
-		for (Giocatore giocatore : rosa.getGiocatori()) {
-			if (giocatoreDao.findByPrimaryKey(giocatore.getNome()) == null){
-				giocatoreDao.save(giocatore);
-			}
-			
-			String inRosa = "select nome from inRosa where nome_giocatore=? AND rosa_nome=?";
-			PreparedStatement statementInRosa = connection.prepareStatement(inRosa);
-			statementInRosa.setString(1, giocatore.getNome());
-			statementInRosa.setString(2, giocatore.getCognome());
-			ResultSet result = statementInRosa.executeQuery();
-			if(result.next()){
-				String update = "update giocatore SET rosa_nome = ? WHERE nome = ?";
-				PreparedStatement statement = connection.prepareStatement(update);
-				statement.setString(1, rosa.getNome());
-				statement.executeUpdate();
-			}else{			
-				String inserisci = "insert into inRosa(nome, cognome, squadra, ruolo, costo) values (?,?,?,?,?)";
-				PreparedStatement statementInserisci = connection.prepareStatement(inserisci);
-				statementInserisci.setString(1, giocatore.getNome());
-				statementInserisci.setString(2, giocatore.getCognome());
-				statementInserisci.setString(3, giocatore.getSquadra());
-				statementInserisci.setString(4, giocatore.getRuolo());  
-				statementInserisci.setInt(5, giocatore.getCosto());
-				statementInserisci.executeUpdate();
-			}
-		}
-	}
-	
-	private void removeForeignKeyFromGiocatore(RosaUtente rosa, Connection connection) throws SQLException {
-		for (Giocatore giocatore : rosa.getGiocatori()) {
-			String update = "update inRosa SET rosa_nome = NULL WHERE nome_giocatore = ?";
-			PreparedStatement statement = connection.prepareStatement(update);
-			statement.setString(1, giocatore.getNome());
-			statement.executeUpdate();
-		}	
-	}
-
 	/* 
 	 * versione con Join
 	 */
-	public RosaUtente findByPrimaryKeyJoin(String nome) {
+	public List<Giocatore> findByPrimaryKeyJoin(Long id) {
+		List<Giocatore> giocatori=new ArrayList<Giocatore>();
 		Connection connection = this.dataSource.getConnection();
 		RosaUtente rosa = null;
 		try {
 			PreparedStatement statement;
-			String query = "select r.nome as r_nome, g.nome as g_nome, "
-					+ "g.cognome as g_cognome, g.squadra as g_squadra, g.ruolo as g_ruolo "
-					+ "from rosa r, inRosa i, giocatore g "
-					+ "where r.nome = ?"
-					+ "			AND i.nome_giocatore = g.nome "
-					+ "			AND i.rosa_nome = r.nome";
+			String query = "select * FROM afferisce WHERE rosa = ?";
 			statement = connection.prepareStatement(query);
-			statement.setString(1, nome);
+			statement.setLong(1, id);
 			ResultSet result = statement.executeQuery();
-			boolean primaRiga = true;
+			rosa = new RosaUtente();
+			rosa.setId(result.getLong("id"));				
 			while (result.next()) {
-				if (primaRiga) {
-					rosa = new RosaUtente();
-					rosa.setNome(result.getString("r_nome"));				
-					primaRiga = false;
-				}
-				if(result.getString("g_nome")!=null){
-					Giocatore giocatore = new Giocatore();
-					giocatore.setNome(result.getString("g_nome"));
-					giocatore.setCognome(result.getString("g_cognome"));
-					giocatore.setSquadra(result.getString("g_squadra"));
+				
+					GiocatoreDao giocatoreDao = new GiocatoreDaoJDBC(dataSource);
+					Giocatore giocatore = giocatoreDao.findByPrimaryKey(result.getLong("giocatore"));
+					giocatori.add(giocatore);
 					
-					rosa.addGiocatore(giocatore);
-				}
 			}
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
@@ -143,7 +85,7 @@ public class RosaUtenteDaoJDBC implements RosaUtenteDao{
 				throw new PersistenceException(e.getMessage());
 			}
 		}	
-		return rosa;
+		return giocatori;
 	}
 
 

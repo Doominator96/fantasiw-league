@@ -1,32 +1,21 @@
 package model;
 
-import java.util.HashSet;
-import java.util.Set;
-
 public class RosaUtente {
 	
 	private long id;
-	private Set<Giocatore> giocatori;
 	private String nome;
-	private StatisticheRosa statistiche;
 	private int budget;
+	private Utente utente;
+	private StatisticheRosa statistiche;
+	private Lega lega;
 	
 	public RosaUtente() {
 	}
 	
-	public RosaUtente(Set<Giocatore> giocatori, String nome, StatisticheRosa statistiche, int budget) {
-		this.giocatori = giocatori;
+	public RosaUtente(String nome, int budget, StatisticheRosa statistiche) {
 		this.nome = nome;
-		this.statistiche = statistiche;
 		this.budget = budget;
-	}
-
-	public Set<Giocatore> getGiocatori() {
-		return giocatori;
-	}
-
-	public void setGiocatori(Set<Giocatore> giocatori) {
-		this.giocatori = giocatori;
+		this.statistiche = statistiche;
 	}
 
 	public String getNome() {
@@ -52,13 +41,6 @@ public class RosaUtente {
 	public void setBudget(int budget) {
 		this.budget = budget;
 	}
-	
-	public void addGiocatore(Giocatore giocatore){
-		if (this.giocatori == null){
-			this.giocatori = new HashSet<Giocatore>();
-		}
-		this.giocatori.add(giocatore);
-	}
 
 	public long getId() {
 		return id;
@@ -67,6 +49,23 @@ public class RosaUtente {
 	public void setId(long id) {
 		this.id = id;
 	}
+
+	public Utente getUtente() {
+		return utente;
+	}
+
+	public void setUtente(Utente utente) {
+		this.utente = utente;
+	}
+
+	public Lega getLega() {
+		return lega;
+	}
+
+	public void setLega(Lega lega) {
+		this.lega = lega;
+	}
+	
 	
 	
 
