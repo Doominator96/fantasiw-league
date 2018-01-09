@@ -17,10 +17,12 @@ public void dropDatabase(){
 	Connection connection = dataSource.getConnection();
 	try {
 		String delete = "drop SEQUENCE if EXISTS sequenza_id;"
-				+ "drop table if exists utente;"
-				+ "drop table if exists giocatore;"
 				+ "drop table if exists rosa;"
+				+ "drop table if exists utente;"
+				+ "drop table if exists afferisce"
+				+ "drop table if exists giocatore;"
 				+ "drop table if exists statisticheRosa;"
+				+ "drop table if exists lega"
 				;
 		PreparedStatement statement = connection.prepareStatement(delete);
 		
@@ -45,18 +47,12 @@ public void createDatabase(){
 	Connection connection = dataSource.getConnection();
 	try {
 		
-		String delete = "create SEQUENCE sequenza_id;"
-				+ "create table rosa (\"nome\" varchar(255) primary key, nome varchar(255),giocatore_nome varchar(255) REFERENCES giocatore(\"nome\" );"
-				+ "create table indirizzo (\"codice\" bigint primary key, nome varchar(255));"
-				+ "create table corso (\"codice\" bigint primary key, nome varchar(255));"
-				+ "create table dipartimento(\"codice\" bigint primary key,nome varchar(255));"
-				+ "create table corsodilaurea(\"codice\" bigint primary key,nome varchar(255),dipartimento_codice bigint REFERENCES dipartimento(\"codice\"));"				
-				+ "create table afferisce(\"id\" bigint primary key, corso_codice bigint REFERENCES corso(\"codice\"), corsodilaurea_codice bigint REFERENCES corsodilaurea(\"codice\"));"
-				+ "create table studente(matricola CHARACTER(8) primary key,"				
-				+ "nome VARCHAR(255),cognome VARCHAR(255),"
-				+ "data_nascita DATE, gruppo_id bigint REFERENCES gruppo(\"id\"), indirizzo_codice bigint REFERENCES indirizzo(\"codice\"), password VARCHAR(255));"
-		
-		PreparedStatement statement = connection.prepareStatement(delete);
+		String create = "create SEQUENCE sequenza_id;"
+				+ "create table rosa (\"id\" bigint primary key, nome varchar(255),budget int, utente_id bigint REFERENCES utente(\"id\" ),statisticheRosa_id bigint REFERENCES statisticheRosa(\"id\" )lega_id bigint REFERENCES lega(\"id\" );"
+				+ "create table utente(\"username\" varchar(255) primary key,email varchar(255),password varchar(255);"
+				+ "create table giocatore(\"id\" bigint primary key,nome varchar(255),cognome varchar(255),squadra varchar(255),ruolo varchar(255),costo int);"
+				+ "create table afferisce(\"id\" bigint primary key,giocatore_id bigint REFERENCES giocatore(\"id\" ),rosa_id bigint REFERENCES rosa(\"id\" );";
+		PreparedStatement statement = connection.prepareStatement(create);
 		
 		statement.executeUpdate();
 		System.out.println("Executed create database");
@@ -79,15 +75,18 @@ public  void resetDatabase() {
 		
 		Connection connection = dataSource.getConnection();
 		try {
-			String delete = "delete FROM ...";
+			String delete = "delete FROM rosa";
 			PreparedStatement statement = connection.prepareStatement(delete);
 			
 			statement.executeUpdate();
 
-			delete = "delete FROM ...";
+			delete = "delete FROM utente";
 			statement = connection.prepareStatement(delete);
 			
-			delete = "delete FROM ...";
+			delete = "delete FROM giocatore";
+			statement = connection.prepareStatement(delete);
+			
+			delete = "delete FROM afferisce";
 			statement = connection.prepareStatement(delete);
 			
 			statement.executeUpdate();

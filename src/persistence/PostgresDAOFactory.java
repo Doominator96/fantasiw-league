@@ -2,7 +2,11 @@ package persistence;
 
 
 
-import persistence.dao....Dao;
+import persistence.dao.AfferisceDao;
+import persistence.dao.GiocatoreDao;
+import persistence.dao.RosaUtenteDao;
+import persistence.dao.StatisticheRosaDao;
+import persistence.dao.UtenteDao;
 
 class PostgresDAOFactory extends DAOFactory {
 
@@ -28,12 +32,32 @@ class PostgresDAOFactory extends DAOFactory {
 	// --------------------------------------------
 	
 	@Override
-	public ...Dao get...DAO() {
-		return new ...DaoJDBC(dataSource);
+	public AfferisceDao getAfferisceDAO() {
+		return new AfferisceDaoJDBC(dataSource);
 	}
 
 	@Override
 	public UtilDao getUtilDAO(){
 		return new UtilDao(dataSource);
+	}
+
+	@Override
+	public UtenteDao getUtenteDAO() {
+		return new UtenteDaoJDBC(dataSource);		
+	}
+
+	@Override
+	public RosaUtenteDao getRosaUtenteDAO() {
+		return new RosaUtenteDaoJDBC(dataSource);		
+	}
+
+	@Override
+	public GiocatoreDao getGiocatoreDAO() {
+		return new GiocatoreDaoJDBC(dataSource);		
+	}
+
+	@Override
+	public StatisticheRosaDao getStatisticheRosaDAO() {
+		return new StatisticheRosaDaoJDBC(dataSource);		
 	}
 }

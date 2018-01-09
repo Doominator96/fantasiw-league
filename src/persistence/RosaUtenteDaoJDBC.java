@@ -8,10 +8,8 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-import model.Corso;
 import model.Giocatore;
 import model.RosaUtente;
-import model.Studente;
 import model.Utente;
 import persistence.dao.GiocatoreDao;
 import persistence.dao.RosaUtenteDao;
@@ -60,15 +58,12 @@ public class RosaUtenteDaoJDBC implements RosaUtenteDao{
 	public List<Giocatore> findByPrimaryKeyJoin(Long id) {
 		List<Giocatore> giocatori=new ArrayList<Giocatore>();
 		Connection connection = this.dataSource.getConnection();
-		RosaUtente rosa = null;
 		try {
 			PreparedStatement statement;
 			String query = "select * FROM afferisce WHERE rosa = ?";
 			statement = connection.prepareStatement(query);
 			statement.setLong(1, id);
 			ResultSet result = statement.executeQuery();
-			rosa = new RosaUtente();
-			rosa.setId(result.getLong("id"));				
 			while (result.next()) {
 				
 					GiocatoreDao giocatoreDao = new GiocatoreDaoJDBC(dataSource);
@@ -93,14 +88,14 @@ public class RosaUtenteDaoJDBC implements RosaUtenteDao{
 	/* 
 	 * versione con Lazy Load
 	 */
-	public RosaUtente findByPrimaryKey(String nome) {
+	public RosaUtente findByPrimaryKey(Long id) {
 		Connection connection = this.dataSource.getConnection();
 		RosaUtente rosa = null;
 		try {
 			PreparedStatement statement;
 			String query = "select * from rosa where nome = ?";
 			statement = connection.prepareStatement(query);
-			statement.setString(1, nome);
+			statement.setLong(1, id);
 			ResultSet result = statement.executeQuery();
 			if (result.next()) {
 				rosa = new RosaUtente();
@@ -118,7 +113,7 @@ public class RosaUtenteDaoJDBC implements RosaUtenteDao{
 		return rosa;
 	}
 
-	public List<RosaUtente> findAll() {  //credo per vedere le rose degli altri utenti...dobbiamo decidere bene
+	public List<RosaUtente> findAll() {  
 		Connection connection = this.dataSource.getConnection();
 		List<RosaUtente> rose = new ArrayList<>();
 		try {		
@@ -128,7 +123,7 @@ public class RosaUtenteDaoJDBC implements RosaUtenteDao{
 			statement = connection.prepareStatement(query);
 			ResultSet result = statement.executeQuery();
 			while (result.next()) {
-				rosa = findByPrimaryKeyJoin(result.getString("nome"));
+				rosa = findByPrimaryKeyJoin(result.getLong("id"));
 				rose.add(rosa);
 			}
 		} catch (SQLException e) {
@@ -146,7 +141,7 @@ public class RosaUtenteDaoJDBC implements RosaUtenteDao{
 	public void update(RosaUtente rosa) {
 		Connection connection = this.dataSource.getConnection();
 		try {
-			String update = "update rosa WHERE nome = ?";
+			String update = "update rosa WHERE id= ?";
 			PreparedStatement statement = connection.prepareStatement(update);
 			statement.setString(1, rosa.getNome());
 
@@ -171,13 +166,12 @@ public class RosaUtenteDaoJDBC implements RosaUtenteDao{
 			}
 		}
 	}
-
 	public void delete(RosaUtente rosa) {
 		Connection connection = this.dataSource.getConnection();
 		try {
-			String delete = "delete FROM rosa WHERE nome = ? ";
+			String delete = "delete FROM rosa WHERE id = ? ";
 			PreparedStatement statement = connection.prepareStatement(delete);
-			statement.setString(1, rosa.getNome());
+			statement.setLong(1, rosa.getId());
 
 			/* 
 			 * rimuoviamo i giocatori dal gruppo (ma non dal database) 
@@ -187,12 +181,7 @@ public class RosaUtenteDaoJDBC implements RosaUtenteDao{
 			 * 
 			 * */
 			connection.setAutoCommit(false);
-			connection.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);			
-			this.removeForeignKeyFromGiocatore(rosa, connection);     			
-			/* 
-			 * ora rimuoviamo il gruppo
-			 * 
-			 * */
+			connection.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);			     			
 			statement.executeUpdate();
 			connection.commit();
 		} catch (SQLException e) {

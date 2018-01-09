@@ -9,6 +9,7 @@ import java.util.List;
 
 import model.Afferisce;
 import model.Giocatore;
+import persistence.dao.AfferisceDao;
 import persistence.dao.GiocatoreDao;
 
 public class AfferisceDaoJDBC implements AfferisceDao{
@@ -23,9 +24,9 @@ public class AfferisceDaoJDBC implements AfferisceDao{
 		try {
 			String insert = "insert into Afferisce(id,giocatore, rosa) values (?,?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
-			statement.setLong(1, Afferisce.getId());
-			statement.setLong(2, Afferisce.getGiocatore().getId());
-			statement.setLong(3, Afferisce.getRosa().getId());
+			statement.setLong(1, afferisce.getId());
+			statement.setLong(2, afferisce.getGiocatore().getId());
+			statement.setLong(3, afferisce.getRosa().getId());
 			statement.executeUpdate();
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
@@ -45,7 +46,7 @@ public class AfferisceDaoJDBC implements AfferisceDao{
 			PreparedStatement statement;
 			String query = "select * from giocatore where nome = ?";
 			statement = connection.prepareStatement(query);
-			statement.setString(1, nome);
+			statement.setLong(1, id);
 			ResultSet result = statement.executeQuery();
 			if (result.next()) {
 				giocatore = new Giocatore();
@@ -117,12 +118,12 @@ public class AfferisceDaoJDBC implements AfferisceDao{
 		}
 	}
 
-	public void delete(Giocatore giocatore) {
+	public void delete(Afferisce afferisce) {
 		Connection connection = this.dataSource.getConnection();
 		try {
-			String delete = "delete FROM giocatore WHERE nome = ? ";
+			String delete = "delete FROM afferisce WHERE id = ? ";
 			PreparedStatement statement = connection.prepareStatement(delete);
-			statement.setString(1, giocatore.getNome());
+			statement.setLong(1, afferisce.getId());
 			statement.executeUpdate();
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());

@@ -2,18 +2,21 @@ package model;
 
 public class Afferisce {
 	
-	private int id;
-	private Giocatore giocatore;
+	private long id;
+	private  Giocatore giocatore;
 	private RosaUtente rosa;
 	
 	public Afferisce() {
 	}
+
 	
-	public Afferisce(int id) {
-		this.setId(id);
+	public Afferisce(Giocatore giocatore, RosaUtente rosa) {
+		this.giocatore = giocatore;
+		this.rosa = rosa;
 	}
 
-	public static int getId() {
+
+	public Long getId() {
 		return id;
 	}
 
@@ -21,7 +24,7 @@ public class Afferisce {
 		this.id = id;
 	}
 
-	public static Giocatore getGiocatore() {
+	public Giocatore getGiocatore() {
 		return giocatore;
 	}
 
@@ -29,7 +32,7 @@ public class Afferisce {
 		this.giocatore = giocatore;
 	}
 
-	public static RosaUtente getRosa() {
+	public RosaUtente getRosa() {
 		return rosa;
 	}
 

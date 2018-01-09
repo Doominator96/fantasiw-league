@@ -20,6 +20,8 @@ public class StatisticheRosaDaoJDBC implements StatisticheRosaDao {
 	public void save(StatisticheRosa statistiche) {
 		Connection connection = this.dataSource.getConnection();
 		try {
+			Long id = IdBroker.getId(connection);
+			statistiche.setId(id); 			
 			String insert = "insert into statistiche(id,punteggio, vittorie, pareggi, sconfitte, golfatti, golsubiti) values (?,?,?,?,?,?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
 			statement.setLong(1, statistiche.getId());

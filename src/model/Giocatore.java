@@ -12,8 +12,7 @@ public class Giocatore {
 	public Giocatore() {
 	}
 	
-	public Giocatore(long id,String nome, String cognome, String squadra, String ruolo, int costo) {
-		this.setId(id);
+	public Giocatore(String nome, String cognome, String squadra, String ruolo, int costo) {
 		this.nome = nome;
 		this.cognome = cognome;
 		this.squadra = squadra;

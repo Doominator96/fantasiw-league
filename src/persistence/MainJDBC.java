@@ -1,9 +1,11 @@
 package persistence;
 
+import model.Afferisce;
 import model.Giocatore;
 import model.RosaUtente;
 import model.StatisticheRosa;
 import model.Utente;
+import persistence.dao.AfferisceDao;
 import persistence.dao.GiocatoreDao;
 import persistence.dao.RosaUtenteDao;
 import persistence.dao.StatisticheRosaDao;
@@ -43,7 +45,7 @@ public class MainJDBC {//ESERCIZIO (richiede Java8
 		UtenteDao utenteDao = factory.getUtenteDAO();
 		RosaUtenteDao rosautenteDao = factory.getRosaUtenteDAO();
 		StatisticheRosaDao statisticheDao = factory.getStatisticheRosaDAO();
-
+		AfferisceDao afferisceDao =factory.getAfferisceDAO();
 		Utente utente1 = new Utente("jason","porchettino@gmail.com","puttana");
 		
 		Giocatore giocatore1 = new Giocatore("Rino","Polacchini","PopilBianco A.C.", "ATTACCANTE", 155);
@@ -55,15 +57,10 @@ public class MainJDBC {//ESERCIZIO (richiede Java8
 		RosaUtente rosa1 = new RosaUtente();
 		//l'id del gruppo e' gestito tramite la classe IDBroker
 		rosa1.setNome("Rosa1");
-		rosa1.addGiocatore(giocatore1);
-		rosa1.addGiocatore(giocatore2);
-		rosa1.addGiocatore(giocatore3);
-		rosa1.addGiocatore(giocatore4);
 		
 		utente1.setRosa(rosa1);
 		
-		StatisticheRosa stats1 = new StatisticheRosa();
-		rosa1.setStatistiche(stats1);
+		
 
 		//CREATE
 		utenteDao.save(utente1);
@@ -74,7 +71,13 @@ public class MainJDBC {//ESERCIZIO (richiede Java8
 		giocatoreDao.save(giocatore4);
 		
 		rosautenteDao.save(rosa1);
+		
+		afferisceDao.save(new Afferisce(giocatore1,rosa1));
+		StatisticheRosa stats1 = new StatisticheRosa();
+		rosa1.setStatistiche(stats1);
 		statisticheDao.save(stats1);
+		
+		
 		
 //		//RETRIEVE
 //		System.out.println("Retrieve all rosa");
