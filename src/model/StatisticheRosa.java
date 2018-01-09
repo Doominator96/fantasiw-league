@@ -2,6 +2,7 @@ package model;
 
 public class StatisticheRosa {
 	
+	private long id;
 	private int punteggio;
 	private int vittorie;
 	private int pareggi;
@@ -19,6 +20,13 @@ public class StatisticheRosa {
 		this.sconfitte = sconfitte;
 		this.golFatti = golFatti;
 		this.golSubiti = golSubiti;
+	}
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public int getPunteggio() {
