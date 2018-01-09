@@ -20,6 +20,8 @@ public class GiocatoreDaoJDBC implements GiocatoreDao{
 	public void save(Giocatore giocatore) {
 		Connection connection = this.dataSource.getConnection();
 		try {
+			Long id = IdBroker.getId(connection);
+			giocatore.setId(id);
 			String insert = "insert into giocatore(id,nome, cognome, squadra, ruolo) values (?,?,?,?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
 			statement.setLong(1, giocatore.getId());
