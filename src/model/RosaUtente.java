@@ -14,8 +14,7 @@ public class RosaUtente {
 	public RosaUtente() {
 	}
 	
-	public RosaUtente(long id,Set<Giocatore> giocatori, String nome, StatisticheRosa statistiche, int budget) {
-		this.id=id;
+	public RosaUtente(Set<Giocatore> giocatori, String nome, StatisticheRosa statistiche, int budget) {
 		this.giocatori = giocatori;
 		this.nome = nome;
 		this.statistiche = statistiche;
