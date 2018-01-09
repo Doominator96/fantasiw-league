@@ -7,7 +7,7 @@ import model.Giocatore;
 public interface GiocatoreDao {
 	
 	public void save(Giocatore giocatore);  // Create
-	public Giocatore findByPrimaryKey(String nome);     // Retrieve
+	public Giocatore findByPrimaryKey(Long id);     // Retrieve
 	public List<Giocatore> findAll();       
 	public void update(Giocatore giocatore); //Update
 	public void delete(Giocatore giocatore); //Delete	
