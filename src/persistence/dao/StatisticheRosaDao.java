@@ -6,7 +6,7 @@ import model.StatisticheRosa;
 
 public interface StatisticheRosaDao {
 	public void save(StatisticheRosa statistiche);  // Create
-	public StatisticheRosa findByPrimaryKey(int punteggio);     // Retrieve
+	public StatisticheRosa findByPrimaryKey(long id);     // Retrieve
 	public List<StatisticheRosa> findAll();       
 	public void update(StatisticheRosa statistiche); //Update
 	public void delete(StatisticheRosa statistiche); //Delete	

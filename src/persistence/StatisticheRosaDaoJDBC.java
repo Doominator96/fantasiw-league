@@ -20,14 +20,15 @@ public class StatisticheRosaDaoJDBC implements StatisticheRosaDao {
 	public void save(StatisticheRosa statistiche) {
 		Connection connection = this.dataSource.getConnection();
 		try {
-			String insert = "insert into statistiche(punteggio, vittorie, pareggi, sconfitte, golfatti, golsubiti) values (?,?,?,?,?,?)";
+			String insert = "insert into statistiche(id,punteggio, vittorie, pareggi, sconfitte, golfatti, golsubiti) values (?,?,?,?,?,?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
-			statement.setInt(1, statistiche.getPunteggio());
-			statement.setInt(2, statistiche.getVittorie());
-			statement.setInt(3, statistiche.getPareggi());
-			statement.setInt(4, statistiche.getSconfitte());
-			statement.setInt(5, statistiche.getGolFatti());
-			statement.setInt(6, statistiche.getGolSubiti());
+			statement.setLong(1, statistiche.getId());
+			statement.setInt(2, statistiche.getPunteggio());
+			statement.setInt(3, statistiche.getVittorie());
+			statement.setInt(4, statistiche.getPareggi());
+			statement.setInt(5, statistiche.getSconfitte());
+			statement.setInt(6, statistiche.getGolFatti());
+			statement.setInt(7, statistiche.getGolSubiti());
 
 			statement.executeUpdate();
 		} catch (SQLException e) {
@@ -41,17 +42,18 @@ public class StatisticheRosaDaoJDBC implements StatisticheRosaDao {
 		}
 	}  
 
-	public StatisticheRosa findByPrimaryKey(int punteggio) {
+	public StatisticheRosa findByPrimaryKey(long id) {
 		Connection connection = this.dataSource.getConnection();
 		StatisticheRosa statistiche = null;
 		try {
 			PreparedStatement statement;
-			String query = "select * from statistiche where punteggio = ?";
+			String query = "select * from statistiche where id = ?";
 			statement = connection.prepareStatement(query);
-			statement.setInt(1, punteggio);
+			statement.setLong(1, id);
 			ResultSet result = statement.executeQuery();
 			if (result.next()) {
 				statistiche = new StatisticheRosa();
+				statistiche.setId(result.getLong("id"));
 				statistiche.setPunteggio(result.getInt("punteggio"));				
 				statistiche.setVittorie(result.getInt("vittorie"));
 				statistiche.setPareggi(result.getInt("pareggi"));
@@ -82,6 +84,7 @@ public class StatisticheRosaDaoJDBC implements StatisticheRosaDao {
 			ResultSet result = statement.executeQuery();
 			while (result.next()) {
 				statistiche = new StatisticheRosa();
+				statistiche.setId(result.getLong("id"));
 				statistiche.setPunteggio(result.getInt("punteggio"));				
 				statistiche.setVittorie(result.getInt("vittorie"));
 				statistiche.setPareggi(result.getInt("pareggi"));
@@ -106,14 +109,15 @@ public class StatisticheRosaDaoJDBC implements StatisticheRosaDao {
 	public void update(StatisticheRosa statistiche) {
 		Connection connection = this.dataSource.getConnection();
 		try {
-			String update = "update statistiche SET vittorie = ?, pareggi = ?, sconfitte = ?, golfatti = ?, golsubiti = ? WHERE punteggio=?";
+			String update = "update statistiche SET id= ?, vittorie = ?, pareggi = ?, sconfitte = ?, golfatti = ?, golsubiti = ? WHERE punteggio=?";
 			PreparedStatement statement = connection.prepareStatement(update);
-			statement.setInt(1, statistiche.getPunteggio());
-			statement.setInt(2, statistiche.getVittorie());
-			statement.setInt(3, statistiche.getPareggi());
-			statement.setInt(4, statistiche.getSconfitte());
-			statement.setInt(5, statistiche.getGolFatti());
-			statement.setInt(6, statistiche.getGolSubiti());
+			statement.setLong(1, statistiche.getId());
+			statement.setInt(2, statistiche.getPunteggio());
+			statement.setInt(3, statistiche.getVittorie());
+			statement.setInt(4, statistiche.getPareggi());
+			statement.setInt(5, statistiche.getSconfitte());
+			statement.setInt(6, statistiche.getGolFatti());
+			statement.setInt(7, statistiche.getGolSubiti());
 			statement.executeUpdate();
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
@@ -129,9 +133,9 @@ public class StatisticheRosaDaoJDBC implements StatisticheRosaDao {
 	public void delete(StatisticheRosa statistiche) {
 		Connection connection = this.dataSource.getConnection();
 		try {
-			String delete = "delete FROM statistiche WHERE punteggio = ? ";
+			String delete = "delete FROM statistiche WHERE id = ? ";
 			PreparedStatement statement = connection.prepareStatement(delete);
-			statement.setInt(1, statistiche.getPunteggio());
+			statement.setLong(1, statistiche.getId());
 			statement.executeUpdate();
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
