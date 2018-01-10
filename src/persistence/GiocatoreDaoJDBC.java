@@ -22,13 +22,14 @@ public class GiocatoreDaoJDBC implements GiocatoreDao{
 		try {
 			Long id = IdBroker.getId(connection);
 			giocatore.setId(id);
-			String insert = "insert into giocatore(id,nome, cognome, squadra, ruolo) values (?,?,?,?,?)";
+			String insert = "insert into giocatore(id,nome, cognome, squadra, ruolo,costo) values (?,?,?,?,?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
 			statement.setLong(1, giocatore.getId());
 			statement.setString(2, giocatore.getNome());
 			statement.setString(3, giocatore.getCognome());
 			statement.setString(4, giocatore.getSquadra());
 			statement.setString(5, giocatore.getRuolo());
+			statement.setInt(6,giocatore.getCosto());
 			statement.executeUpdate();
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
@@ -57,6 +58,7 @@ public class GiocatoreDaoJDBC implements GiocatoreDao{
 				giocatore.setCognome(result.getString("cognome"));
 				giocatore.setSquadra(result.getString("squadra"));
 				giocatore.setRuolo(result.getString("ruolo"));
+				giocatore.setCosto(result.getInt("costo"));
 			}
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
@@ -86,6 +88,7 @@ public class GiocatoreDaoJDBC implements GiocatoreDao{
 				giocatore.setCognome(result.getString("cognome"));
 				giocatore.setSquadra(result.getString("squadra"));
 				giocatore.setRuolo(result.getString("ruolo"));
+				giocatore.setCosto(result.getInt("costo"));
 				
 				giocatori.add(giocatore);
 			}
@@ -104,13 +107,14 @@ public class GiocatoreDaoJDBC implements GiocatoreDao{
 	public void update(Giocatore giocatore) {
 		Connection connection = this.dataSource.getConnection();
 		try {
-			String update = "update giocatore SET nome = ?, cognome = ?, squadra = ?, ruolo = ? WHERE id=?";
+			String update = "update giocatore SET nome = ?, cognome = ?, squadra = ?, ruolo = ?,costo = ? WHERE id=?";
 			PreparedStatement statement = connection.prepareStatement(update);
 			statement.setLong(1, giocatore.getId());
 			statement.setString(2, giocatore.getNome());
 			statement.setString(3, giocatore.getCognome());
 			statement.setString(4, giocatore.getSquadra());
 			statement.setString(5, giocatore.getRuolo());
+			statement.setInt(5, giocatore.getCosto());
 			statement.executeUpdate();
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());

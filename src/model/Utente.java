@@ -38,6 +38,8 @@ public class Utente {
 		Utente utente = (Utente)object;
 		return (this.getEmail() == utente.getEmail());
 	}
-	
+	public String toString() {
+		return userName+" "+email+" "+password;
+	}
 
 }

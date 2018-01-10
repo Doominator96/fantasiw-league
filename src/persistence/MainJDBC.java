@@ -31,29 +31,31 @@ public class MainJDBC {
 		
 		
 		Utente utente1 = new Utente("jason", "porchettino@gmail.com", "puttana");
-		Lega lega1 = new Lega("PiùGhiusto");
+		Lega lega1 = new Lega("PiùGhiusto","password");
 		Giocatore giocatore1 = new Giocatore("Rino", "Polacchini", "PopilBianco A.C.", "ATTACCANTE", 155);
 		Giocatore giocatore2 = new Giocatore("Spino", "DiLeone", "Saracena A.S.", "PORTIERE", 420);
 		Giocatore giocatore3 = new Giocatore("Pier", "Porn", "Sesso A.C", "CENTROCAMPISTA", 0);
 		Giocatore giocatore4 = new Giocatore("Cavallo", "Si", "SanBasil A.C.", "DIFENSORE", 25);
-
 		RosaUtente rosa1 = new RosaUtente();
-
+		Afferisce afferisce1 =new Afferisce();
+		
+		afferisce1.setGiocatore(giocatore1);
+		afferisce1.setRosa(rosa1);
+		
 		rosa1.setNome("Rosa1");
-		rosa1.setUtente(utente1);
-		rosa1.setLega(lega1);
-
 		// CREATE
 		utenteDao.save(utente1);
-
 		giocatoreDao.save(giocatore1);
 		giocatoreDao.save(giocatore2);
 		giocatoreDao.save(giocatore3);
-		giocatoreDao.save(giocatore4);
+		giocatoreDao.save(giocatore4);		
+		rosa1.setUtente(utente1);
+		rosa1.setLega(lega1);
 		legaDao.save(lega1);
 		rosaUtenteDao.save(rosa1);
 		
-		afferisceDao.save(new Afferisce(giocatore2, rosa1));
+		
+		afferisceDao.save(afferisce1);
 
 		// RETRIEVE
 		System.out.println("Retrieve all rosa");
@@ -71,12 +73,12 @@ public class MainJDBC {
 
 		System.out.println("Retrieve all giocatori");
 		for (Giocatore g : giocatoreDao.findAll()) {
-			System.out.println(g.toString());
+			System.out.println(g);
 		}
-		System.out.println("Retrieve all rose");
-		for (RosaUtente r : rosaUtenteDao.findAll()) {
-			System.out.println(r.toString());
-		}
+//		System.out.println("Retrieve all rose");
+//		for (RosaUtente r : rosaUtenteDao.findAll()) {
+//			System.out.println(r);
+//		}
 
 		System.out.println("Elenco Afferisce");
 		for (Afferisce a : afferisceDao.findAll()) {
