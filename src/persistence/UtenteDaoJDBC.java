@@ -23,12 +23,11 @@ public class UtenteDaoJDBC implements UtenteDao {
 	public void save(Utente utente) {
 		Connection connection = this.dataSource.getConnection();
 		try {
-			String insert = "insert into utente(username, email, password, rosa) values (?,?,?,?)";
+			String insert = "insert into utente(username, email, password) values (?,?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
 			statement.setString(1, utente.getUserName());
 			statement.setString(2, utente.getEmail());
 			statement.setString(3, utente.getPassword());
-			statement.setString(4, utente.getRosa().getNome());
 			statement.executeUpdate();
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
@@ -55,10 +54,7 @@ public class UtenteDaoJDBC implements UtenteDao {
 				utente.setUserName(result.getString("username"));				
 				utente.setEmail(result.getString("email"));
 				utente.setPassword(result.getString("password"));
-				
-				RosaUtenteDao rosaUtenteDao = new RosaUtenteDaoJDBC(dataSource);
-				RosaUtente rosaUtente = rosaUtenteDao.findByPrimaryKey(result.getString("rosa_nome"));
-				utente.setRosa(rosaUtente);
+
 			}
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
@@ -80,8 +76,7 @@ public class UtenteDaoJDBC implements UtenteDao {
 			utCred = new UtenteCredenziali(dataSource);
 			utCred.setUserName(ut.getUserName());
 			utCred.setEmail(ut.getEmail());
-			utCred.setPassword(ut.getPassword());
-			utCred.setRosa(ut.getRosa());		
+			utCred.setPassword(ut.getPassword());	
 		}
 		return utCred;
 	}
@@ -101,10 +96,6 @@ public class UtenteDaoJDBC implements UtenteDao {
 				utente.setEmail(result.getString("email"));
 				utente.setPassword(result.getString("password"));
 				
-				RosaUtenteDao rosaUtenteDao = new RosaUtenteDaoJDBC(dataSource);
-				RosaUtente rosaUtente = rosaUtenteDao.findByPrimaryKey(result.getString("rosa_nome"));
-				utente.setRosa(rosaUtente);
-				
 				utenti.add(utente);
 			}
 		} catch (SQLException e) {
@@ -122,12 +113,11 @@ public class UtenteDaoJDBC implements UtenteDao {
 	public void update(Utente utente) {
 		Connection connection = this.dataSource.getConnection();
 		try {
-			String update = "update utente SET email = ?, password = ?, rosa_nome = ? WHERE username=?";
+			String update = "update utente SET email = ?, password = ? WHERE username=?";
 			PreparedStatement statement = connection.prepareStatement(update);
 			statement.setString(1, utente.getUserName());
 			statement.setString(2, utente.getEmail());
 			statement.setString(3, utente.getPassword());
-			statement.setString(4, utente.getRosa().getNome());
 			statement.executeUpdate();
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());

@@ -29,10 +29,19 @@ public class RosaUtenteDaoJDBC implements RosaUtenteDao{
 		try {
 			Long id = IdBroker.getId(connection);
 			rosa.setId(id); 			
-			String insert = "insert into rosa(id, nome) values (?,?)";
+			String insert = "insert into rosa(id,nome,budget,utente,lega,punteggio,vittorie,pareggi,sconfitte,golFatti,golSubiti) values (?,?,?,?,?,?,?,?,?,?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
 			statement.setLong(1, rosa.getId());
-			statement.setString(2, rosa.getNome());			
+			statement.setString(2, rosa.getNome());	
+			statement.setInt(3, rosa.getBudget());
+			statement.setString(4, rosa.getUtente().getUserName());
+			statement.setLong(5, rosa.getLega().getId());
+			statement.setInt(6, rosa.getPunteggio());
+			statement.setInt(7, rosa.getVittorie());
+			statement.setInt(8, rosa.getPareggi());
+			statement.setInt(9, rosa.getSconfitte());
+			statement.setInt(10, rosa.getGolFatti());
+			statement.setInt(11, rosa.getGolSubiti());
 			statement.executeUpdate();
 
 		} catch (SQLException e) {
@@ -93,7 +102,7 @@ public class RosaUtenteDaoJDBC implements RosaUtenteDao{
 		RosaUtente rosa = null;
 		try {
 			PreparedStatement statement;
-			String query = "select * from rosa where nome = ?";
+			String query = "select * from rosa where id = ?";
 			statement = connection.prepareStatement(query);
 			statement.setLong(1, id);
 			ResultSet result = statement.executeQuery();
@@ -117,14 +126,14 @@ public class RosaUtenteDaoJDBC implements RosaUtenteDao{
 		Connection connection = this.dataSource.getConnection();
 		List<RosaUtente> rose = new ArrayList<>();
 		try {		
-			RosaUtente rosa;
+			RosaUtente rosa1;
 			PreparedStatement statement;
 			String query = "select * from rosa";
 			statement = connection.prepareStatement(query);
 			ResultSet result = statement.executeQuery();
 			while (result.next()) {
-				rosa = findByPrimaryKeyJoin(result.getLong("id"));
-				rose.add(rosa);
+				rosa1 = findByPrimaryKey(result.getLong("id"));
+				rose.add(rosa1);
 			}
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
@@ -148,7 +157,6 @@ public class RosaUtenteDaoJDBC implements RosaUtenteDao{
 			//connection.setAutoCommit(false);
 			//connection.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);			
 			statement.executeUpdate();
-			this.updateGiocatori(rosa, connection); // se abbiamo deciso di propagare gli update seguendo il riferimento
 			//connection.commit();
 		} catch (SQLException e) {
 			if (connection != null) {

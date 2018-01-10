@@ -8,9 +8,9 @@ import java.util.LinkedList;
 import java.util.List;
 
 import model.Afferisce;
-import model.Giocatore;
 import persistence.dao.AfferisceDao;
 import persistence.dao.GiocatoreDao;
+import persistence.dao.RosaUtenteDao;
 
 public class AfferisceDaoJDBC implements AfferisceDao{
 	private DataSource dataSource;
@@ -22,11 +22,13 @@ public class AfferisceDaoJDBC implements AfferisceDao{
 	public void save(Afferisce afferisce) {
 		Connection connection = this.dataSource.getConnection();
 		try {
-			String insert = "insert into Afferisce(id,giocatore, rosa) values (?,?,?)";
+			Long id = IdBroker.getId(connection);
+			afferisce.setId(id);
+			String insert = "insert into afferisce(id) values (?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
 			statement.setLong(1, afferisce.getId());
-			statement.setLong(2, afferisce.getGiocatore().getId());
-			statement.setLong(3, afferisce.getRosa().getId());
+			//statement.setLong(2, afferisce.getGiocatore().getId());
+			//statement.setLong(3, afferisce.getRosa().getId());
 			statement.executeUpdate();
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
@@ -44,16 +46,17 @@ public class AfferisceDaoJDBC implements AfferisceDao{
 		Afferisce afferisce = null;
 		try {
 			PreparedStatement statement;
-			String query = "select * from giocatore where nome = ?";
+			String query = "select * from Afferisce where id = ?";
 			statement = connection.prepareStatement(query);
 			statement.setLong(1, id);
 			ResultSet result = statement.executeQuery();
 			if (result.next()) {
-				giocatore = new Giocatore();
-				giocatore.setNome(result.getString("nome"));				
-				giocatore.setCognome(result.getString("cognome"));
-				giocatore.setSquadra(result.getString("squadra"));
-				//giocatore.setRuolo(result.getString("ruolo"));
+				afferisce = new Afferisce();
+				afferisce.setId(result.getLong("id"));		
+				GiocatoreDao giocatoreDao=new GiocatoreDaoJDBC(dataSource);
+				afferisce.setGiocatore(giocatoreDao.findByPrimaryKey(result.getLong("giocatore")));
+				RosaUtenteDao rosaUtenteDao =new RosaUtenteDaoJDBC(dataSource);
+				afferisce.setRosa(rosaUtenteDao.findByPrimaryKey(result.getLong("rosa")));
 			}
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
@@ -64,26 +67,26 @@ public class AfferisceDaoJDBC implements AfferisceDao{
 				throw new PersistenceException(e.getMessage());
 			}
 		}	
-		return giocatore;
+		return afferisce;
 	}
 
-	public List<Giocatore> findAll() {
+	public List<Afferisce> findAll() {
 		Connection connection = this.dataSource.getConnection();
-		List<Giocatore> giocatori = new LinkedList<>();
+		List<Afferisce> afferiscono = new LinkedList<>();
 		try {
-			Giocatore giocatore;
 			PreparedStatement statement;
-			String query = "select * from giocatore";
+			String query = "select * from afferisce";
 			statement = connection.prepareStatement(query);
 			ResultSet result = statement.executeQuery();
 			while (result.next()) {
-				giocatore = new Giocatore();
-				giocatore.setNome(result.getString("nome"));				
-				giocatore.setCognome(result.getString("cognome"));
-				giocatore.setSquadra(result.getString("squadra"));
-				//giocatore.setRuolo(result.getString("ruolo"));
-				
-				giocatori.add(giocatore);
+				Afferisce afferisce = new Afferisce();
+				afferisce.setId(result.getLong("id"));
+				GiocatoreDao giocatoreDao=new GiocatoreDaoJDBC(dataSource);
+				//giocatoreDao.findByPrimaryKey(result.getLong("giocatore")); !per le chiavi esterne
+				afferisce.setGiocatore(giocatoreDao.findByPrimaryKey(result.getLong("giocatore")));
+				RosaUtenteDao rosaUtenteDao =new RosaUtenteDaoJDBC(dataSource);
+				afferisce.setRosa(rosaUtenteDao.findByPrimaryKey(result.getLong("rosa")));
+
 			}
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
@@ -94,18 +97,17 @@ public class AfferisceDaoJDBC implements AfferisceDao{
 				throw new PersistenceException(e.getMessage());
 			}
 		}
-		return giocatori;
+		return afferiscono;
 	}
 
-	public void update(Giocatore giocatore) {
+	public void update(Afferisce afferisce) {
 		Connection connection = this.dataSource.getConnection();
 		try {
-			String update = "update giocatore SET cognome = ?, squadra = ?, ruolo = ? WHERE nome=?";
+			String update = "update giocatore SET giocatore = ?, rosa = ? WHERE id=?";
 			PreparedStatement statement = connection.prepareStatement(update);
-			statement.setString(1, giocatore.getNome());
-			statement.setString(2, giocatore.getCognome());
-			statement.setString(3, giocatore.getSquadra());
-			statement.setString(4, giocatore.getRuolo().toString());
+			statement.setLong(1, afferisce.getId());
+			statement.setLong(2, afferisce.getGiocatore().getId());
+			statement.setLong(3, afferisce.getRosa().getId());
 			statement.executeUpdate();
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());

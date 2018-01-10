@@ -24,7 +24,7 @@ public class StatisticheRosaDaoJDBC implements StatisticheRosaDao {
 			statistiche.setId(id); 			
 			String insert = "insert into statistiche(id,punteggio, vittorie, pareggi, sconfitte, golfatti, golsubiti) values (?,?,?,?,?,?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
-			statement.setLong(1, statistiche.getId());
+			statement.setLong(1,statistiche.getId());
 			statement.setInt(2, statistiche.getPunteggio());
 			statement.setInt(3, statistiche.getVittorie());
 			statement.setInt(4, statistiche.getPareggi());

@@ -3,7 +3,7 @@ package model;
 public class Afferisce {
 	
 	private long id;
-	private  Giocatore giocatore;
+	private Giocatore giocatore;
 	private RosaUtente rosa;
 	
 	public Afferisce() {
@@ -20,7 +20,7 @@ public class Afferisce {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
