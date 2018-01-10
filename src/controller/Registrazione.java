@@ -1,7 +1,11 @@
 package controller;
 	import java.io.IOException;
+<<<<<<< HEAD
 import java.io.PrintWriter;
 <<<<<<< HEAD
+=======
+	import java.text.ParseException;
+>>>>>>> parent of c12a9af... Html changes
 	import javax.servlet.RequestDispatcher;
 	import javax.servlet.ServletException;
 	import javax.servlet.http.HttpServlet;
@@ -39,9 +43,13 @@ import persistence.dao.UtenteDao;
 			String email = req.getParameter("email");
 			String password = req.getParameter("password");
 <<<<<<< HEAD
+<<<<<<< HEAD
 			
 =======
 >>>>>>> c63cab00b644c2d69578df74ed5f255873e6ddc9
+=======
+			try {
+>>>>>>> parent of c12a9af... Html changes
 				Utente ut = 
 						new Utente(username,email,password);
 				UtenteDao utenteDao =PostgresDAOFactory.getInstance().getUtenteDAO();						
@@ -69,7 +77,10 @@ import persistence.dao.UtenteDao;
 //				out.println(password);
 //				out.println("</body>");
 //				out.println("</html>");	
-			
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 				
 =======
 				PrintWriter out = resp.getWriter();

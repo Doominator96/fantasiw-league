@@ -214,6 +214,7 @@ a:focus {
 
 #headerwrap .img-responsive {
 	margin: 0 auto;
+	filter: blur(15px);
 }
 
 /* Services Wrap */
