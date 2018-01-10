@@ -24,11 +24,11 @@ public class AfferisceDaoJDBC implements AfferisceDao{
 		try {
 			Long id = IdBroker.getId(connection);
 			afferisce.setId(id);
-			String insert = "insert into afferisce(id) values (?)";
+			String insert = "insert into afferisce(id,giocatore,rosa) values (?,?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
 			statement.setLong(1, afferisce.getId());
-			//statement.setLong(2, afferisce.getGiocatore().getId());
-			//statement.setLong(3, afferisce.getRosa().getId());
+			statement.setLong(2, afferisce.getGiocatore().getId());
+			statement.setLong(3, afferisce.getRosa().getId());
 			statement.executeUpdate();
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
@@ -103,7 +103,7 @@ public class AfferisceDaoJDBC implements AfferisceDao{
 	public void update(Afferisce afferisce) {
 		Connection connection = this.dataSource.getConnection();
 		try {
-			String update = "update giocatore SET giocatore = ?, rosa = ? WHERE id=?";
+			String update = "update afferisce SET giocatore = ?, rosa = ? WHERE id=?";
 			PreparedStatement statement = connection.prepareStatement(update);
 			statement.setLong(1, afferisce.getId());
 			statement.setLong(2, afferisce.getGiocatore().getId());

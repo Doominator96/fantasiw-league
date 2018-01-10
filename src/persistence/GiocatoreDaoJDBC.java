@@ -58,7 +58,7 @@ public class GiocatoreDaoJDBC implements GiocatoreDao{
 				giocatore.setCognome(result.getString("cognome"));
 				giocatore.setSquadra(result.getString("squadra"));
 				giocatore.setRuolo(result.getString("ruolo"));
-				giocatore.setCosto(result.getInt("cocsto"));
+				giocatore.setCosto(result.getInt("costo"));
 			}
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());

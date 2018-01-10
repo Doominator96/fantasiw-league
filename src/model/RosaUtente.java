@@ -121,7 +121,9 @@ public class RosaUtente {
 	public void setGolSubiti(int golSubiti) {
 		this.golSubiti = golSubiti;
 	}
-
+	public String toString() {
+		return nome+" "+ budget +" "+ utente.getUserName()+" "+ lega.getNome()+" "+punteggio+" "+ vittorie+" "+pareggi+" "+ sconfitte+" "+ golFatti+" "+ golSubiti;
+	}
 	
 	
 

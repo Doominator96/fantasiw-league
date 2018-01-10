@@ -7,22 +7,31 @@ import persistence.dao.RosaUtenteDao;
 import persistence.dao.StatisticheRosaDao;
 import persistence.dao.UtenteDao;
 
-class PostgresDAOFactory extends DAOFactory {
+public class PostgresDAOFactory extends DAOFactory {
 
 	private static DataSource dataSource;
+	private static PostgresDAOFactory factory;
 
 	// --------------------------------------------
 
 	static {
 		try {
 			Class.forName("org.postgresql.Driver").newInstance();
+			System.out.println("CAXXO");
 			dataSource = new DataSource("jdbc:postgresql://localhost:5432/fantasiw-league", "postgres", "postgres");
 		} catch (Exception e) {
 			System.err.println("PostgresDAOFactory.class: failed to load MySQL JDBC driver\n" + e);
 			e.printStackTrace();
 		}
 	}
+	
 
+	public static PostgresDAOFactory getInstance(){
+		if (factory == null){
+			factory = new PostgresDAOFactory();
+		}
+		return factory;
+	}
 	// --------------------------------------------
 
 	@Override

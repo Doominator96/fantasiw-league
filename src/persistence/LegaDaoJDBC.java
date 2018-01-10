@@ -10,7 +10,6 @@ import java.util.List;
 import model.Lega;
 import persistence.dao.LegaDao;
 
-
 public class LegaDaoJDBC implements LegaDao {
 	private DataSource dataSource;
 
@@ -21,10 +20,13 @@ public class LegaDaoJDBC implements LegaDao {
 	public void save(Lega lega) {
 		Connection connection = this.dataSource.getConnection();
 		try {
-			String insert = "insert into lega(id,nome) values (?,?)";
+			Long id = IdBroker.getId(connection);
+			lega.setId(id);
+			String insert = "insert into lega(id,nome,password) values (?,?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
 			statement.setLong(1, lega.getId());
 			statement.setString(2, lega.getNome());
+			statement.setString(3, lega.getPassword());
 			statement.executeUpdate();
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
@@ -35,7 +37,7 @@ public class LegaDaoJDBC implements LegaDao {
 				throw new PersistenceException(e.getMessage());
 			}
 		}
-	}  
+	}
 
 	public Lega findByPrimaryKey(Long id) {
 		Connection connection = this.dataSource.getConnection();
@@ -48,9 +50,9 @@ public class LegaDaoJDBC implements LegaDao {
 			ResultSet result = statement.executeQuery();
 			if (result.next()) {
 				lega = new Lega();
-				lega.setId(result.getLong("id"));				
+				lega.setId(result.getLong("id"));
 				lega.setNome(result.getString("nome"));
-
+				lega.setPassword(result.getString("password"));
 			}
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
@@ -60,10 +62,9 @@ public class LegaDaoJDBC implements LegaDao {
 			} catch (SQLException e) {
 				throw new PersistenceException(e.getMessage());
 			}
-		}	
+		}
 		return lega;
 	}
-	
 
 	public List<Lega> findAll() {
 		Connection connection = this.dataSource.getConnection();
@@ -76,14 +77,15 @@ public class LegaDaoJDBC implements LegaDao {
 			ResultSet result = statement.executeQuery();
 			while (result.next()) {
 				lega = new Lega();
-				lega.setId(result.getLong("id"));				
+				lega.setId(result.getLong("id"));
 				lega.setNome(result.getString("nome"));
-				
+				lega.setPassword(result.getString("password"));
+
 				leghe.add(lega);
 			}
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
-		}	 finally {
+		} finally {
 			try {
 				connection.close();
 			} catch (SQLException e) {
@@ -96,10 +98,11 @@ public class LegaDaoJDBC implements LegaDao {
 	public void update(Lega lega) {
 		Connection connection = this.dataSource.getConnection();
 		try {
-			String update = "update lega SET nome = ? WHERE id=?";
+			String update = "update lega SET nome = ?,password = ? WHERE id=?";
 			PreparedStatement statement = connection.prepareStatement(update);
 			statement.setLong(1, lega.getId());
 			statement.setString(2, lega.getNome());
+			statement.setString(3, lega.getPassword());
 			statement.executeUpdate();
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
