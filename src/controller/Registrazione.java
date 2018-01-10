@@ -1,6 +1,6 @@
 package controller;
 	import java.io.IOException;
-	import java.text.ParseException;
+import java.io.PrintWriter;
 	import javax.servlet.RequestDispatcher;
 	import javax.servlet.ServletException;
 	import javax.servlet.http.HttpServlet;
@@ -27,7 +27,7 @@ package controller;
 			String username = req.getParameter("username");
 			String email = req.getParameter("email");
 			String password = req.getParameter("password");
-			try {
+			
 				Utente ut = 
 						new Utente(username,email,password);
 				
@@ -56,10 +56,7 @@ package controller;
 //				out.println(password);
 //				out.println("</body>");
 //				out.println("</html>");	
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			
 				
 		}
 	}
