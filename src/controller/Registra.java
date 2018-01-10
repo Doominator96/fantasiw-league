@@ -43,19 +43,7 @@ import persistence.dao.UtenteDao;
 						req.getRequestDispatcher("index.html");
 				dispacher.forward(req, resp);
 				
-              resp.setContentType("text/html");
-				
-				
-				PrintWriter out = resp.getWriter();
-				out.println("<html>");
-				out.println("<head><title>Registrazione</title></head>");
-				out.println("<body>");
-				out.println("<h1>Abbiamo registrato l'utente:</h1>");
-				out.println(email);
-				out.println(username);
-				out.println(password);
-				out.println("</body>");
-				out.println("</html>");	
+
 		
 		}
 	}

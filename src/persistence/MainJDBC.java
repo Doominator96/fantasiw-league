@@ -39,8 +39,6 @@ public class MainJDBC {
 		RosaUtente rosa1 = new RosaUtente();
 		Afferisce afferisce1 =new Afferisce();
 		
-		afferisce1.setGiocatore(giocatore1);
-		afferisce1.setRosa(rosa1);
 		
 		rosa1.setNome("Rosa1");
 		// CREATE
@@ -49,6 +47,8 @@ public class MainJDBC {
 		giocatoreDao.save(giocatore2);
 		giocatoreDao.save(giocatore3);
 		giocatoreDao.save(giocatore4);		
+		afferisce1.setRosa(rosa1);
+		afferisce1.setGiocatore(giocatore1);
 		rosa1.setUtente(utente1);
 		rosa1.setLega(lega1);
 		legaDao.save(lega1);
