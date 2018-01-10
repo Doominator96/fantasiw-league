@@ -1,18 +1,6 @@
 package controller;
 	import java.io.IOException;
-<<<<<<< HEAD
 import java.io.PrintWriter;
-<<<<<<< HEAD
-=======
-	import java.text.ParseException;
->>>>>>> parent of c12a9af... Html changes
-	import javax.servlet.RequestDispatcher;
-	import javax.servlet.ServletException;
-	import javax.servlet.http.HttpServlet;
-	import javax.servlet.http.HttpServletRequest;
-	import javax.servlet.http.HttpServletResponse;
-=======
->>>>>>> c63cab00b644c2d69578df74ed5f255873e6ddc9
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -25,7 +13,7 @@ import persistence.PostgresDAOFactory;
 import model.Utente;
 import persistence.dao.UtenteDao;
 
-	public class Registrazione extends HttpServlet{
+	public class Registra extends HttpServlet{
 		
 //		@Override
 //		protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -42,14 +30,6 @@ import persistence.dao.UtenteDao;
 			String username = req.getParameter("username");
 			String email = req.getParameter("email");
 			String password = req.getParameter("password");
-<<<<<<< HEAD
-<<<<<<< HEAD
-			
-=======
->>>>>>> c63cab00b644c2d69578df74ed5f255873e6ddc9
-=======
-			try {
->>>>>>> parent of c12a9af... Html changes
 				Utente ut = 
 						new Utente(username,email,password);
 				UtenteDao utenteDao =PostgresDAOFactory.getInstance().getUtenteDAO();						
@@ -66,23 +46,6 @@ import persistence.dao.UtenteDao;
               resp.setContentType("text/html");
 				
 				
-<<<<<<< HEAD
-//				PrintWriter out = resp.getWriter();
-//				out.println("<html>");
-//				out.println("<head><title>Registrazione</title></head>");
-//				out.println("<body>");
-//				out.println("<h1>Abbiamo registrato l'utente:</h1>");
-//				out.println(email);
-//				out.println(username);
-//				out.println(password);
-//				out.println("</body>");
-//				out.println("</html>");	
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-				
-=======
 				PrintWriter out = resp.getWriter();
 				out.println("<html>");
 				out.println("<head><title>Registrazione</title></head>");
@@ -94,6 +57,5 @@ import persistence.dao.UtenteDao;
 				out.println("</body>");
 				out.println("</html>");	
 		
->>>>>>> c63cab00b644c2d69578df74ed5f255873e6ddc9
 		}
 	}
