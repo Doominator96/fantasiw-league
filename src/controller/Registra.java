@@ -25,7 +25,6 @@ import persistence.dao.UtenteDao;
 		
 		@Override
 		protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-			System.out.println("fzdsfdsad");
 			HttpSession session=req.getSession();
 			String username = req.getParameter("username");
 			String email = req.getParameter("email");
@@ -38,6 +37,7 @@ import persistence.dao.UtenteDao;
 				
 				  
 				session.setAttribute("utente", ut);
+				System.out.println("utente: "+ut.getUserName() + " registrato con successo");
 				
 				RequestDispatcher dispacher = 
 						req.getRequestDispatcher("index.html");

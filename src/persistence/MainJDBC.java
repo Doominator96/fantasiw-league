@@ -56,7 +56,7 @@ public class MainJDBC {
 		
 		
 		afferisceDao.save(afferisce1);
-
+		System.out.println(afferisce1.getGiocatore());
 		// RETRIEVE
 		System.out.println("Retrieve all rosa");
 		for (RosaUtente r : rosaUtenteDao.findAll()) {
