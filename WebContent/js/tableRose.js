@@ -4,6 +4,7 @@ $(document).ready(function(){
 		type : 'GET',
 		success : function(json){
 			var myJ = JSON.parse(json);
+			drawTable(myJ);
 		}
 	});
 });
@@ -13,7 +14,7 @@ function drawTable(data){
 		drawRow(data[i]);
 	}
 }
-function drawRow(rowDa){
+function drawRow(rowData){
 	var row = $("<tr />")
 	$("#table").append(row);
 	row.append($("<td>"+rowData.nome+"</td>"));

@@ -37,10 +37,14 @@ public class MainJDBC {
 		Giocatore giocatore3 = new Giocatore("Pier", "Porn", "Sesso A.C", "CENTROCAMPISTA", 0);
 		Giocatore giocatore4 = new Giocatore("Cavallo", "Si", "SanBasil A.C.", "DIFENSORE", 25);
 		RosaUtente rosa1 = new RosaUtente();
+		RosaUtente rosa2 = new RosaUtente();
+		RosaUtente rosa3 = new RosaUtente();
 		Afferisce afferisce1 =new Afferisce();
 		
 		
 		rosa1.setNome("Rosa1");
+		rosa2.setNome("Rosa2");
+		rosa3.setNome("Rosa3");
 		// CREATE
 		utenteDao.save(utente1);
 		giocatoreDao.save(giocatore1);
@@ -51,9 +55,14 @@ public class MainJDBC {
 		afferisce1.setGiocatore(giocatore1);
 		rosa1.setUtente(utente1);
 		rosa1.setLega(lega1);
+		rosa2.setUtente(utente1);
+		rosa2.setLega(lega1);
+		rosa3.setUtente(utente1);
+		rosa3.setLega(lega1);
 		legaDao.save(lega1);
 		rosaUtenteDao.save(rosa1);
-		
+		rosaUtenteDao.save(rosa2);
+		rosaUtenteDao.save(rosa3);
 		
 		afferisceDao.save(afferisce1);
 		System.out.println(afferisce1.getGiocatore());

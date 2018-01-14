@@ -124,7 +124,7 @@ public class RosaUtenteDaoJDBC implements RosaUtenteDao{
 
 	public List<RosaUtente> findAll() {  
 		Connection connection = this.dataSource.getConnection();
-		List<RosaUtente> rose = new ArrayList<>();
+		List<RosaUtente> rose = new LinkedList<>();
 		try {		
 			RosaUtente rosa1;
 			PreparedStatement statement;
