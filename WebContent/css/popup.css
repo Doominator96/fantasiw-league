@@ -1,0 +1,302 @@
+.holder {
+  width:100%;
+  height:400px;
+  text-align:center;
+  margin-top:50px;
+  font-size:200%;
+}
+
+form {
+  font-family: 'Titillium Web', sans-serif !important;
+}
+
+#contactform {
+  display:none;
+  position:fixed;
+  margin:0;  padding:0;
+  left:0; top:0;
+  height:100%;
+  width:100%;
+  background:rgba(0, 0, 0, 0.2);
+}
+
+.contact-form {
+  top:50px;
+}
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*float*/
+.pull-left { float: left; }
+.pull-right { float: left; }
+
+
+.txt-center { text-align: center; }
+
+
+button,
+input,
+select,
+textarea {
+    font-size: 100%; 
+    margin: 0;
+    vertical-align: baseline; 
+}
+
+button::-moz-focus-inner,
+input::-moz-focus-inner { 
+    border: 0;
+    padding: 0;
+}
+
+textarea {
+    overflow: auto; 
+    padding-left: 3px;
+    vertical-align: top; 
+}
+
+#contact-form {
+    background-color: #FFF;
+}
+
+#contact-form ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#contact-form li {
+    position: relative; 
+}
+
+input:required,
+input:invalid,
+input:valid,
+textarea:required,
+textarea:invalid,
+textarea:valid {
+    box-shadow:none !important;
+}
+
+input, 
+textarea {
+    display: block; 
+    border: 0;
+    background-color: transparent;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+::-webkit-input-placeholder,
+:-moz-placeholder,
+::-moz-placeholder,
+:-ms-input-placeholder {  
+    color: #FFF;
+    opacity: .2 !important;
+}
+
+label {
+    display: inline-block;
+    position: absolute; 
+    margin-top: -64px;
+    font-size: 1em;
+    font-weight: bold;
+    color: #333;
+    opacity: .5;
+    opacity: 1;
+    -webkit-transition: transform  100ms ease-out,
+                        opacity    300ms ease-in-out,
+                        color      200ms ease-out, 
+                        margin     200ms ease-out;
+            transition: transform  100ms ease-out,
+                        opacity    300ms ease-in-out,
+                        color      200ms ease-out, 
+                        margin     200ms ease-out;
+}
+
+input, 
+textarea { 
+    position: relative;
+    width: 100%;
+    margin-bottom: 35px ; 
+    padding-top: 1.2em;
+    padding-bottom: .45em;
+    outline: 0;
+    resize: none;
+    overflow: hidden;
+    border-bottom: 1px solid #CECECE;
+    -webkit-transition: text-indent  400ms ease-out,
+                        transform    225ms ease-out,
+                        opacity      225ms ease-in-out,
+                        border       300ms ease-out, 
+                        color        300ms ease-out;
+            transition: text-indent  400ms ease-out,
+                        transform    225ms ease-out,
+                        opacity      225ms ease-in-out,
+                        border       300ms ease-out, 
+                        color        300ms ease-out;
+}
+
+input { 
+    text-indent: -999px; 
+}
+
+input:focus,
+textarea:focus {
+    color: #777;
+    border-bottom: 3px solid rgba(0, 161, 217, 1);
+    opacity: 1;
+    text-indent: 0;
+}
+
+input[type=url]:focus {
+    color: #777;
+    border-bottom: 3px solid rgba(0, 161, 217, 1) !important;
+    opacity: 1;
+    text-indent: 0;
+}
+
+input[type=url]:focus ~ .required {
+    opacity: 1 !important;
+}
+
+input:focus + label {
+    margin-top: -90px;
+    opacity: 1;
+    color: rgba(0, 161, 217, 1);
+}
+
+textarea:focus + label {
+    margin-top: -115px;
+    opacity: 1;
+    color: rgba(0, 161, 217, 1);
+}
+
+input:focus ~ .required {
+    opacity: 1;
+}
+
+textarea { 
+    text-indent: -999px; 
+    padding-bottom: 15px;
+    height: auto;
+    resize: none;
+}
+
+input[type=submit] {
+    margin-top: 2.2em;
+    margin-bottom: 1em;
+    padding: .7em 1em ;
+    width: 100%;
+    cursor: pointer;
+    border: 0;
+    background-color: #2BB673;
+    color: #FFF !important;
+    font-weight: bold;
+    font-size: 1.3em;
+    border: 0;
+    opacity: 1 !important;
+    text-indent: 0;
+    -webkit-transform: none;
+            transform: none;
+}
+
+/*NOTIFICATIONS*/
+.required {
+    position: absolute;
+    margin-top: -26px;
+    /*margin-left: 59%;*/
+    opacity: 0;
+    color: rgba(0, 161, 217, 1);
+    font-style: italic;
+    font-weight: bold;
+    font-size: .9em;
+    -webkit-transition: opacity 200ms ease-out;
+            transition: opacity 200ms ease-out;
+}
+
+.notification {
+    position: absolute;
+    color: rgba(242, 48, 65, 0.95);
+    margin-top: -25px;
+    margin-bottom: 30px;
+    opacity: 0;
+    font-size: .9em;
+    font-weight: bold;
+    -webkit-transition: opacity  325ms ease-out;
+            transition: opacity  325ms ease-out;
+}
+
+.char-counter {
+    position: absolute;
+    color: rgba(0, 161, 217, 1);
+    margin-top: -25px;
+    margin-bottom: 30px;
+    opacity: 1;
+    font-size: .9em;
+    font-weight: bold;
+    -webkit-transition: opacity  325ms ease-out;
+            transition: opacity  325ms ease-out;   
+}
+
+@media (min-width: 0px) and (max-width: 767px) {
+    h1 {
+        font-size: 1.75em;
+    }
+
+    label {
+        font-size: .9em;
+    }
+
+    #contact-form {
+        position: relative;
+        width: 300px;
+        margin: 15px auto;
+        padding: 45px 20px 30px;
+        background-color: #FFF;
+    }
+
+    .required {
+        margin-top: -24px;
+        margin-left: 76%;
+    }
+
+    textarea:focus ~ .required,
+    textarea:not(:focus) ~ .required {
+        margin-top: -24px;
+    }
+
+    textarea:focus ~ .required { opacity: 1; }
+    textarea:not(:focus) ~ .required { opacity: 0; }
+}
+
+@media (min-width: 768px) {
+    #contact-form {
+        position: relative;
+        width: 450px;
+        margin: 30px auto;
+        padding: 45px 50px 30px;
+        background-color: #FFF;
+    }
+
+    .required {
+        margin-top: -25px;
+        margin-left: 82.5%;
+    }
+
+    textarea:focus ~ .required,
+    textarea:not(:focus) ~ .required {
+        margin-top: -23px;
+    }
+
+    textarea:focus ~ .required {
+        opacity: 1;
+    }
+
+    textarea:not(:focus) ~ .required {
+        opacity: 0;
+    }
+}
