@@ -31,7 +31,7 @@ public class MainJDBC {
 		
 		
 		Utente utente1 = new Utente("jason", "porchettino@gmail.com", "puttana");
-		Lega lega1 = new Lega("PiùGhiusto","password");
+		Lega lega1 = new Lega("Lega Nord","password");
 		Giocatore giocatore1 = new Giocatore("Rino", "Polacchini", "PopilBianco A.C.", "ATTACCANTE", 155);
 		Giocatore giocatore2 = new Giocatore("Spino", "DiLeone", "Saracena A.S.", "PORTIERE", 420);
 		Giocatore giocatore3 = new Giocatore("Pier", "Porn", "Sesso A.C", "CENTROCAMPISTA", 0);

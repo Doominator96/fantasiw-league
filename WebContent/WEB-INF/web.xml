@@ -27,4 +27,13 @@
     <url-pattern>/classifica</url-pattern>
   </servlet-mapping> 
   
+  <servlet>
+    <servlet-name>LegaServlet</servlet-name>
+    <servlet-class>controller.Leghe</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LegaServlet</servlet-name>
+    <url-pattern>/legaServlet</url-pattern>
+  </servlet-mapping> 
+  
 </web-app>
