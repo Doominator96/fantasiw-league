@@ -18,6 +18,15 @@
     <url-pattern>/registrazione</url-pattern>
   </servlet-mapping>  
   
+  <servlet>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>controller.Login</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/login</url-pattern>
+  </servlet-mapping> 
+  
     <servlet>
     <servlet-name>Classifica</servlet-name>
     <servlet-class>controller.classifica</servlet-class>
