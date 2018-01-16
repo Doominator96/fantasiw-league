@@ -27,8 +27,8 @@ function checkLogin(){
   
   url : 'login',
   data : {
-   username : document.getElementById("login__username").value,
-   password : document.getElementById("login__password").value
+   username : $('#login__username').val(),
+   password : $('#login__password').val(),
   },
   success : function(response) {
    
