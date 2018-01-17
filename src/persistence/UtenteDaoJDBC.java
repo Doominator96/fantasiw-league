@@ -68,7 +68,7 @@ public class UtenteDaoJDBC implements UtenteDao {
 		return utente;
 	}
 	
-	@Override
+	
 	public UtenteCredenziali findByPrimaryKeyCredential(String username) {
 		Utente ut = findByPrimaryKey(username);
 		UtenteCredenziali utCred = null;

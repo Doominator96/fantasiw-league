@@ -5,7 +5,6 @@ import persistence.dao.AfferisceDao;
 import persistence.dao.GiocatoreDao;
 import persistence.dao.LegaDao;
 import persistence.dao.RosaUtenteDao;
-import persistence.dao.StatisticheRosaDao;
 import persistence.dao.UtenteDao;
 
 public abstract class DAOFactory {

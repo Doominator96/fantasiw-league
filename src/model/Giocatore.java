@@ -3,7 +3,6 @@ package model;
 public class Giocatore {
 	
 	private long id;
-	private String nome;
 	private String cognome;
 	private String squadra;
 	private String ruolo;
@@ -12,20 +11,15 @@ public class Giocatore {
 	public Giocatore() {
 	}
 	
-	public Giocatore(String nome, String cognome, String squadra, String ruolo, int costo) {
-		this.nome = nome;
+	public Giocatore(String cognome, String squadra, String ruolo, int costo) {
 		this.cognome = cognome;
 		this.squadra = squadra;
 		this.ruolo = ruolo;
 		this.costo = costo;
 	}
 	
-	public String getNome() {
-		return nome;
-	}
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+	
+	
 	public String getCognome() {
 		return cognome;
 	}
@@ -59,7 +53,7 @@ public class Giocatore {
 		this.id = id;
 	}
 	public String toString() {
-		return nome+" "+cognome+" "+squadra+" "+ruolo+" "+costo;
+		return cognome+" "+squadra+" "+ruolo+" "+costo;
 	}
 	
 

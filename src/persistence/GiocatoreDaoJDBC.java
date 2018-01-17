@@ -22,14 +22,13 @@ public class GiocatoreDaoJDBC implements GiocatoreDao{
 		try {
 			Long id = IdBroker.getId(connection);
 			giocatore.setId(id);
-			String insert = "insert into giocatore(id,nome, cognome, squadra, ruolo,costo) values (?,?,?,?,?,?)";
+			String insert = "insert into giocatore(id,cognome, squadra, ruolo,costo) values (?,?,?,?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
 			statement.setLong(1, giocatore.getId());
-			statement.setString(2, giocatore.getNome());
-			statement.setString(3, giocatore.getCognome());
-			statement.setString(4, giocatore.getSquadra());
-			statement.setString(5, giocatore.getRuolo());
-			statement.setInt(6,giocatore.getCosto());
+			statement.setString(2, giocatore.getCognome());
+			statement.setString(3, giocatore.getSquadra());
+			statement.setString(4, giocatore.getRuolo());
+			statement.setInt(5,giocatore.getCosto());
 			statement.executeUpdate();
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
@@ -54,7 +53,6 @@ public class GiocatoreDaoJDBC implements GiocatoreDao{
 			if (result.next()) {
 				giocatore = new Giocatore();
 				giocatore.setId(result.getLong("id"));
-				giocatore.setNome(result.getString("nome"));				
 				giocatore.setCognome(result.getString("cognome"));
 				giocatore.setSquadra(result.getString("squadra"));
 				giocatore.setRuolo(result.getString("ruolo"));
@@ -84,7 +82,6 @@ public class GiocatoreDaoJDBC implements GiocatoreDao{
 			while (result.next()) {
 				giocatore = new Giocatore();
 				giocatore.setId(result.getLong("id"));
-				giocatore.setNome(result.getString("nome"));				
 				giocatore.setCognome(result.getString("cognome"));
 				giocatore.setSquadra(result.getString("squadra"));
 				giocatore.setRuolo(result.getString("ruolo"));
@@ -107,10 +104,9 @@ public class GiocatoreDaoJDBC implements GiocatoreDao{
 	public void update(Giocatore giocatore) {
 		Connection connection = this.dataSource.getConnection();
 		try {
-			String update = "update giocatore SET nome = ?, cognome = ?, squadra = ?, ruolo = ?,costo = ? WHERE id=?";
+			String update = "update giocatore SET cognome = ?, squadra = ?, ruolo = ?,costo = ? WHERE id=?";
 			PreparedStatement statement = connection.prepareStatement(update);
 			statement.setLong(1, giocatore.getId());
-			statement.setString(2, giocatore.getNome());
 			statement.setString(3, giocatore.getCognome());
 			statement.setString(4, giocatore.getSquadra());
 			statement.setString(5, giocatore.getRuolo());
