@@ -23,6 +23,6 @@ class IdBroker {
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
 		}
-		return id+529;
+		return id;
 	}
 }
