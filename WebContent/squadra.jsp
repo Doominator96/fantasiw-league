@@ -1,57 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="shortcut icon" href="ico/favicon.ico">
-
-    <title>Fantasiw League</title>
-
-    <link href="css/bootstrap.css" rel="stylesheet">
-
-
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/font-awesome.min.css" rel="stylesheet">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <jsp:include page="header.jsp"></jsp:include>
     
-    <script src="js/modernizr.js"></script>
-  </head>
-
-  <body>
-
-    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="index.html">FANTASIW LEAGUE</a>
-        </div>
-        <div class="navbar-collapse collapse navbar-right">
-          <ul class="nav navbar-nav">
-            <li><a href="index.html">HOME</a></li>
-            <li><a href="classifica.html">CLASSIFICA</a></li>
-            <li><a href="formazione.html">FORMAZIONE</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">UTENTE <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="account.html">ACCOUNT</a></li>
-                <li class="active"><a href="squadra.html">SQUADRA</a></li>
-                <li><a href="storico-scontri.html">STORICO SCONTRI</a></li>
-                <li><a href="logout.html">LOGOUT</a></li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-
 	<!-- *****************************************************************************************************************
 	 BLUE WRAP
 	 ***************************************************************************************************************** -->
@@ -75,7 +25,7 @@
 		 		<div class="hline"></div>
 		 	</div>
 	 	</div>
-	 </div><! --/container -->
+	 </div><!--/container -->
 	 
 	<!-- *****************************************************************************************************************
 	 PORTFOLIO SECTION
@@ -347,136 +297,6 @@
         </div><!-- portfolio container -->
 	 </div><!--/Portfoliowrap -->
 	 
-	 	 
 
-	<!-- *****************************************************************************************************************
-	 FOOTER
-	 ***************************************************************************************************************** -->
-<div id="footerwrap">
-	 	<div class="container">
-		 	<div class="row">
-		 		<div class="col-lg-4">
-		 			<h4>Informazioni</h4>
-		 			<div class="hline-w"></div>
-		 			<p>Questo sito è stato realizzato per l'esame di Sistemi Informativi per il web.</p>
-		 		</div>
-		 		<div class="col-lg-4">
-		 			<h4>Social</h4>
-		 			<div class="hline-w"></div>
-		 			<p>
-		 				<a href="#"><i class="fa fa-facebook"></i></a>
-		 				<a href="#"><i class="fa fa-twitter"></i></a>
-		 				<a href="#"><i class="fa fa-instagram"></i></a>
-		 			</p>
-		 		</div>
-		 		<div class="col-lg-4">
-		 			<h4>Contattaci</h4>
-		 			<div class="hline-w"></div>
-		 			<p>
-		 				Unical,CdL in Informatica<br/>
-		 				87036,Arcavacata,<br/>
-		 				Italia.<br/>
-		 			</p>
-		 		</div>
-		 	
-		 	</div><! --/row -->
-	 	</div><! --/container -->
-	 </div><! --/footerwrap -->
+	 <jsp:include page="footer.jsp"></jsp:include>
 	 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-	<script src="js/retina-1.1.0.js"></script>
-	<script src="js/jquery.hoverdir.js"></script>
-	<script src="js/jquery.hoverex.min.js"></script>
-	<script src="js/jquery.prettyPhoto.js"></script>
-  	<script src="js/jquery.isotope.min.js"></script>
-  	<script src="js/custom.js"></script>
-
-
-    <script>
-// Portfolio
-(function($) {
-	"use strict";
-	var $container = $('.portfolio'),
-		$items = $container.find('.portfolio-item'),
-		portfolioLayout = 'fitRows';
-		
-		if( $container.hasClass('portfolio-centered') ) {
-			portfolioLayout = 'masonry';
-		}
-				
-		$container.isotope({
-			filter: '*',
-			animationEngine: 'best-available',
-			layoutMode: portfolioLayout,
-			animationOptions: {
-			duration: 750,
-			easing: 'linear',
-			queue: false
-		},
-		masonry: {
-		}
-		}, refreshWaypoints());
-		
-		function refreshWaypoints() {
-			setTimeout(function() {
-			}, 1000);   
-		}
-				
-		$('nav.portfolio-filter ul a').on('click', function() {
-				var selector = $(this).attr('data-filter');
-				$container.isotope({ filter: selector }, refreshWaypoints());
-				$('nav.portfolio-filter ul a').removeClass('active');
-				$(this).addClass('active');
-				return false;
-		});
-		
-		function getColumnNumber() { 
-			var winWidth = $(window).width(), 
-			columnNumber = 1;
-		
-			if (winWidth > 1200) {
-				columnNumber = 5;
-			} else if (winWidth > 950) {
-				columnNumber = 4;
-			} else if (winWidth > 600) {
-				columnNumber = 3;
-			} else if (winWidth > 400) {
-				columnNumber = 2;
-			} else if (winWidth > 250) {
-				columnNumber = 1;
-			}
-				return columnNumber;
-			}       
-			
-			function setColumns() {
-				var winWidth = $(window).width(), 
-				columnNumber = getColumnNumber(), 
-				itemWidth = Math.floor(winWidth / columnNumber);
-				
-				$container.find('.portfolio-item').each(function() { 
-					$(this).css( { 
-					width : itemWidth + 'px' 
-				});
-			});
-		}
-		
-		function setPortfolio() { 
-			setColumns();
-			$container.isotope('reLayout');
-		}
-			
-		$container.imagesLoaded(function () { 
-			setPortfolio();
-		});
-		
-		$(window).on('resize', function () { 
-		setPortfolio();          
-	});
-})(jQuery);
-</script>
-  </body>
-</html>
