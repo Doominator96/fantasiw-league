@@ -19,5 +19,6 @@ public interface UtenteDao {
 		// TODO Auto-generated method stub
 		return null;
 	}     // Retrieve
+	public Utente findByCredential(String username, String password);
 
 }

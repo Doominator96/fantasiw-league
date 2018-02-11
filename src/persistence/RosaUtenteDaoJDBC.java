@@ -181,13 +181,6 @@ public class RosaUtenteDaoJDBC implements RosaUtenteDao{
 			PreparedStatement statement = connection.prepareStatement(delete);
 			statement.setLong(1, rosa.getId());
 
-			/* 
-			 * rimuoviamo i giocatori dal gruppo (ma non dal database) 
-			 * potevano esserci soluzioni diverse (ad esempio rimuovere tutti i giocatori dal database
-			 * (ma in questo caso non avrebbe senso)
-			 * La scelta dipende dalla semantica delle operazioni di dominio
-			 * 
-			 * */
 			connection.setAutoCommit(false);
 			connection.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);			     			
 			statement.executeUpdate();

@@ -55,5 +55,7 @@
 	<script src="js/custom.js"></script>
 	<script src="js/popup.js"></script>
 	<script src="js/redirect.js"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	
 </body>
 </html>

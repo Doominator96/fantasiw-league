@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <jsp:include page="header.jsp"></jsp:include>
+
+
 <div id="headerwrap">
 	<div class="container">
 		<div class="row">
@@ -84,7 +86,8 @@
 							<h3 class="a1" data-animate="fadeInDown">Atalanta</h3>
 							<a data-rel="prettyPhoto" href="img/loghi/atalanta.png"
 								class="dmbutton a2" data-animate="fadeInUp"><i
-								class="fa fa-search"></i></a>
+								class="fa fa-search"></i><script src="//rss.bloople.net/?url=http%3A%2F%2Fwww.gazzetta.it%2Frss%2FSquadre%2FAtalanta.xml&detail=-1&limit=1&showtitle=false&type=js"></script>
+								</a>
 						</div>
 						<!-- he bg -->
 					</div>

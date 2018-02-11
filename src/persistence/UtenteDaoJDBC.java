@@ -67,6 +67,34 @@ public class UtenteDaoJDBC implements UtenteDao {
 		}	
 		return utente;
 	}
+	public Utente findByCredential(String username,String password) {
+		Connection connection = this.dataSource.getConnection();
+		Utente utente = null;
+		try {
+			PreparedStatement statement;
+			String query = "select * from utente where username = ? and password = ?";
+			statement = connection.prepareStatement(query);
+			statement.setString(1, username);
+			statement.setString(2, password);
+			ResultSet result = statement.executeQuery();
+			if (result.next()) {
+				utente = new Utente();
+				utente.setUserName(result.getString("username"));				
+				utente.setEmail(result.getString("email"));
+				utente.setPassword(result.getString("password"));
+
+			}
+		} catch (SQLException e) {
+			throw new PersistenceException(e.getMessage());
+		} finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				throw new PersistenceException(e.getMessage());
+			}
+		}	
+		return utente;
+	}
 	
 	
 	public UtenteCredenziali findByPrimaryKeyCredential(String username) {

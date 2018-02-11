@@ -2,8 +2,8 @@
 //	$.ajax({
 //		url: 'login',
 //		data:{
-//			username: document.getElementById("login__username").value,
-//			password: document.getElementById("login__password").value
+//			username: document.getElementById("login_username").value,
+//			password: document.getElementById("login_password").value
 //		},
 //		success : function(responseText){
 //			alert(responseText);
@@ -27,8 +27,8 @@ function checkLogin(){
   
   url : 'login',
   data : {
-   username : $('#login__username').val(),
-   password : $('#login__password').val(),
+   username : $('#login_username').val(),
+   password : $('#login_password').val(),
   },
   success : function(response) {
    
@@ -47,7 +47,7 @@ function checkLogin(){
      });
    }
    
-   else document.location.href = "home.html";
+   else document.location.href = "home.jsp";
 
   },
   type : 'GET',

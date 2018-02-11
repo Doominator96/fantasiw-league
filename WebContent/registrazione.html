@@ -24,36 +24,36 @@
 
 		<form action="registrazione" method="POST" class="form login">
 
-			<div class="form__field">
-				<label for="login__email"><i class="fa fa-envelope"></i><span
-					class="hidden">Email</span></label> <input id="login__email"
-					type="text" name="email" class="form__input" placeholder="Email"
+			<div class="form_field">
+				<label for="login_email"><i class="fa fa-envelope"></i><span
+					class="hidden">Email</span></label> <input id="login_email"
+					type="text" name="email" class="form_input" placeholder="Email"
 					required>
 			</div>
 
-			<div class="form__field">
-				<label for="login__username"><i class="fa fa-user"></i><span
-					class="hidden">Username</span></label> <input id="login__username"
-					type="text" name="username" class="form__input"
+			<div class="form_field">
+				<label for="login_username"><i class="fa fa-user"></i><span
+					class="hidden">Username</span></label> <input id="login_username"
+					type="text" name="username" class="form_input"
 					placeholder="Username" required>
 			</div>
 
-			<div class="form__field">
-				<label for="login__password"><i class="fa fa-lock"></i><span
-					class="hidden">Password</span></label> <input id="login__password"
-					type="password" name="password" class="form__input"
+			<div class="form_field">
+				<label for="login_password"><i class="fa fa-lock"></i><span
+					class="hidden">Password</span></label> <input id="login_password"
+					type="password" name="password" class="form_input"
 					placeholder="Password" required>
 			</div>
 
-			<div class="form__field">
-				<input type="submit" value="Sign In" onclick="swal();" />
+			<div class="form_field">
+				<input type="submit" value="Sign In"/>
 			</div>
 
 
 		</form>
 
 		<p class="text--center">
-			Sei Già Registrato? <a href="index.html">Accedi</a>
+			Sei Già Registrato? <a href="index.jsp">Accedi</a>
 		</p>
 
 	</div>
@@ -61,11 +61,3 @@
 
 </body>
 </html>
-<script>
-swal({
-					  title: "Good job!",
-					  text: "You clicked the button!",
-					  icon: "success",
-					  button: "Aww yiss!",
-					});
-</script>
