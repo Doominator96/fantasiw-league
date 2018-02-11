@@ -146,6 +146,31 @@ public class RosaUtenteDaoJDBC implements RosaUtenteDao{
 		}
 		return rose;
 	}
+	public List<RosaUtente> findAllUtente(String username) {  
+		Connection connection = this.dataSource.getConnection();
+		List<RosaUtente> rose = new LinkedList<>();
+		try {		
+			RosaUtente rosa1;
+			PreparedStatement statement;
+			String query = "select * from rosa where utente= ? ";
+			statement = connection.prepareStatement(query);
+			statement.setString(1, username);
+			ResultSet result = statement.executeQuery();
+			while (result.next()) {
+				rosa1 = findByPrimaryKey(result.getLong("id"));
+				rose.add(rosa1);
+			}
+		} catch (SQLException e) {
+			throw new PersistenceException(e.getMessage());
+		}	 finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				throw new PersistenceException(e.getMessage());
+			}
+		}
+		return rose;
+	}
 
 	public void update(RosaUtente rosa) {
 		Connection connection = this.dataSource.getConnection();

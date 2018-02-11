@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,7 +38,7 @@
 			<div class="navbar-collapse collapse navbar-right">
 				<ul class="nav navbar-nav">
 					<li ><a href="home.jsp">HOME</a></li>
-					<li><a onclick="redirectPage(classifica.jsp)">CLASSIFICA</a></li>
+					<li><a href="classifica.jsp">CLASSIFICA</a></li>
 					<li><a href="formazione.jsp">FORMAZIONE</a></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown">UTENTE <b class="caret"></b></a>
@@ -44,10 +46,15 @@
 							<li><a href="account.jsp">ACCOUNT</a></li>
 							<li><a href="squadra.jsp">SQUADRA</a></li>
 							<li><a href="storico-scontri.jsp">STORICO SCONTRI</a></li>
-							<li><a href="logout.html">LOGOUT</a></li>
+							<li><a href="logout">LOGOUT</a></li>
 						</ul></li>
 				</ul>
 			</div>
 		</div>
 	</div>
+<c:if test="${not loggato}">
+<script>
+window.location = "index.jsp";
+</script>
+</c:if>
 	

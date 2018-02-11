@@ -67,7 +67,7 @@ import persistence.dao.UtenteDao;
 
 @SuppressWarnings("serial")
 public class Login extends HttpServlet {
-	
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -76,16 +76,24 @@ public class Login extends HttpServlet {
 		String username = req.getParameter("login_username");
 		String password = req.getParameter("login_password");
 
-		UtenteDao utenteDao = PostgresDAOFactory.getInstance().getUtenteDAO();
+		Utente ut = PostgresDAOFactory.getDAOFactory(DAOFactory.POSTGRESQL).getUtenteDAO().findByCredential(username,
+				password);
 
-		Utente ut = PostgresDAOFactory.getDAOFactory(DAOFactory.POSTGRESQL).getUtenteDAO().findByCredential(username,password);
-		
-		if(ut != null) {
+		if (ut != null) {
 			session.setAttribute("username", username);
 			session.setAttribute("password", password);
-			
+			session.setAttribute("email", ut.getEmail());
+			session.setAttribute("loggato", true);
+			req.setAttribute("loggato", true);
+			session.setAttribute("utente", ut);
+			req.setAttribute("utente", ut);
+
 			RequestDispatcher disp;
-			disp =req.getRequestDispatcher("/home.jsp");
+			disp = req.getRequestDispatcher("/home.jsp");
+			disp.forward(req, resp);
+		} else {
+			RequestDispatcher disp;
+			disp = req.getRequestDispatcher("/index.jsp");
 			disp.forward(req, resp);
 		}
 	}

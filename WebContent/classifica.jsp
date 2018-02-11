@@ -28,7 +28,7 @@
 				<!--     Begin Form -->
 				<form>
 					<select name="lega" id="menu" class="form-control">
-						 
+						 <option></option>
 					</select>
 				</form>
 			</div>

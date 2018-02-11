@@ -33,6 +33,7 @@ public class MainJDBC {
 		
 		
 		Utente utente1 = new Utente("jason", "porchettino@gmail.com", "puttana");
+		Utente utente2 = new Utente("1", "1", "1");
 		Lega lega1 = new Lega("Lega Nord","password");
 		
 	
@@ -60,6 +61,7 @@ public class MainJDBC {
 		rosa3.setNome("Rosa3");
 		// CREATE
 		utenteDao.save(utente1);
+		utenteDao.save(utente2);
 		giocatoreDao.save(giocatore1);
 		giocatoreDao.save(giocatore2);
 		giocatoreDao.save(giocatore3);
@@ -68,7 +70,7 @@ public class MainJDBC {
 		afferisce1.setGiocatore(giocatore1);
 		rosa1.setUtente(utente1);
 		rosa1.setLega(lega1);
-		rosa2.setUtente(utente1);
+		rosa2.setUtente(utente2);
 		rosa2.setLega(lega1);
 		rosa3.setUtente(utente1);
 		rosa3.setLega(lega1);
@@ -106,6 +108,9 @@ public class MainJDBC {
 //		for (Afferisce a : afferisceDao.findAll()) {
 //			System.out.println(a);
 //		}
+		
+		for(RosaUtente r : rosaUtenteDao.findAllUtente(utente1.getUserName()))
+			System.out.println(r);
 	}
 
 }

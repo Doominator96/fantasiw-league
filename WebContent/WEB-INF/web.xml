@@ -53,6 +53,33 @@
   <servlet-mapping>
     <servlet-name>LegaServlet</servlet-name>
     <url-pattern>/legaServlet</url-pattern>
-  </servlet-mapping> 
+  </servlet-mapping>
+  
+   <servlet>
+    <servlet-name>CreaLegaServlet</servlet-name>
+    <servlet-class>controller.CreaLega</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CreaLegaServlet</servlet-name>
+    <url-pattern>/creaLega</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>LogoutServlet</servlet-name>
+    <servlet-class>controller.Logout</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LogoutServlet</servlet-name>
+    <url-pattern>/logout</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>CambiaPasswordServlet</servlet-name>
+    <servlet-class>controller.CambiaPassword</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CambiaPasswordServlet</servlet-name>
+    <url-pattern>/cambiaPassword</url-pattern>
+  </servlet-mapping>
   
 </web-app>

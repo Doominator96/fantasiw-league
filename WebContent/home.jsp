@@ -27,32 +27,30 @@
 				<i class="fa fa-gear"></i>
 				<h4>Crea Lega</h4>
 				<p>Crea quì la tua lega e invita i tuoi amici a partecipare.</p>
-				<p>
-					<br /> <a class="btn btn-theme" id="test">Vai</a>
-				<div id="contactform">
-					<form id="contact-form" class="contact-form" action="#"
-						method="post">
-						<h1>Popup Form</h1>
-						<ul>
-							<li class="name"><input type="text" class="input-name"
-								name="name" placeholder="ie. Joe McDoodle" spellcheck="false"
-								min-length="2" max-length="40" required /> <label for="name">Name</label>
-								<span class="notification"></span> <span class="required"><strong><small><em>
-												(required)</em></small></strong></span> <span class="char-counter"></span></li>
-							<li class="email"><input type="email" class="input-email"
-								name="email" placeholder="ie. my@email.com" spellcheck="false"
-								min-length="2" max-length="30" required /> <label for="email">Email</label>
-								<span class="notification"></span> <span class="required"><strong><small><em>
-												(required)</em></small></strong></span> <span class="char-counter"></span></li>
-						</ul>
-						<!-- Submit -->
-						<div class="form-btn">
-							<input id="input-submit" class="input-submit" type="submit"
-								value="Submit" id="submit" />
+				<br /> <a class="btn btn-theme" id="test" type="button" data-toggle="modal" data-target="#myModal">Vai</a>
+				<div id="myModal" class="modal fade" >
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button class="close" type="button" data-dismiss="modal">×</button>
+								<h4 class="modal-title">Crea La tua Lega</h4>
+							</div>
+							<div class="modal-body">
+								<div class="popup">
+									<form action="creaLega" method="POST">
+										<input type="text" id="nome" name="nome" required /> <label
+											for="nome">Nome</label> <input type="password" id="password"
+											name="password" required /> <label for="password">Password</label>
+
+
+										<input type="submit" name="submit" value="Crea">
+									</form>
+								</div>
+							</div>
 						</div>
-					</form>
+					</div>
 				</div>
-				</p>
+
 			</div>
 			<div class="col-md-6">
 				<i class="fa fa-pencil"></i>
@@ -86,8 +84,9 @@
 							<h3 class="a1" data-animate="fadeInDown">Atalanta</h3>
 							<a data-rel="prettyPhoto" href="img/loghi/atalanta.png"
 								class="dmbutton a2" data-animate="fadeInUp"><i
-								class="fa fa-search"></i><script src="//rss.bloople.net/?url=http%3A%2F%2Fwww.gazzetta.it%2Frss%2FSquadre%2FAtalanta.xml&detail=-1&limit=1&showtitle=false&type=js"></script>
-								</a>
+								class="fa fa-search"></i> <script
+									src="//rss.bloople.net/?url=http%3A%2F%2Fwww.gazzetta.it%2Frss%2FSquadre%2FAtalanta.xml&detail=-1&limit=1&showtitle=false&type=js"></script>
+							</a>
 						</div>
 						<!-- he bg -->
 					</div>
@@ -141,7 +140,7 @@
 							<h3 class="a1" data-animate="fadeInDown">Cagliari</h3>
 							<a data-rel="prettyPhoto" href="img/loghi/cagliari.png"
 								class="dmbutton a2" data-animate="fadeInUp"><i
-								class="fa fa-search"></i></a> 
+								class="fa fa-search"></i></a>
 						</div>
 						<!-- he bg -->
 					</div>
@@ -159,7 +158,7 @@
 							<h3 class="a1" data-animate="fadeInDown">Chievo</h3>
 							<a data-rel="prettyPhoto" href="img/loghi/chievo.png"
 								class="dmbutton a2" data-animate="fadeInUp"><i
-								class="fa fa-search"></i></a> 
+								class="fa fa-search"></i></a>
 						</div>
 						<!-- he bg -->
 					</div>
@@ -177,7 +176,7 @@
 							<h3 class="a1" data-animate="fadeInDown">Crotone</h3>
 							<a data-rel="prettyPhoto" href="img/loghi/crotone.png"
 								class="dmbutton a2" data-animate="fadeInUp"><i
-								class="fa fa-search"></i></a> 
+								class="fa fa-search"></i></a>
 						</div>
 						<!-- he bg -->
 					</div>
@@ -195,7 +194,7 @@
 							<h3 class="a1" data-animate="fadeInDown">Fiorentina</h3>
 							<a data-rel="prettyPhoto" href="img/loghi/fiorentina.png"
 								class="dmbutton a2" data-animate="fadeInUp"><i
-								class="fa fa-search"></i></a> 
+								class="fa fa-search"></i></a>
 						</div>
 						<!-- he bg -->
 					</div>
@@ -213,7 +212,7 @@
 							<h3 class="a1" data-animate="fadeInDown">Genoa</h3>
 							<a data-rel="prettyPhoto" href="img/loghi/genoa.png"
 								class="dmbutton a2" data-animate="fadeInUp"><i
-								class="fa fa-search"></i></a> 
+								class="fa fa-search"></i></a>
 						</div>
 						<!-- he bg -->
 					</div>
@@ -231,7 +230,7 @@
 							<h3 class="a1" data-animate="fadeInDown">Hellas Verona</h3>
 							<a data-rel="prettyPhoto" href="img/loghi/hellas.png"
 								class="dmbutton a2" data-animate="fadeInUp"><i
-								class="fa fa-search"></i></a> 
+								class="fa fa-search"></i></a>
 						</div>
 						<!-- he bg -->
 					</div>
@@ -249,7 +248,7 @@
 							<h3 class="a1" data-animate="fadeInDown">Inter</h3>
 							<a data-rel="prettyPhoto" href="img/loghi/inter.png"
 								class="dmbutton a2" data-animate="fadeInUp"><i
-								class="fa fa-search"></i></a> 
+								class="fa fa-search"></i></a>
 						</div>
 						<!-- he bg -->
 					</div>
@@ -267,7 +266,7 @@
 							<h3 class="a1" data-animate="fadeInDown">Juventus</h3>
 							<a data-rel="prettyPhoto" href="img/loghi/juventus.png"
 								class="dmbutton a2" data-animate="fadeInUp"><i
-								class="fa fa-search"></i></a> 
+								class="fa fa-search"></i></a>
 						</div>
 						<!-- he bg -->
 					</div>
@@ -285,7 +284,7 @@
 							<h3 class="a1" data-animate="fadeInDown">Lazio</h3>
 							<a data-rel="prettyPhoto" href="img/loghi/lazio.png"
 								class="dmbutton a2" data-animate="fadeInUp"><i
-								class="fa fa-search"></i></a> 
+								class="fa fa-search"></i></a>
 						</div>
 						<!-- he bg -->
 					</div>
@@ -303,7 +302,7 @@
 							<h3 class="a1" data-animate="fadeInDown">Milan</h3>
 							<a data-rel="prettyPhoto" href="img/loghi/milan.png"
 								class="dmbutton a2" data-animate="fadeInUp"><i
-								class="fa fa-search"></i></a> 
+								class="fa fa-search"></i></a>
 						</div>
 						<!-- he bg -->
 					</div>
@@ -321,7 +320,7 @@
 							<h3 class="a1" data-animate="fadeInDown">Napoli</h3>
 							<a data-rel="prettyPhoto" href="img/loghi/napoli.png"
 								class="dmbutton a2" data-animate="fadeInUp"><i
-								class="fa fa-search"></i></a> 
+								class="fa fa-search"></i></a>
 						</div>
 						<!-- he bg -->
 					</div>
@@ -339,7 +338,7 @@
 							<h3 class="a1" data-animate="fadeInDown">Roma</h3>
 							<a data-rel="prettyPhoto" href="img/loghi/roma.png"
 								class="dmbutton a2" data-animate="fadeInUp"><i
-								class="fa fa-search"></i></a> 
+								class="fa fa-search"></i></a>
 						</div>
 						<!-- he bg -->
 					</div>
@@ -357,7 +356,7 @@
 							<h3 class="a1" data-animate="fadeInDown">Sampdoria</h3>
 							<a data-rel="prettyPhoto" href="img/loghi/sampdoria.png"
 								class="dmbutton a2" data-animate="fadeInUp"><i
-								class="fa fa-search"></i></a> 
+								class="fa fa-search"></i></a>
 						</div>
 						<!-- he bg -->
 					</div>
@@ -375,7 +374,7 @@
 							<h3 class="a1" data-animate="fadeInDown">Sassuolo</h3>
 							<a data-rel="prettyPhoto" href="img/loghi/sassuolo.png"
 								class="dmbutton a2" data-animate="fadeInUp"><i
-								class="fa fa-search"></i></a> 
+								class="fa fa-search"></i></a>
 						</div>
 						<!-- he bg -->
 					</div>
@@ -393,7 +392,7 @@
 							<h3 class="a1" data-animate="fadeInDown">SPAL</h3>
 							<a data-rel="prettyPhoto" href="img/loghi/spal.png"
 								class="dmbutton a2" data-animate="fadeInUp"><i
-								class="fa fa-search"></i></a> 
+								class="fa fa-search"></i></a>
 						</div>
 						<!-- he bg -->
 					</div>
@@ -411,7 +410,7 @@
 							<h3 class="a1" data-animate="fadeInDown">Torino</h3>
 							<a data-rel="prettyPhoto" href="img/loghi/torino.png"
 								class="dmbutton a2" data-animate="fadeInUp"><i
-								class="fa fa-search"></i></a> 
+								class="fa fa-search"></i></a>
 						</div>
 						<!-- he bg -->
 					</div>
@@ -429,7 +428,7 @@
 							<h3 class="a1" data-animate="fadeInDown">Udinese</h3>
 							<a data-rel="prettyPhoto" href="img/loghi/udinese.png"
 								class="dmbutton a2" data-animate="fadeInUp"><i
-								class="fa fa-search"></i></a> 
+								class="fa fa-search"></i></a>
 						</div>
 						<!-- he bg -->
 					</div>
