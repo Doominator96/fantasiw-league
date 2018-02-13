@@ -109,8 +109,13 @@ public class MainJDBC {
 //			System.out.println(a);
 //		}
 		
-		for(RosaUtente r : rosaUtenteDao.findAllUtente(utente1.getUserName()))
+		for(RosaUtente r : rosaUtenteDao.findAllLega(lega1.getId()))
 			System.out.println(r);
+		for(Lega l : legaDao.findByUtente(utente1.getUserName()))
+			System.out.println(l.getNome());
+		for(RosaUtente r : rosaUtenteDao.findByPrimaryKey(id)(lega1.getId()))
+			System.out.println(r);
+		
 	}
 
 }

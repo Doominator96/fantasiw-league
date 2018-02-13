@@ -57,7 +57,26 @@
 				<h4>Crea Rosa</h4>
 				<p>Acquista i giocatori e componi la squadra dei tuoi sogni.</p>
 				<p>
-					<br /> <a href="#" class="btn btn-theme">Vai</a>
+					<br /> <a class="btn btn-theme" id="test" type="button" data-toggle="modal" data-target="#myModal">Vai</a>
+				<div id="myModal" class="modal fade" >
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button class="close" type="button" data-dismiss="modal">×</button>
+								<h4 class="modal-title">Crea La tua Rosa</h4>
+							</div>
+							<div class="modal-body">
+								<div class="popup">
+									<form action="creaRosa" method="POST">
+										<input type="text" id="nome" name="nome" required /> <label
+											for="nome">Nome</label>
+										<input type="submit" name="submit" value="Crea">
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 				</p>
 
 

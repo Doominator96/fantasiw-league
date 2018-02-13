@@ -3,6 +3,7 @@ package persistence.dao;
 import java.util.List;
 
 import model.Lega;
+import model.Utente;
 
 public interface LegaDao {
 
@@ -11,5 +12,5 @@ public interface LegaDao {
 	public List<Lega> findAll();       
 	public void update(Lega lega); //Update
 	public void delete(Lega lega); //Delete	
-	
+	public List<Lega> findByUtente(String username);
 }

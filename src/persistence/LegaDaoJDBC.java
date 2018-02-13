@@ -8,6 +8,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import model.Lega;
+import model.Utente;
 import persistence.dao.LegaDao;
 
 public class LegaDaoJDBC implements LegaDao {
@@ -94,6 +95,36 @@ public class LegaDaoJDBC implements LegaDao {
 		}
 		return leghe;
 	}
+	public List<Lega> findByUtente(String username) {
+		Connection connection = this.dataSource.getConnection();
+		List<Lega> leghe = new LinkedList<>();
+		try {
+			Lega lega;
+			PreparedStatement statement;
+			String query = "select * from lega as l , utente as u , rosa as r where u.username = r.utente AND u.username = ? AND r.lega=l.id";
+			statement = connection.prepareStatement(query);
+			statement.setString(1, username);
+			ResultSet result = statement.executeQuery();
+			if (result.next()) {
+				lega = new Lega();
+				lega.setId(result.getLong("id"));
+				lega.setNome(result.getString("nome"));
+				lega.setPassword(result.getString("password"));
+				
+				leghe.add(lega);
+			}
+		} catch (SQLException e) {
+			throw new PersistenceException(e.getMessage());
+		} finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				throw new PersistenceException(e.getMessage());
+			}
+		}
+		return leghe;
+	}
+	
 
 	public void update(Lega lega) {
 		Connection connection = this.dataSource.getConnection();

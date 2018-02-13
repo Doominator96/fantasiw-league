@@ -25,15 +25,9 @@ public class CambiaPassword extends HttpServlet {
 				vpassword);
 		UtenteDao utenteDao = PostgresDAOFactory.getInstance().getUtenteDAO();
 
-		System.out.println(ut.getUserName());
 		if (ut != null) {
-			utenteDao.delete(ut);
-			ut.setPassword(password);
-			utenteDao.save(ut);
-			
+			utenteDao.setPassword(ut, password);
 			session.setAttribute("password", password);
-			System.out.println("password cambiata in: " + ut.getPassword() + " con successo");
-
 		}
 		RequestDispatcher dispacher = req.getRequestDispatcher("account.jsp");
 		dispacher.forward(req, resp);
