@@ -35,7 +35,9 @@ public class MainJDBC {
 		Utente utente1 = new Utente("jason", "porchettino@gmail.com", "puttana");
 		Utente utente2 = new Utente("1", "1", "1");
 		Lega lega1 = new Lega("Lega Nord","password");
-		
+		Lega lega2 = new Lega("Lega2","12345");
+		Lega lega3 = new Lega("Serie C++","strtok");
+		Lega lega4 = new Lega("Serie TV","facv");
 	
 			Scanner csvScanner = new Scanner(csvFile);
 			while (csvScanner.hasNext()) {
@@ -50,15 +52,24 @@ public class MainJDBC {
 		Giocatore giocatore3 = new Giocatore("Pier", "Sesso A.C", "CENTROCAMPISTA", 0);
 		Giocatore giocatore4 = new Giocatore("Cavallo","SanBasil A.C.", "DIFENSORE", 25);
 	
-		RosaUtente rosa1 = new RosaUtente();
-		RosaUtente rosa2 = new RosaUtente();
-		RosaUtente rosa3 = new RosaUtente();
+		RosaUtente rosa1 = new RosaUtente("Saporino A.C.",100,3,2,1,13,2);
+		RosaUtente rosa2 = new RosaUtente("Farmacisti",100,6,1,3,17,9);
+		RosaUtente rosa3 = new RosaUtente("Pischelletti",25,3,1,2,53,1);
+		RosaUtente rosa4 = new RosaUtente("qdwca",23,6,2,5,13,2);
+		RosaUtente rosa5 = new RosaUtente("csawd",421,7,6,3,17,9);
+		RosaUtente rosa6 = new RosaUtente("dvvv",23,1,1,8,53,1);
+		RosaUtente rosa7 = new RosaUtente("Yasx",42,9,2,6,13,2);
+		RosaUtente rosa8 = new RosaUtente("Erik",130,14,5,3,17,9);
+		RosaUtente rosa9 = new RosaUtente("Fornillo",535,25,1,2,53,1);
+		RosaUtente rosa10 = new RosaUtente("Maesc",24,23,8,1,13,2);
+		RosaUtente rosa11 = new RosaUtente("fggg",53,252,7,3,17,9);
+		RosaUtente rosa12 = new RosaUtente("vczz",242,23,2,2,53,1);
+		RosaUtente rosa13 = new RosaUtente("bbfbd",40,53,3,1,13,2);
+		RosaUtente rosa14 = new RosaUtente("jyjrjr",10,45,4,3,17,9);
+		RosaUtente rosa15 = new RosaUtente("dqfqfqdq",42,76,5,2,53,1);
 		Afferisce afferisce1 =new Afferisce();
 		
-		
-		rosa1.setNome("Rosa1");
-		rosa2.setNome("Rosa2");
-		rosa3.setNome("Rosa3");
+	
 		// CREATE
 		utenteDao.save(utente1);
 		utenteDao.save(utente2);
@@ -69,15 +80,55 @@ public class MainJDBC {
 		afferisce1.setRosa(rosa1);
 		afferisce1.setGiocatore(giocatore1);
 		rosa1.setUtente(utente1);
+		rosa4.setUtente(utente1);
+		rosa5.setUtente(utente1);
+		rosa6.setUtente(utente1);
+		rosa7.setUtente(utente1);
+		rosa8.setUtente(utente1);
+		rosa9.setUtente(utente1);
+		rosa10.setUtente(utente1);
+		rosa11.setUtente(utente1);
+		rosa12.setUtente(utente1);
+		rosa13.setUtente(utente1);
+		rosa14.setUtente(utente1);
+		rosa15.setUtente(utente1);
+		
 		rosa1.setLega(lega1);
+		rosa4.setLega(lega1);
+		rosa5.setLega(lega1);
+		rosa6.setLega(lega2);
+		rosa7.setLega(lega1);
+		rosa8.setLega(lega2);
+		rosa9.setLega(lega1);
+		rosa10.setLega(lega3);
+		rosa11.setLega(lega3);
+		rosa12.setLega(lega3);
+		rosa13.setLega(lega4);
+		rosa14.setLega(lega4);
+		rosa15.setLega(lega4);
 		rosa2.setUtente(utente2);
 		rosa2.setLega(lega1);
 		rosa3.setUtente(utente1);
-		rosa3.setLega(lega1);
+		rosa3.setLega(lega2);
 		legaDao.save(lega1);
+		legaDao.save(lega2);
+		legaDao.save(lega3);
+		legaDao.save(lega4);
 		rosaUtenteDao.save(rosa1);
 		rosaUtenteDao.save(rosa2);
 		rosaUtenteDao.save(rosa3);
+		rosaUtenteDao.save(rosa4);
+		rosaUtenteDao.save(rosa5);
+		rosaUtenteDao.save(rosa6);
+		rosaUtenteDao.save(rosa7);
+		rosaUtenteDao.save(rosa8);
+		rosaUtenteDao.save(rosa9);
+		rosaUtenteDao.save(rosa10);
+		rosaUtenteDao.save(rosa11);
+		rosaUtenteDao.save(rosa12);
+		rosaUtenteDao.save(rosa13);
+		rosaUtenteDao.save(rosa14);
+		rosaUtenteDao.save(rosa15);
 		
 		afferisceDao.save(afferisce1);
 //		System.out.println(afferisce1.getGiocatore());
@@ -113,9 +164,6 @@ public class MainJDBC {
 			System.out.println(r);
 		for(Lega l : legaDao.findByUtente(utente1.getUserName()))
 			System.out.println(l.getNome());
-		for(RosaUtente r : rosaUtenteDao.findByPrimaryKey(id)(lega1.getId()))
-			System.out.println(r);
-		
 	}
 
 }

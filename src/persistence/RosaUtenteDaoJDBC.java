@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -13,6 +15,7 @@ import model.RosaUtente;
 import model.Utente;
 import persistence.dao.GiocatoreDao;
 import persistence.dao.RosaUtenteDao;
+import utility.RoseComparator;
 
 public class RosaUtenteDaoJDBC implements RosaUtenteDao {
 
@@ -105,6 +108,15 @@ public class RosaUtenteDaoJDBC implements RosaUtenteDao {
 			if (result.next()) {
 				rosa = new RosaUtente();
 				rosa.setNome(result.getString("nome"));
+				rosa.setBudget(result.getInt("budget"));
+				rosa.setGolFatti(result.getInt("golFatti"));
+				rosa.setGolSubiti(result.getInt("golSubiti"));
+				rosa.setPareggi(result.getInt("pareggi"));
+				rosa.setPunteggio(result.getInt("punteggio"));
+				rosa.setSconfitte(result.getInt("sconfitte"));
+				rosa.setVittorie(result.getInt("vittorie"));
+				Utente ut=new Utente(result.getString("utente")," "," ");
+				rosa.setUtente(ut);
 			}
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
@@ -192,6 +204,8 @@ public class RosaUtenteDaoJDBC implements RosaUtenteDao {
 				throw new PersistenceException(e.getMessage());
 			}
 		}
+		Collections.sort(rose,RoseComparator.COMPARATOR);
+		Collections.reverse(rose);
 		return rose;
 	}
 	

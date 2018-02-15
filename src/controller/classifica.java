@@ -18,15 +18,23 @@ import persistence.dao.RosaUtenteDao;
 public class classifica extends HttpServlet {
 
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
-		RosaUtenteDao dao =DatabaseManager.getInstance()
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		long selectedItem=0;
+		if(req.getParameter("legas")!=null)
+		{
+		   selectedItem=Long.parseLong(req.getParameter("legas"));
+		}
+		RosaUtenteDao rdao =DatabaseManager.getInstance()
 				.getDaoFactory().getRosaUtenteDAO();
-			List<RosaUtente> rose = dao.findAll();
-			req.setAttribute("rosaUtente", rose);
-			String json=new Gson().toJson(rose);
-			resp.getWriter().write(json);
-			
-			
+			List<RosaUtente> rose = rdao.findAllLega(selectedItem);//Lega(Long.parseLong(selected_Lega));
+			req.setAttribute("rose", rose);
+		
+			System.out.println(selectedItem);
+		RequestDispatcher dispacher = req.getRequestDispatcher("leghe");
+		dispacher.forward(req, resp);
+		
+		
+	
 	}
 }

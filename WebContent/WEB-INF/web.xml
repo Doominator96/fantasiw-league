@@ -52,7 +52,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>LegaServlet</servlet-name>
-    <url-pattern>/legaServlet</url-pattern>
+    <url-pattern>/leghe</url-pattern>
   </servlet-mapping>
   
    <servlet>

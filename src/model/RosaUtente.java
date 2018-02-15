@@ -1,7 +1,7 @@
 package model;
 
 public class RosaUtente {
-	
+
 	private long id;
 	private String nome;
 	private int budget;
@@ -13,10 +13,9 @@ public class RosaUtente {
 	private int sconfitte;
 	private int golFatti;
 	private int golSubiti;
-	
+
 	public RosaUtente() {
 	}
-	
 
 	public RosaUtente(String nome, int budget, Utente utente, Lega lega, int punteggio, int vittorie, int pareggi,
 			int sconfitte, int golFatti, int golSubiti) {
@@ -31,8 +30,16 @@ public class RosaUtente {
 		this.golFatti = golFatti;
 		this.golSubiti = golSubiti;
 	}
-
-
+	public RosaUtente(String nome,int punteggio,int vittorie,int pareggi,int sconfitte, int golFatti, int golSubiti) {
+		this.nome = nome;
+		this.budget=250;
+		this.punteggio = punteggio;
+		this.vittorie = vittorie;
+		this.pareggi = pareggi;
+		this.sconfitte = sconfitte;
+		this.golFatti = golFatti;
+		this.golSubiti = golSubiti;
+	}
 
 	public String getNome() {
 		return nome;
@@ -121,10 +128,11 @@ public class RosaUtente {
 	public void setGolSubiti(int golSubiti) {
 		this.golSubiti = golSubiti;
 	}
+
 	public String toString() {
 		return nome;
 	}
-	
+
 	
 
 }

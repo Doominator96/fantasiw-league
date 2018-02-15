@@ -38,7 +38,7 @@
 			<div class="navbar-collapse collapse navbar-right">
 				<ul class="nav navbar-nav">
 					<li ><a href="home.jsp">HOME</a></li>
-					<li><a href="classifica.jsp">CLASSIFICA</a></li>
+					<li><a href="leghe">CLASSIFICA</a></li>
 					<li><a href="formazione.jsp">FORMAZIONE</a></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown">UTENTE <b class="caret"></b></a>
