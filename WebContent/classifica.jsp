@@ -66,15 +66,15 @@
 					</thead>
 					<tbody>
 						<c:set var="count" value="1" scope="page" />
-						<c:forEach items="${rose}" var="rosa">
+						<c:forEach items="${rose}" var="r">
 							<tr>
 								<td>${count}</td>
-								<td>${rosa.nome}</td>
-								<td>${rosa.utente }</td>
-								<td><span class="badge  badge-info">${rosa.vittorie}</span></td>
-								<td>${rosa.golFatti}</td>
-								<td>${rosa.golSubiti}</td>
-								<td class="human"><span class="label  label-primary">${rosa.punteggio}</span>
+								<td>${r.nome}</td>
+								<td>${r.utente }</td>
+								<td><span class="badge  badge-info">${r.vittorie}</span></td>
+								<td>${r.golFatti}</td>
+								<td>${r.golSubiti}</td>
+								<td class="human"><span class="label  label-primary">${r.punteggio}</span>
 								</td>
 							</tr>
 							<c:set var="count" value="${count + 1}" scope="page" />

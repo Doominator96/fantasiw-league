@@ -44,7 +44,7 @@
 						data-toggle="dropdown">UTENTE <b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<li><a href="account.jsp">ACCOUNT</a></li>
-							<li><a href="squadra.jsp">SQUADRA</a></li>
+							<li><a href="roseUtente">SQUADRA</a></li>
 							<li><a href="storico-scontri.jsp">STORICO SCONTRI</a></li>
 							<li><a href="logout">LOGOUT</a></li>
 						</ul></li>

@@ -17,6 +17,8 @@ public class Utente {
 	
 	public Utente(String userName) {
 		this.userName=userName;
+		this.email=" ";
+		this.password=" ";
 	}
 
 	public String getUserName() {

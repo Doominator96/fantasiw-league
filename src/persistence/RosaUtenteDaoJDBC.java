@@ -11,6 +11,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import model.Giocatore;
+import model.Lega;
 import model.RosaUtente;
 import model.Utente;
 import persistence.dao.GiocatoreDao;
@@ -70,7 +71,7 @@ public class RosaUtenteDaoJDBC implements RosaUtenteDao {
 		Connection connection = this.dataSource.getConnection();
 		try {
 			PreparedStatement statement;
-			String query = "select * FROM afferisce WHERE rosa = ?";
+			String query = "select * from afferisce as a , giocatore as g where a.rosa=? AND g.id=a.giocatore";
 			statement = connection.prepareStatement(query);
 			statement.setLong(1, id);
 			ResultSet result = statement.executeQuery();
@@ -107,6 +108,7 @@ public class RosaUtenteDaoJDBC implements RosaUtenteDao {
 			ResultSet result = statement.executeQuery();
 			if (result.next()) {
 				rosa = new RosaUtente();
+				rosa.setId(result.getLong("id"));
 				rosa.setNome(result.getString("nome"));
 				rosa.setBudget(result.getInt("budget"));
 				rosa.setGolFatti(result.getInt("golFatti"));
@@ -115,7 +117,7 @@ public class RosaUtenteDaoJDBC implements RosaUtenteDao {
 				rosa.setPunteggio(result.getInt("punteggio"));
 				rosa.setSconfitte(result.getInt("sconfitte"));
 				rosa.setVittorie(result.getInt("vittorie"));
-				Utente ut=new Utente(result.getString("utente")," "," ");
+				Utente ut=new Utente(result.getString("utente"));
 				rosa.setUtente(ut);
 			}
 		} catch (SQLException e) {

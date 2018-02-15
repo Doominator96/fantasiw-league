@@ -2,6 +2,7 @@ package persistence.dao;
 
 import java.util.List;
 
+import model.Giocatore;
 import model.RosaUtente;
 
 
@@ -9,6 +10,7 @@ public interface RosaUtenteDao {
 	
 	public void save(RosaUtente rosa);  // Create
 	public RosaUtente findByPrimaryKey(Long id);     // Retrieve
+	public List<Giocatore> findByPrimaryKeyJoin(Long id);
 	public List<RosaUtente> findAll();
 	public List<RosaUtente> findAllUtente(String username);
 	public void update(RosaUtente rosa); //Update
