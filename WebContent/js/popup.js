@@ -1,5 +1,5 @@
 
-
+/*
 var form = $("#contact-form");
 
 //event listeners
@@ -41,7 +41,7 @@ var input = {
         return el.style.opacity = '0';
     }
 };
-
+/*
 //validation 
 function validateInput(e) {
     var commentMin = e.target.getAttribute('min-length');
@@ -166,5 +166,6 @@ function testfunc() {
     r.style.display = "block";
   } else {
     r.style.display = "none";
-  }  
+  }
 }
+ */

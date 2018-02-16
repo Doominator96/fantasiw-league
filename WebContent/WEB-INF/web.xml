@@ -64,6 +64,15 @@
     <url-pattern>/creaLega</url-pattern>
   </servlet-mapping>
   
+   <servlet>
+    <servlet-name>CreaRosaServlet</servlet-name>
+    <servlet-class>controller.CreaRosa</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CreaRosaServlet</servlet-name>
+    <url-pattern>/creaRosa</url-pattern>
+  </servlet-mapping>
+  
   <servlet>
     <servlet-name>LogoutServlet</servlet-name>
     <servlet-class>controller.Logout</servlet-class>

@@ -66,6 +66,35 @@ public class LegaDaoJDBC implements LegaDao {
 		}
 		return lega;
 	}
+	
+	public Lega findByCredential(String nome,String password) {
+		Connection connection = this.dataSource.getConnection();
+		Lega lega = null;
+		try {
+			PreparedStatement statement;
+			String query = "select * from lega where nome = ? AND password=?";
+			statement = connection.prepareStatement(query);
+			statement.setString(1, nome);
+			statement.setString(2,password);
+			ResultSet result = statement.executeQuery();
+			if (result.next()) {
+				lega = new Lega();
+				lega.setId(result.getLong("id"));
+				lega.setNome(result.getString("nome"));
+				lega.setPassword(result.getString("password"));
+			}
+		} catch (SQLException e) {
+			throw new PersistenceException(e.getMessage());
+		} finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				throw new PersistenceException(e.getMessage());
+			}
+		}
+		return lega;
+	}
+	
 
 	public List<Lega> findAll() {
 		Connection connection = this.dataSource.getConnection();

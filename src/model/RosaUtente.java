@@ -40,6 +40,16 @@ public class RosaUtente {
 		this.golFatti = golFatti;
 		this.golSubiti = golSubiti;
 	}
+	public RosaUtente(String nome) {
+		this.nome=nome;
+		this.budget=250;
+		this.punteggio=0;
+		this.vittorie=0;
+		this.pareggi = 0;
+		this.sconfitte = 0;
+		this.golFatti = 0;
+		this.golSubiti = 0;
+	}
 
 	public String getNome() {
 		return nome;

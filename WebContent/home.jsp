@@ -27,8 +27,9 @@
 				<i class="fa fa-gear"></i>
 				<h4>Crea Lega</h4>
 				<p>Crea quì la tua lega e invita i tuoi amici a partecipare.</p>
-				<br /> <a class="btn btn-theme" id="test" type="button" data-toggle="modal" data-target="#myModal">Vai</a>
-				<div id="myModal" class="modal fade" >
+				<br /> <a class="btn btn-theme" id="test" type="button" data-toggle="modal" data-target="#myModalLega">Vai</a>
+				</div>
+				<div id="myModalLega" class="modal fade" >
 					<div class="modal-dialog">
 						<div class="modal-content">
 							<div class="modal-header">
@@ -51,14 +52,15 @@
 					</div>
 				</div>
 
-			</div>
+			
 			<div class="col-md-6">
 				<i class="fa fa-pencil"></i>
 				<h4>Crea Rosa</h4>
 				<p>Acquista i giocatori e componi la squadra dei tuoi sogni.</p>
 				<p>
-					<br /> <a class="btn btn-theme" id="test" type="button" data-toggle="modal" data-target="#myModal">Vai</a>
-				<div id="myModal" class="modal fade" >
+					<br /> <a class="btn btn-theme" id="test" type="button" data-toggle="modal" data-target="#myModalRosa">Vai</a>
+					</div>
+				<div id="myModalRosa" class="modal fade" >
 					<div class="modal-dialog">
 						<div class="modal-content">
 							<div class="modal-header">
@@ -68,8 +70,12 @@
 							<div class="modal-body">
 								<div class="popup">
 									<form action="creaRosa" method="POST">
-										<input type="text" id="nome" name="nome" required /> <label
-											for="nome">Nome</label>
+										<input type="text" id="nomeRosa" name="nomeRosa" required /> <label
+											for="nome">Nome Rosa</label>
+										<input type="text" id="nomeLega" name="nomeLega" required /> <label
+											for="nome">Nome Lega</label>
+										<input type="text" id="passwordLega" name="passwordLega" required /> <label
+											for="nome">Password Lega</label>
 										<input type="submit" name="submit" value="Crea">
 									</form>
 								</div>
@@ -77,15 +83,15 @@
 						</div>
 					</div>
 				</div>
-				</p>
+			
 
 
-			</div>
+			
 		</div>
 	</div>
-	<! --/container -->
+	<!--/container -->
 </div>
-<! --/service -->
+<!--/service -->
 
 <!-- *****************************************************************************************************************
 	 PORTFOLIO SECTION
