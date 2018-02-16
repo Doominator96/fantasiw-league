@@ -27,15 +27,12 @@
 			<h2>Scegli la Squadra</h2>
 			<!--     Begin Form -->
 			<form action="giocatoriRosa" method="POST">
-			<div class="col-md-3" style="float: inherit;">
 				<select name="rose1" class="form-control" id="rose1" onchange="this.form.submit()">
+				<option >Scegli una Squadra</option>
 					<c:forEach items="${roseG}" var="r">
-						<option value="${r.id}">${r.nome} Lega: ${r.lega}</option>
+						<option value="${r.id}">${r.nome} Lega: ${r.lega.nome}</option>
 					</c:forEach>
-					</div>
-					<div class="col-md-1" style="display:inline;">
 				</select>
-				</div>
 			</form>
 
 		</div>

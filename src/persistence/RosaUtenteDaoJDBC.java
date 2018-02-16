@@ -7,14 +7,18 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import model.Giocatore;
 import model.Lega;
 import model.RosaUtente;
 import model.Utente;
 import persistence.dao.GiocatoreDao;
+import persistence.dao.LegaDao;
 import persistence.dao.RosaUtenteDao;
 import utility.RoseComparator;
 
@@ -119,6 +123,10 @@ public class RosaUtenteDaoJDBC implements RosaUtenteDao {
 				rosa.setVittorie(result.getInt("vittorie"));
 				Utente ut=new Utente(result.getString("utente"));
 				rosa.setUtente(ut);
+				Lega lg=new Lega();
+				LegaDao ldao = DatabaseManager.getInstance().getDaoFactory().getLegaDAO();
+				lg=ldao.findByPrimaryKey(result.getLong("lega"));
+				rosa.setLega(lg);
 			}
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
@@ -130,6 +138,33 @@ public class RosaUtenteDaoJDBC implements RosaUtenteDao {
 			}
 		}
 		return rosa;
+	}
+	
+	public List<Lega> findByUtente(String user) {
+		Connection connection = this.dataSource.getConnection();
+		List<Lega> leghe = new LinkedList<>();
+		try {
+			//Lega lega;
+			PreparedStatement statement;
+			String query = "select * from lega as l , utente as u , rosa as r where u.username = r.utente AND u.username = ? AND r.lega=l.id";
+			statement = connection.prepareStatement(query);
+			statement.setString(1, user);
+			ResultSet result = statement.executeQuery();
+			while (result.next()) {
+				LegaDao legaDao = new LegaDaoJDBC(dataSource);
+				Lega lega = legaDao.findByPrimaryKey(result.getLong("lega"));
+				leghe.add(lega);
+			}
+		} catch (SQLException e) {
+			throw new PersistenceException(e.getMessage());
+		} finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				throw new PersistenceException(e.getMessage());
+			}
+		}
+		return leghe;
 	}
 
 	public List<RosaUtente> findAll() {

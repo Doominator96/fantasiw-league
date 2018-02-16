@@ -14,6 +14,12 @@ public class Lega {
 		this.password=password;
 	}
 
+	public Lega(long id, String nome, String password) {
+		this.id=id;
+		this.nome = nome;
+		this.password=password;
+	}
+
 	public long getId() {
 		return id;
 	}

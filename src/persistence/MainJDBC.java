@@ -162,11 +162,11 @@ public class MainJDBC {
 		
 		//for(RosaUtente r : rosaUtenteDao.findAllLega(lega1.getId()))
 		//	System.out.println(r);
-		//for(Lega l : legaDao.findByUtente(utente1.getUserName()))
-		//	System.out.println(l.getNome());
+		for(Lega l : legaDao.findByUtente(utente1.getUserName()))
+			System.out.println(l.getNome());
 		
-		for(Giocatore g : rosaUtenteDao.findByPrimaryKeyJoin(rosa1.getId()))
-			System.out.println(g);
+//		for(Giocatore g : rosaUtenteDao.findByPrimaryKeyJoin(rosa1.getId()))
+//			System.out.println(g);
 	}
 
 }

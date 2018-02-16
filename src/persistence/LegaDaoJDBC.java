@@ -106,7 +106,11 @@ public class LegaDaoJDBC implements LegaDao {
 			statement.setString(1, username);
 			ResultSet result = statement.executeQuery();
 			if (result.next()) {
-				lega = findByPrimaryKey(result.getLong("id"));
+				lega = new Lega();
+				lega.setId(result.getLong("id"));
+				lega.setNome(result.getString("nome"));
+				lega.setPassword(result.getString("password"));
+				
 				leghe.add(lega);
 			}
 		} catch (SQLException e) {
