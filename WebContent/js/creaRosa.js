@@ -3,5 +3,9 @@ $(document).ready(function(){
 });
 
 function calcolaCrediti(){
-	alert($('#rosaG').children().html());
+	//alert($('#rosaG').contents().html().split(" "));
+	var arr=$('#rosaG').contents().html().split(" ");
+	alert(arr[3]);
+
+	
 }

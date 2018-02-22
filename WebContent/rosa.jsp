@@ -23,7 +23,7 @@
 	</div>
 	<!-- /blue -->
 	<c:set var="budgetAttuale" value="${rosaCorrente.budget}" scope="page" />  
-	<div class="container-fluid">
+	<div class="container">
 		<div class="nav-tabs-custom">
 			<ul class="nav nav-tabs">
 				<li class="active"><a href="#tab_1" data-toggle="tab"
@@ -39,17 +39,16 @@
 
 
 			<div class="tab-content">
-				<div class="col-md-3 tab-pane active" id="tab_1">
+				<div class="col-md-4 tab-pane active" id="tab_1">
 					<h2>Portieri</h2>
 					<div id="gk" class="giocatori">
 						<c:forEach items="${portieri}" var="p">
-							<div id="${p.id}" class="giocatore" value="${p.costo}">${p.cognome}-
-								${p.squadra} ${p.costo} CR</div>
+							<div id="${p.id}" class="giocatore" value="${p.costo}">${p.cognome} - ${p.squadra} ${p.costo} CR</div>
 						</c:forEach>
 					</div>
 				</div>
 
-				<div class="col-md-3 tab-pane " id="tab_2">
+				<div class="col-md-4 tab-pane " id="tab_2">
 					<h2>Difensori</h2>
 					<div id="def" class="giocatori">
 						<c:forEach items="${difensori}" var="dif">
@@ -58,7 +57,7 @@
 					</div>
 				</div>
 
-				<div class="col-md-3 tab-pane " id="tab_3">
+				<div class="col-md-4 tab-pane " id="tab_3">
 					<h2>Centrocampisti</h2>
 					<div id="mid" class="giocatori">
 						<c:forEach items="${centrocampisti}" var="c">
@@ -67,7 +66,7 @@
 					</div>
 				</div>
 
-				<div class="col-md-3 tab-pane " id="tab_4">
+				<div class="col-md-4 tab-pane " id="tab_4">
 					<h2>Attaccanti</h2>
 					<div id="str" class="giocatori">
 						<c:forEach items="${attaccanti}" var="a">
@@ -76,12 +75,19 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-md-2">
-				<h2 style="margin-left: 130%; width: 105%;">I Tuoi Giocatori</h2>
-				<div id="rosaG" class="tuoiGiocatori" onchange="calcolaCrediti();"></div>
+			<div class="col-md-4">
+				<h2>I Tuoi Giocatori</h2>
+				<div id="rosaG" class="tuoiGiocatori" onmouseover="calcolaCrediti();"></div>
 				
 				<c:set var="budgetAttuale" value="${budgetAttuale}-${p.costo }"></c:set>
 			</div>
+		</div>
+		<div class="col-md-2">
+			<h3>Portieri: </h3>
+			<h3>Difensori: </h3>
+			<h3>Centrocampisti: </h3>
+			<h3>Attaccanti: </h3>
+			<h3>Giocatori Totali: </h3>
 		</div>
 	</div>
 

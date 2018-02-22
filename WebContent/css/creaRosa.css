@@ -38,9 +38,9 @@
 	padding: 0x;
 	display: inline;
 	float: left;
-	margin-left: 20px;
 	background: lightblue;
 	overflow: auto;
+	margin-left:-3%;
 }
 .tuoiGiocatori{
 	border: 2px dotted #ccc;
@@ -50,9 +50,9 @@
 	padding: 0x;
 	display: inline;
 	float: left;
-	margin-left: 105%;
 	background: lightblue;
 	overflow: auto;
+	margin-left:-3%;
 }
 
 .giocatore {
