@@ -3,7 +3,8 @@
 <link href="css/formazione2.css" rel="stylesheet">
 <body>
 <jsp:include page="navbar.jsp"></jsp:include>
-
+<link href="css/modulo.css">
+<script type="text/javascript" src="js/modulo.js"></script>
 <!-- *****************************************************************************************************************
 	 BLUE WRAP
 	 ***************************************************************************************************************** -->
@@ -14,24 +15,24 @@
 			</div><!-- /row -->
 	    </div> <!-- /container -->
 	</div><!-- /blue -->
+
+
+<div class="container">
+<div class="btn-group" data-toggle="buttons">
+  <label>
+    <input type="radio" name="formation" id="442" autocomplete="off" checked onclick="check()"> <span></span>4-4-2
+  </label>
+  <label>
+    <input type="radio" name="formation" id="433" autocomplete="off" onclick="check()"> <span></span> 4-3-3
+  </label>
+  <label>
+    <input type="radio" name="formation" id="352" autocomplete="off" onclick="check()"> <span></span> 3-5-2
+  </label>
+  <label>
+    <input type="radio" name="formation" id="343" autocomplete="off" onclick="check()"> <span></span> 3-4-3
+  </label>
+</div>
 <!-- 
-<div class="container">
-<div class="main">
-  <div class="img_block">
-    <img src="img/formazione/field.jpg">      
-  </div>
-  <div class="text">vguv</div>
-    <div class="link">    
-    <a href="https://www.google.lv/search?biw=1920&bih=1020&tbm=isch&sa=1&ei=hE8qWrzcO4mE6QSF57eIBA&q=kandinsky&oq=kandinsky&gs_l=psy-ab.3..0i67k1j0j0i67k1j0l6j0i67k1.454743.457403.0.458131.9.9.0.0.0.0.132.672.8j1.9.0....0...1c.1.64.psy-ab..0.9.664...0i10k1.0.qLimfl60L5g" target="_blank">Portiere
-    <img src="img/formazione/red.png" width="30px">
-    </a>    
-  </div>
-  .
-</div>
-</div>
--->
-<div class="container">
-	
     <div class="row-fluid">     
         <div class="span12">
             <div id="counter">
@@ -73,14 +74,41 @@
             </div>
         </div>           
     </div>
-	
-</div>
+	-->
+</div> 
  
+  
 
 
 
+<div class="pitch">
+			<h4>3-4-2-1</h4>
+			<div class="container">
+				<div class="box1">
+					<div class="pen1">
+						<div class="pos" style="margin: 5px 17px;">1</div>
+					</div>
+				</div>
+				<div class="pos" style="margin: 65px 90px">2</div>
+				<div class="pos" style="margin: 65px 157px;">3</div>
+				<div class="pos" style="margin: 65px 224px">4</div>
 
+				<div class="pos" style="margin: 114px 53px">5</div>
+				<div class="pos" style="margin: 114px 126px">6</div>
+				<div class="pos" style="margin: 114px 186px">7</div>
+				<div class="pos" style="margin: 114px 258px">8</div>
 
+				<div class="pos" style="margin: 165px 90px;">9</div>
+				<div class="pos" style="margin: 165px 222px;">10</div>
+
+				<div class="pos" style="margin: 198px 157px;">11</div>
+
+				<div class="half"></div>
+				<div class="box2">
+					<div class="pen2"></div>
+				</div>
+			</div>
+		</div>
 
 
 

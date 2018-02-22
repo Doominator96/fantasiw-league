@@ -7,6 +7,8 @@
 <body>
 <jsp:include page="navbar.jsp"></jsp:include>
 
+<link rel="stylesheet" href="css/popup.css">
+
 
 <div id="headerwrap">
 	<div class="container">
@@ -79,7 +81,7 @@
 											for="nome">Nome Rosa</label>
 										<input type="text" id="nomeLega" name="nomeLega" required /> <label
 											for="nome">Nome Lega</label>
-										<input type="text" id="passwordLega" name="passwordLega" required /> <label
+										<input type="password" id="passwordLega" name="passwordLega" required /> <label
 											for="nome">Password Lega</label>
 										<input type="submit" name="submit" value="Crea">
 									</form>

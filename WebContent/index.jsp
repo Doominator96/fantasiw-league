@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -10,6 +11,7 @@
 <link href="https://fonts.googleapis.com/css?family=Open+Sans|Sedgwick+Ave+Display" rel="stylesheet">
 <link rel="stylesheet" href="css/login2.css">
 <link href="css/font-awesome.min.css" rel="stylesheet">
+<script src="https://unpkg.com/sweetalert2@7.12.12/dist/sweetalert2.all.js"></script>
 
 
 
@@ -39,16 +41,26 @@
 			</div>
 
 			<div class="form_field">
-				<input id="button" type="submit" name="accesso" value="Sign In" href="sendData"  onclick="<c:set var="page" value="home.jsp" scope="session"/">
+				<input id="button" type="submit" name="accesso" value="Sign In" href="sendData">
 			</div>
-
 
 		</form>
 
 		<p class="text--center">
 			Non sei registrato? <a href="registrazione.html">Registrati</a>
 		</p>
+		
+<c:if test="${wrong}">
+		<script>
+		swal({
+			  type: 'error',
+			  title: 'Oops...',
+			  text: 'Username o/e Password Sbagliati!',
+			  confirmButtonText: 'Riprova'
 
+			})
+		</script>
+	</c:if>
 	</div>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

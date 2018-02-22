@@ -69,6 +69,39 @@ public class GiocatoreDaoJDBC implements GiocatoreDao{
 		}	
 		return giocatore;
 	}
+	public List<Giocatore> findAllRuolo(String ruolo){
+		Connection connection = this.dataSource.getConnection();
+		List<Giocatore> giocatori = new LinkedList<>();
+		try {
+			Giocatore giocatore;
+			PreparedStatement statement;
+			String query = "select * from giocatore where ruolo=?";
+			statement = connection.prepareStatement(query);
+			statement.setString(1, ruolo);
+			ResultSet result = statement.executeQuery();
+			while (result.next()) {
+				giocatore = new Giocatore();
+				giocatore.setId(result.getLong("id"));
+				giocatore.setCognome(result.getString("cognome"));
+				giocatore.setSquadra(result.getString("squadra"));
+				giocatore.setRuolo(result.getString("ruolo"));
+				giocatore.setCosto(result.getInt("costo"));
+				
+				giocatori.add(giocatore);
+			}
+		} catch (SQLException e) {
+			throw new PersistenceException(e.getMessage());
+		}	 finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				throw new PersistenceException(e.getMessage());
+			}
+		}
+		return giocatori;
+		
+		
+	}
 
 	public List<Giocatore> findAll() {
 		Connection connection = this.dataSource.getConnection();

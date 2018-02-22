@@ -48,6 +48,7 @@
 package controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Set;
 
@@ -57,6 +58,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import com.sun.org.apache.xml.internal.serialize.Printer;
 
 import javafx.scene.control.Alert;
 import model.Utente;
@@ -79,19 +82,28 @@ public class Login extends HttpServlet {
 		Utente ut = PostgresDAOFactory.getDAOFactory(DAOFactory.POSTGRESQL).getUtenteDAO().findByCredential(username,
 				password);
 
+		req.setAttribute("wrong", false);
+
 		if (ut != null) {
 			session.setAttribute("username", username);
 			session.setAttribute("password", password);
 			session.setAttribute("email", ut.getEmail());
 			session.setAttribute("loggato", true);
 			req.setAttribute("loggato", true);
-			session.setAttribute("utente", ut);
+
+				session.setAttribute("utente", ut);
 			req.setAttribute("utente", ut);
 
 			RequestDispatcher disp;
 			disp = req.getRequestDispatcher("/home.jsp");
 			disp.forward(req, resp);
 		} else {
+		    PrintWriter out = resp.getWriter(  ); 
+		    req.setAttribute("wrong", true);
+//			out.println("<script type='text/javascript'>");
+//			RequestDispatcher dispatcher = req.getRequestDispatcher("js/swal.js");
+//			out.println("</script>");
+			
 			RequestDispatcher disp;
 			disp = req.getRequestDispatcher("/index.jsp");
 			disp.forward(req, resp);

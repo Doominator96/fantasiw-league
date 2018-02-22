@@ -167,6 +167,8 @@ public class MainJDBC {
 		
 //		for(Giocatore g : rosaUtenteDao.findByPrimaryKeyJoin(rosa1.getId()))
 //			System.out.println(g);
+		for(Giocatore g : giocatoreDao.findAllRuolo("ATTACCANTE"))
+			System.out.println(g.getCognome());
 	}
 
 }

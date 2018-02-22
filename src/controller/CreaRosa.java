@@ -35,7 +35,7 @@ public class CreaRosa extends HttpServlet {
 		rosaDao.save(rs);				  
 			session.setAttribute("rosaCorrente", rs);			
 			RequestDispatcher dispacher = 
-					req.getRequestDispatcher("creaRosa.jsp");
+					req.getRequestDispatcher("listaGiocatori");
 			dispacher.forward(req, resp);
 		}
 		else {

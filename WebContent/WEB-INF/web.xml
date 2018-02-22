@@ -2,14 +2,13 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
   <display-name>Fantasiw League</display-name>
   <welcome-file-list>
-  	<welcome-file>index.jsp</welcome-file>
-  	<welcome-file>index.html</welcome-file>
-  	<welcome-file>index.htm</welcome-file>
-  	<welcome-file>default.html</welcome-file>
-  	<welcome-file>default.htm</welcome-file>
-  	<welcome-file>default.jsp</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-
   <servlet>
     <servlet-name>RedirectServlet</servlet-name>
     <servlet-class>controller.Redirect</servlet-class>
@@ -17,8 +16,7 @@
   <servlet-mapping>
     <servlet-name>RedirectServlet</servlet-name>
     <url-pattern>/redirectServlet</url-pattern>
-  </servlet-mapping> 
-  
+  </servlet-mapping>
   <servlet>
     <servlet-name>Registrazione</servlet-name>
     <servlet-class>controller.Registra</servlet-class>
@@ -26,8 +24,7 @@
   <servlet-mapping>
     <servlet-name>Registrazione</servlet-name>
     <url-pattern>/registrazione</url-pattern>
-  </servlet-mapping>  
-  
+  </servlet-mapping>
   <servlet>
     <servlet-name>LoginServlet</servlet-name>
     <servlet-class>controller.Login</servlet-class>
@@ -35,17 +32,15 @@
   <servlet-mapping>
     <servlet-name>LoginServlet</servlet-name>
     <url-pattern>/login</url-pattern>
-  </servlet-mapping> 
-  
-    <servlet>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>Classifica</servlet-name>
     <servlet-class>controller.classifica</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>Classifica</servlet-name>
     <url-pattern>/classifica</url-pattern>
-  </servlet-mapping> 
-  
+  </servlet-mapping>
   <servlet>
     <servlet-name>LegaServlet</servlet-name>
     <servlet-class>controller.Leghe</servlet-class>
@@ -54,8 +49,7 @@
     <servlet-name>LegaServlet</servlet-name>
     <url-pattern>/leghe</url-pattern>
   </servlet-mapping>
-  
-   <servlet>
+  <servlet>
     <servlet-name>CreaLegaServlet</servlet-name>
     <servlet-class>controller.CreaLega</servlet-class>
   </servlet>
@@ -63,8 +57,7 @@
     <servlet-name>CreaLegaServlet</servlet-name>
     <url-pattern>/creaLega</url-pattern>
   </servlet-mapping>
-  
-   <servlet>
+  <servlet>
     <servlet-name>CreaRosaServlet</servlet-name>
     <servlet-class>controller.CreaRosa</servlet-class>
   </servlet>
@@ -72,7 +65,6 @@
     <servlet-name>CreaRosaServlet</servlet-name>
     <url-pattern>/creaRosa</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>LogoutServlet</servlet-name>
     <servlet-class>controller.Logout</servlet-class>
@@ -81,7 +73,6 @@
     <servlet-name>LogoutServlet</servlet-name>
     <url-pattern>/logout</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>CambiaPasswordServlet</servlet-name>
     <servlet-class>controller.CambiaPassword</servlet-class>
@@ -90,8 +81,7 @@
     <servlet-name>CambiaPasswordServlet</servlet-name>
     <url-pattern>/cambiaPassword</url-pattern>
   </servlet-mapping>
-  
-   <servlet>
+  <servlet>
     <servlet-name>RoseUtenteServlet</servlet-name>
     <servlet-class>controller.RoseUtente</servlet-class>
   </servlet>
@@ -99,14 +89,22 @@
     <servlet-name>RoseUtenteServlet</servlet-name>
     <url-pattern>/roseUtente</url-pattern>
   </servlet-mapping>
-  
-     <servlet>
+  <servlet>
     <servlet-name>GiocatoriRosaServlet</servlet-name>
     <servlet-class>controller.GiocatoriRosa</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>GiocatoriRosaServlet</servlet-name>
     <url-pattern>/giocatoriRosa</url-pattern>
+  </servlet-mapping>
+   
+   <servlet>
+    <servlet-name>ListaGiocatoriServlet</servlet-name>
+    <servlet-class>controller.ListaGiocatori</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListaGiocatoriServlet</servlet-name>
+    <url-pattern>/listaGiocatori</url-pattern>
   </servlet-mapping>
   
 </web-app>
