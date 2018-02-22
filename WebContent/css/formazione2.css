@@ -1,0 +1,67 @@
+
+#counter {
+    position: relative;
+    display: inline;
+}
+#over {
+    position:absolute;
+   
+    max-width: 10%;
+    color: black;
+}
+.P1{
+	left:33%;
+    top:43%;
+	
+}
+.D1{
+	left:33%;
+    top:43%;
+	
+	
+}
+.D2{
+	left:33%;
+    top:43%;
+	
+}
+.D3{
+	left:33%;
+    top:43%;
+	
+}
+.D4{
+	left:33%;
+    top:43%;
+	
+}
+.C1{
+	left:33%;
+    top:43%;
+	
+}
+.C2{
+	left:33%;
+    top:43%;
+	
+}
+.C3{
+	left:33%;
+    top:43%;
+	
+}
+.C4{
+	left:33%;
+    top:43%;
+	
+}
+.A1{
+	left:33%;
+    top:43%;
+	
+}
+.A2{
+	left:33%;
+    top:43%;
+	
+}

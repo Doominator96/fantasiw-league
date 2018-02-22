@@ -1,58 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
-    
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="">
-<meta name="author" content="">
-<link rel="icon" href="img/favicon.ico">
-
-<title>Fantasiw League</title>
-
+<!--<jsp:include page="header.jsp"></jsp:include>-->
 <link href="css/bootstrap.css" rel="stylesheet">
-<link href="css/font-awesome.min.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<link href="css/field.css" rel="stylesheet">
 
-
-<link rel="stylesheet" href="css/popup.css">
-<link rel="stylesheet" href="css/field.css">
-</head>
-
-<body id="formazione">
-
-	<div class="navbar navbar-default navbar-fixed-top" role="navigation">
-		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse"
-					data-target=".navbar-collapse">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="home.jsp">FANTASIW LEAGUE</a>
-			</div>
-			<div class="navbar-collapse collapse navbar-right">
-				<ul class="nav navbar-nav">
-					<li ><a href="home.jsp">HOME</a></li>
-					<li><a href="leghe">CLASSIFICA</a></li>
-					<li><a href="formazione.jsp">FORMAZIONE</a></li>
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown">UTENTE <b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><a href="account.jsp">ACCOUNT</a></li>
-							<li><a href="roseUtente">SQUADRA</a></li>
-							<li><a href="storico-scontri.jsp">STORICO SCONTRI</a></li>
-							<li><a href="logout">LOGOUT</a></li>
-						</ul></li>
-				</ul>
-			</div>
-		</div>
-	</div>
-	
+<body>
+<jsp:include page="navbar.jsp"></jsp:include>
 <!-- *****************************************************************************************************************
 	 BLUE WRAP
 	 ***************************************************************************************************************** -->
@@ -67,8 +24,8 @@
 	<!-- *****************************************************************************************************************
 	 SECTION OF DRAGGABLE PLAYERS
 	 ***************************************************************************************************************** -->
-
 	<section>
+	 
 	  <h1>I tuoi giocatori</h1>
 	  
 	  <div class="positions menu">
@@ -232,15 +189,13 @@
 	  </div>
 	</section>
 
-	
-	
+
 	
 	
 	<!-- *****************************************************************************************************************
 	 
 	 STARTING 11
 	 *****************************************************************************************************************-->
-
 	<canvas id="pitch" width="600" height="600"></canvas>
 
 	<ul id="starting_11" class="4-4-2">
@@ -260,12 +215,12 @@
 	
 	<!-- *****************************************************************************************************************
 	 SOCCER FIELD
-	 ***************************************************************************************************************** --> 
-	 	
-	  <div class="stage">
+	 ***************************************************************************************************************** -->
+	  <div class="stage"> 
 	  <div class="world">
 	    <div class="team"></div>
-	    <div class="terrain">
+	    <div class="terrain">	
+	    
 	      <div class="field ground">
 	        <div class="field__texture field__texture--gradient"></div>
 	        <div class="field__texture field__texture--gradient-b"></div>
@@ -281,77 +236,10 @@
 	        <div class="field__line field__line--penalty field__line--penalty--far"></div>
 	      </div>
 	      <div class="field__side"></div>
-	    </div>
-	  </div>
-	</div>
+	      </div>
 
-
-<!--  --------------------- -->
-
- 
-	
-<script src="js/field.js" type="text/javascript"></script> 
-	<c:if test="${not loggato}">
-		<script>
-		window.location = "index.jsp";
-		</script>
-	</c:if>
-
+<script src="js/field.js"></script>
 </body>
-
-<footer>
-
-<!-- *****************************************************************************************************************
-	 FOOTER
-	 ***************************************************************************************************************** -->
-	<div id="footerwrap">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-4">
-					<h4>Informazioni</h4>
-					<div class="hline-w"></div>
-					<p>Progetto realizzato per il corso di Sistemi Informativi per
-						il Web.</p>
-				</div>
-				<div class="col-lg-4">
-					<h4>Social</h4>
-					<div class="hline-w"></div>
-					<p>
-						<a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i
-							class="fa fa-twitter"></i></a> <a href="#"><i
-							class="fa fa-instagram"></i></a>
-					</p>
-				</div>
-				<div class="col-lg-4">
-					<h4>Contattaci</h4>
-					<div class="hline-w"></div>
-					<p>
-						Unical,CdL in Informatica<br /> 87036,Arcavacata,<br /> Italia.<br />
-					</p>
-				</div>
-
-			</div>
-			<! --/row -->
-		</div>
-		<! --/container -->
-	</div>
-	<! --/footerwrap -->
-
-	<!-- Bootstrap core JavaScript
-    ================================================== -->
-	<!-- Placed at the end of the document so the pages load faster -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/jquery.hoverdir.js"></script>
-	<script src="js/jquery.hoverex.min.js"></script>
-	<script src="js/jquery.prettyPhoto.js"></script>
-	<script src="js/jquery.isotope.min.js"></script>
-	<script src="js/custom.js"></script>
-	<script src="js/popup.js"></script>
-	<script src="js/redirect.js"></script>
-	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
-</footer>
 
 </html>
 	 

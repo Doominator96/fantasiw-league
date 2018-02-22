@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+<!DOCTYPE html>
+<html lang="en">
 <jsp:include page="header.jsp"></jsp:include>
-<meta http-equiv="refresh"
-	url=${pageContext.request.requestURL}?savedLega=${sessionScope.savedLega}">
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%><%@ page
-	import="java.util.List"%>
+<body>
+<jsp:include page="navbar.jsp"></jsp:include>
 <!-- *****************************************************************************************************************
 	 BLUE WRAP
 	 ***************************************************************************************************************** -->
@@ -86,3 +87,5 @@
 </div>
 
 <jsp:include page="footer.jsp"></jsp:include>
+</body>
+</html>
