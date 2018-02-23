@@ -22,7 +22,6 @@
 		<!-- /container -->
 	</div>
 	<!-- /blue -->
-	<c:set var="budgetAttuale" value="${rosaCorrente.budget}" scope="page" />  
 	<div class="container">
 		<div class="nav-tabs-custom">
 			<ul class="nav nav-tabs">
@@ -34,7 +33,7 @@
 					aria-expanded="true">Centrocampisti</a></li>
 				<li class=""><a href="#tab_4" data-toggle="tab"
 					aria-expanded="true">Attaccanti</a></li>
-					<li class="pull-right"><H1>Budget: ${budgetAttuale} CR</H1></li>
+					<li class="pull-right"><H1 id="budget">Budget: 250 CR</H1></li>
 			</ul>
 
 
@@ -79,7 +78,6 @@
 				<h2>I Tuoi Giocatori</h2>
 				<div id="rosaG" class="tuoiGiocatori" onmouseover="calcolaCrediti();"></div>
 				
-				<c:set var="budgetAttuale" value="${budgetAttuale}-${p.costo }"></c:set>
 			</div>
 		</div>
 		<div class="col-md-2">
