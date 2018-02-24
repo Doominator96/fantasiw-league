@@ -13,7 +13,7 @@
 				<ul class="nav navbar-nav">
 					<li ><a href="home.jsp">HOME</a></li>
 					<li><a href="leghe">CLASSIFICA</a></li>
-					<li><a href="formazione2.jsp">FORMAZIONE</a></li>
+					<li><a  onclick="data();">FORMAZIONE</a></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown">UTENTE <b class="caret"></b></a>
 						<ul class="dropdown-menu">

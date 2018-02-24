@@ -108,12 +108,12 @@
   </servlet-mapping>
   
   <servlet>
-    <servlet-name>FormazioneServlet</servlet-name>
-    <servlet-class>controller.Formazione</servlet-class>
+    <servlet-name>Formazione2Servlet</servlet-name>
+    <servlet-class>controller.Formazione2</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>FormazioneServlet</servlet-name>
-    <url-pattern>/formazione</url-pattern>
+    <servlet-name>Formazione2Servlet</servlet-name>
+    <url-pattern>/formazione2</url-pattern>
   </servlet-mapping>
   
   
