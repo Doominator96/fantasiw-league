@@ -107,4 +107,15 @@
     <url-pattern>/listaGiocatori</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+    <servlet-name>FormazioneServlet</servlet-name>
+    <servlet-class>controller.Formazione</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FormazioneServlet</servlet-name>
+    <url-pattern>/formazione</url-pattern>
+  </servlet-mapping>
+  
+  
+  
 </web-app>
