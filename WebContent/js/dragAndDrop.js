@@ -11,6 +11,11 @@
         : "undefined" != typeof self && (n = self),
       (n.dragula = e());
   }
+  
+  var ignore = (e.which !== 0 && e.which !== 1) || e.metaKey || e.ctrlKey;
+  
+  
+
 })(function() {
   return (function e(n, t, r) {
     function o(u, c) {
@@ -298,6 +303,7 @@
               });
               return r(), F.addContainer(e), F;
             }
+            
             function o(e, n, r, o) {
               var i = {
                   mouseup: "touchend",

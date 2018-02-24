@@ -39,4 +39,8 @@ public class ListaGiocatori extends HttpServlet {
 		dispacher.forward(req, resp);
 		
 	}
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		doPost(req, resp);
+	}
 }

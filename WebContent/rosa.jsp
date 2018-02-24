@@ -5,6 +5,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <link href="css/creaRosa.css" rel="stylesheet">
+<link rel="stylesheet" href="css/popup.css">
+
 <jsp:include page="header.jsp"></jsp:include>
 
 <body>
@@ -25,13 +27,13 @@
 	<div class="container">
 		<div class="nav-tabs-custom">
 			<ul class="nav nav-tabs">
-				<li class="active"><a href="#tab_1" data-toggle="tab"
+				<li class="active" id="p"><a href="#tab_1" data-toggle="tab"
 					aria-expanded="false">Portieri</a></li>
-				<li class=""><a href="#tab_2" data-toggle="tab"
+				<li class="" id="d"><a href="#tab_2" data-toggle="tab"
 					aria-expanded="false">Difensori</a></li>
-				<li class=""><a href="#tab_3" data-toggle="tab"
+				<li class="" id="c"><a href="#tab_3" data-toggle="tab"
 					aria-expanded="true">Centrocampisti</a></li>
-				<li class=""><a href="#tab_4" data-toggle="tab"
+				<li class="" id="a"><a href="#tab_4" data-toggle="tab"
 					aria-expanded="true">Attaccanti</a></li>
 					<li class="pull-right"><H1 id="budget">Budget: 250 CR</H1></li>
 			</ul>
@@ -40,18 +42,18 @@
 			<div class="tab-content">
 				<div class="col-md-4 tab-pane active" id="tab_1">
 					<h2>Portieri</h2>
-					<div id="gk" class="giocatori">
+					<div id="gk" class="giocatori ">
 						<c:forEach items="${portieri}" var="p">
-							<div id="${p.id}" class="giocatore" value="${p.costo}">${p.cognome} - ${p.squadra} ${p.costo} CR</div>
+							<div id="${p.id}" class="giocatore por" value="${p.costo}">${p.cognome} - ${p.squadra} ${p.costo} CR</div>
 						</c:forEach>
 					</div>
 				</div>
 
 				<div class="col-md-4 tab-pane " id="tab_2">
 					<h2>Difensori</h2>
-					<div id="def" class="giocatori">
-						<c:forEach items="${difensori}" var="dif">
-							<div class="giocatore">${dif.cognome}</div>
+					<div id="def" class="giocatori ">
+						<c:forEach items="${difensori}" var="d">
+							<div id="${d.id}" class="giocatore dif" value="${d.costo}">${d.cognome} - ${d.squadra} ${d.costo} CR</div>
 						</c:forEach>
 					</div>
 				</div>
@@ -60,7 +62,7 @@
 					<h2>Centrocampisti</h2>
 					<div id="mid" class="giocatori">
 						<c:forEach items="${centrocampisti}" var="c">
-							<div class="giocatore" value="${c.id}">${c.cognome}</div>
+							<div id="${c.id}" class="giocatore cen" value="${c.costo}">${c.cognome} - ${c.squadra} ${c.costo} CR</div>
 						</c:forEach>
 					</div>
 				</div>
@@ -69,23 +71,27 @@
 					<h2>Attaccanti</h2>
 					<div id="str" class="giocatori">
 						<c:forEach items="${attaccanti}" var="a">
-							<div class="giocatore" value="${a.id}">${a.cognome}</div>
+							<div id="${a.id}" class="giocatore  att" value="${a.costo}">${a.cognome} - ${a.squadra} ${a.costo} CR</div>
 						</c:forEach>
 					</div>
 				</div>
 			</div>
-			<div class="col-md-4">
-				<h2>I Tuoi Giocatori</h2>
+			<div class="col-md-4" style="display: flow-root;">
+				<h2 style="display: inline-block;">I Tuoi Giocatori</h2>
 				<div id="rosaG" class="tuoiGiocatori" onmouseover="calcolaCrediti();"></div>
 				
 			</div>
 		</div>
-		<div class="col-md-2">
-			<h3>Portieri: </h3>
-			<h3>Difensori: </h3>
-			<h3>Centrocampisti: </h3>
-			<h3>Attaccanti: </h3>
-			<h3>Giocatori Totali: </h3>
+		<div class="col-md-3 pull-right">
+			</br>
+			</br>
+			<h3 id="portieri">Portieri: 0 / 3 </h3>
+			<h3 id="difensori">Difensori: 0 / 8 </h3>
+			<h3 id="centrocampisti">Centrocampisti: 0 / 8 </h3>
+			<h3 id="attaccanti">Attaccanti: 0 / 6 </h3>
+			<h3 id="giocatoriTot">Totale: 0 / 25 </h3>
+			<input type="submit" value="Conferma Rosa" onclick="location.href='creaAfferiscono'"></input>
+			<input type="submit" value="Azzera" style="background: red" onclick="location.href='listaGiocatori';"></input>
 		</div>
 	</div>
 

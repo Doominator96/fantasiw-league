@@ -44,10 +44,6 @@ public class Leghe extends HttpServlet {
 			if(!presente)
 				leghe2.add(leghe.get(i));
 		}
-		//List<Lega> deduped = leghe2.stream().distinct().collect(Collectors.toList());
-		for(int i=0;i<leghe2.size();i++)
-			System.out.println(leghe2.get(i));
-		
 		req.setAttribute("leghe", leghe2);
 
 		RequestDispatcher dispacher = req.getRequestDispatcher("classifica.jsp");
@@ -56,29 +52,7 @@ public class Leghe extends HttpServlet {
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		HttpSession session = req.getSession();
-		LegaDao ldao = DatabaseManager.getInstance().getDaoFactory().getLegaDAO();
-		
-		RosaUtenteDao rdao=DatabaseManager.getInstance().getDaoFactory().getRosaUtenteDAO();
-		String utenteLoggato = session.getAttribute("username").toString();
-		List<Lega> leghe = rdao.findByUtente(utenteLoggato);
-		List<Lega> leghe2 = new ArrayList<>();
-		for(int i=0;i<leghe.size();i++) {
-			boolean presente=false;
-			for(int j=0;j<leghe2.size();j++)
-				if(leghe.get(i).getId()==leghe2.get(j).getId())
-					presente=true;
-			if(!presente)
-				leghe2.add(leghe.get(i));
-		}
-		//List<Lega> deduped = leghe2.stream().distinct().collect(Collectors.toList());
-		for(int i=0;i<leghe2.size();i++)
-			System.out.println(leghe2.get(i));
-		
-		req.setAttribute("leghe", leghe2);
-
-		RequestDispatcher dispacher = req.getRequestDispatcher("classifica.jsp");
-		dispacher.forward(req, resp);
+		doGet(req, resp);
 
 	}
 

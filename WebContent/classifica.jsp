@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <jsp:include page="header.jsp"></jsp:include>
+<link rel="stylesheet" href="css/popup.css">
 <body>
 <jsp:include page="navbar.jsp"></jsp:include>
 <!-- *****************************************************************************************************************
