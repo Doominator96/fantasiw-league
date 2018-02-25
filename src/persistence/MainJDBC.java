@@ -31,13 +31,13 @@ public class MainJDBC {
 		AfferisceDao afferisceDao = factory.getAfferisceDAO();
 		LegaDao legaDao=factory.getLegaDAO();
 		
-		
+		/*
 		Utente utente1 = new Utente("jason", "porchettino@gmail.com", "puttana");
 		Utente utente2 = new Utente("1", "1", "1");
 		Lega lega1 = new Lega("Lega Nord","password");
 		Lega lega2 = new Lega("Lega2","12345");
 		Lega lega3 = new Lega("Serie C++","strtok");
-		Lega lega4 = new Lega("Serie TV","facv");
+		Lega lega4 = new Lega("Serie TV","facv");*/
 	
 			Scanner csvScanner = new Scanner(csvFile);
 			while (csvScanner.hasNext()) {
@@ -46,12 +46,13 @@ public class MainJDBC {
 				giocatoreDao.save(new Giocatore(giocatore[0], giocatore[1], giocatore[2], Integer.parseInt(giocatore[3])));
 			}
 			csvScanner.close();
-			
+		/*	
 		Giocatore giocatore1 = new Giocatore("Polacchini", "PopilBianco A.C.", "ATTACCANTE", 155);
 		Giocatore giocatore2 = new Giocatore("Spino", "Saracena A.S.", "PORTIERE", 420);
 		Giocatore giocatore3 = new Giocatore("Pier", "Sesso A.C", "CENTROCAMPISTA", 0);
-		Giocatore giocatore4 = new Giocatore("Cavallo","SanBasil A.C.", "DIFENSORE", 25);
+		Giocatore giocatore4 = new Giocatore("Cavallo","SanBasil A.C.", "DIFENSORE", 25);*/
 	
+		/*
 		RosaUtente rosa1 = new RosaUtente("Saporino A.C.",100,3,2,1,13,2);
 		RosaUtente rosa2 = new RosaUtente("Farmacisti",100,6,1,3,17,9);
 		RosaUtente rosa3 = new RosaUtente("Pischelletti",25,3,1,2,53,1);
@@ -67,9 +68,9 @@ public class MainJDBC {
 		RosaUtente rosa13 = new RosaUtente("bbfbd",40,53,3,1,13,2);
 		RosaUtente rosa14 = new RosaUtente("jyjrjr",10,45,4,3,17,9);
 		RosaUtente rosa15 = new RosaUtente("dqfqfqdq",42,76,5,2,53,1);
-		Afferisce afferisce1 =new Afferisce();
+		Afferisce afferisce1 =new Afferisce();*/
 		
-	
+		/*
 		// CREATE
 		utenteDao.save(utente1);
 		utenteDao.save(utente2);
@@ -130,7 +131,8 @@ public class MainJDBC {
 		rosaUtenteDao.save(rosa14);
 		rosaUtenteDao.save(rosa15);
 		
-		afferisceDao.save(afferisce1);
+		afferisceDao.save(afferisce1);*/
+			
 //		System.out.println(afferisce1.getGiocatore());
 //		// RETRIEVE
 //		System.out.println("Retrieve all rosa");
@@ -160,15 +162,7 @@ public class MainJDBC {
 //			System.out.println(a);
 //		}
 		
-		//for(RosaUtente r : rosaUtenteDao.findAllLega(lega1.getId()))
-		//	System.out.println(r);
-		for(Lega l : legaDao.findByUtente(utente1.getUserName()))
-			System.out.println(l.getNome());
-		
-//		for(Giocatore g : rosaUtenteDao.findByPrimaryKeyJoin(rosa1.getId()))
-//			System.out.println(g);
-		for(Giocatore g : giocatoreDao.findAllRuolo("ATTACCANTE"))
-			System.out.println(g.getCognome());
+		System.out.println("Fatto il misfatto");
 	}
 
 }
