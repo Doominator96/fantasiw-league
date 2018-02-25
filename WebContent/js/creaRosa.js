@@ -18,11 +18,12 @@ function calcolaCrediti() {
 			md++;
 		else if ($(currentPl).hasClass("att"))
 			st++;
-
+   
 		players++;
 		var arr = div.childNodes[i].innerHTML.split(" ");
 		var costo = Number(arr[arr.length - 2])
 		sum += costo;
+		
 	}
 	var portier=document.getElementById('gk');
 	var difensor=document.getElementById('def');
@@ -36,7 +37,10 @@ function calcolaCrediti() {
 	$('#centrocampisti').html("Centrocampisti: " + md + " / 8");
 	$('#attaccanti').html("Attaccanti: " + st + " / 6");
 	
-	
+	if(budgetAttuale>=0 && players == 25){
+		document.getElementById('conferma').disabled=false;
+		document.getElementById('conferma').style.background='#2BB673';
+	}
 
 	
 	
@@ -97,13 +101,52 @@ function calcolaCrediti() {
 //					});
 //			  }
 //			})}
-	for (j = 0; j < portier.childNodes.length; j++) {
-		var cPor =portier.childNodes[j].id;
-		var pors = portier.childNodes[j].innerHTML.split(" ");
-		var costoP = Number(pors[pors.length - 2])
-		alert(costoP);
-		if(costoP>budgetAttuale)
-			document.getElementById(cPor).style.display = "none";
-	}
 	
+	
+	
+	
+//	for (j = 0; j < portier.childNodes.length; j++) {
+//		var cPor = "#" + portier.childNodes[j].id;
+//		var pors = portier.childNodes[j].innerHTML.split(" ");
+//		alert(pors);
+//		var costoP = Number(pors[pors.length - 2])
+//		alert("dsadwadw");
+//		if ($(cPor).val()>budgetAttuale)
+//			document.getElementById(cPor).style.display = "none";
+//		if(costoP>budgetAttuale)
+//			document.getElementById(cPor).style.display = "none";
+//	 
+//	}
+//		
+}
+function conferma(){
+	var div = document.getElementById('rosaG');
+	var ids="";
+	for (i = 0; i < div.childNodes.length; i++){
+		var gioc=div.childNodes[i].id;
+		ids+=gioc+",";
+	}
+	$.ajax({
+	    url:"creaAfferiscono",
+	    type:"POST",
+	    data:{
+	    	id:ids
+	    },
+	    success:function(data){
+	    	swal({
+	    		  title: 'Rosa Creata Con Successo',
+	    		  type: 'success',
+	    		  showCancelButton: false,
+	    		  confirmButtonColor: '#3085d6',
+	    		  confirmButtonText: 'OK'
+	    		}).then((result) => {
+	    		  if (result.value) {
+	    			  document.location.href="home.jsp";
+	    		  }
+	    		  else
+	    			  document.location.href="home.jsp";
+	    		})
+	    	
+	    },
+	});
 }

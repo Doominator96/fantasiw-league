@@ -116,6 +116,14 @@
     <url-pattern>/formazione2</url-pattern>
   </servlet-mapping>
   
+    <servlet>
+    <servlet-name>CreaAfferisconoServlet</servlet-name>
+    <servlet-class>controller.CreaAfferiscono</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CreaAfferisconoServlet</servlet-name>
+    <url-pattern>/creaAfferiscono</url-pattern>
+  </servlet-mapping>
   
   
 </web-app>

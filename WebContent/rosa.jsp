@@ -90,7 +90,7 @@
 			<h3 id="centrocampisti">Centrocampisti: 0 / 8 </h3>
 			<h3 id="attaccanti">Attaccanti: 0 / 6 </h3>
 			<h3 id="giocatoriTot">Totale: 0 / 25 </h3>
-			<input type="submit" value="Conferma Rosa" onclick="location.href='creaAfferiscono'"></input>
+			<input type="submit" value="Conferma Rosa" id="conferma" onclick="conferma();" disabled="false" style="background: grey"></input>
 			<input type="submit" value="Azzera" style="background: red" onclick="location.href='listaGiocatori';"></input>
 		</div>
 	</div>

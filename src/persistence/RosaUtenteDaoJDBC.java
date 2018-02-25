@@ -20,6 +20,7 @@ import model.Utente;
 import persistence.dao.GiocatoreDao;
 import persistence.dao.LegaDao;
 import persistence.dao.RosaUtenteDao;
+import utility.GiocatoriComparator;
 import utility.RoseComparator;
 
 public class RosaUtenteDaoJDBC implements RosaUtenteDao {
@@ -95,6 +96,8 @@ public class RosaUtenteDaoJDBC implements RosaUtenteDao {
 				throw new PersistenceException(e.getMessage());
 			}
 		}
+		Collections.sort(giocatori,GiocatoriComparator.COMPARATOR);
+		Collections.reverse(giocatori);
 		return giocatori;
 	}
 

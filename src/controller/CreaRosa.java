@@ -32,8 +32,8 @@ public class CreaRosa extends HttpServlet {
 		if(lg!=null) {
 		rs.setLega(lg);
 		rs.setUtente(ut);
-		rosaDao.save(rs);				  
-			session.setAttribute("rosaCorrente", rs);			
+		rosaDao.save(rs);
+			session.setAttribute("rosaCorrente", rs.getId());			
 			RequestDispatcher dispacher = 
 					req.getRequestDispatcher("listaGiocatori");
 			dispacher.forward(req, resp);
