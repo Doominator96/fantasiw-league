@@ -28,25 +28,6 @@ public class Formazione2 extends HttpServlet {
 			e.printStackTrace();
 		}
 		resp.getWriter().print(formazione.minDate + "," + formazione.maxDate);
-		
-		RequestDispatcher dispacher = req.getRequestDispatcher("formazione2.jsp");
-		dispacher.forward(req, resp);
-//	     URL url = new URL("http://api.football-data.org/v1/competitions/456/leagueTable");
-//	        InputStreamReader reader = new InputStreamReader(url.openStream());
-//	        MyDto dto = new Gson().fromJson(reader, MyDto.class);
-//
-//	        // using the deserialized object
-//	        System.out.println(dto.headers);
-//	        System.out.println(dto.args);
-//	        System.out.println(dto.origin);
-//	        System.out.println(dto.url);
-//	    }
-//
-//	    private class MyDto {
-//	        Map<String, String> headers;
-//	        Map<String, String> args;
-//	        String origin;
-//	        String url;
 	    }
 
 }

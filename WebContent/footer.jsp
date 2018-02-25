@@ -37,12 +37,15 @@
 	<!-- Bootstrap core JavaScript
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
+	
+	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/jquery.hoverdir.js"></script>
 	<script src="js/jquery.hoverex.min.js"></script>
 	<script src="js/jquery.prettyPhoto.js"></script>
 	<script src="js/jquery.isotope.min.js"></script>
+	<script type="text/javascript" src="js/formazione.js"></script>
 	<script src="js/custom.js"></script>
 	<script src="js/popup.js"></script>
 	<script src="js/redirect.js"></script>

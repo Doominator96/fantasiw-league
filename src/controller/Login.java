@@ -59,7 +59,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.sun.org.apache.xml.internal.serialize.Printer;
 
 import javafx.scene.control.Alert;
 import model.Utente;
@@ -98,7 +97,6 @@ public class Login extends HttpServlet {
 			disp = req.getRequestDispatcher("/home.jsp");
 			disp.forward(req, resp);
 		} else {
-		    PrintWriter out = resp.getWriter(  ); 
 		    req.setAttribute("wrong", true);
 //			out.println("<script type='text/javascript'>");
 //			RequestDispatcher dispatcher = req.getRequestDispatcher("js/swal.js");
