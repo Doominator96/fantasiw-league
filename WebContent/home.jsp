@@ -104,7 +104,7 @@
 	 PORTFOLIO SECTION
 	 ***************************************************************************************************************** -->
 <div id="portfoliowrap">
-	<h3>Squadre Serie A 2017/2018</h3>
+	<h3>Ultime Notizie dalla Serie A</h3>
 
 	<div class="portfolio-centered">
 		<div class="recentitems portfolio">
@@ -136,7 +136,8 @@
 							<h3 class="a1" data-animate="fadeInDown">Benevento</h3>
 							<a data-rel="prettyPhoto" href="img/loghi/benevento.png"
 								class="dmbutton a2" data-animate="fadeInUp"><i
-								class="fa fa-search"></i></a>
+								class="fa fa-search"></i><script src="//rss.bloople.net/?url=http%3A%2F%2Fwww.gazzetta.it%2Frss%2FSquadre%2FBenevento.xml&detail=&limit=1&showtitle=false&type=js"></script>
+								</a>
 						</div>
 						<!-- he bg -->
 					</div>
@@ -154,7 +155,8 @@
 							<h3 class="a1" data-animate="fadeInDown">Bologna</h3>
 							<a data-rel="prettyPhoto" href="img/loghi/bologna.png"
 								class="dmbutton a2" data-animate="fadeInUp"><i
-								class="fa fa-search"></i></a>
+								class="fa fa-search"></i><script src="//rss.bloople.net/?url=http%3A%2F%2Fwww.gazzetta.it%2Frss%2FSquadre%2FBologna.xml&detail=-1&limit=1&showtitle=false&type=js"></script>
+								</a>
 						</div>
 						<!-- he bg -->
 					</div>
@@ -172,7 +174,8 @@
 							<h3 class="a1" data-animate="fadeInDown">Cagliari</h3>
 							<a data-rel="prettyPhoto" href="img/loghi/cagliari.png"
 								class="dmbutton a2" data-animate="fadeInUp"><i
-								class="fa fa-search"></i></a>
+								class="fa fa-search"></i><script src="//rss.bloople.net/?url=http%3A%2F%2Fwww.gazzetta.it%2Frss%2FSquadre%2FCagliari.xml&detail=-1&limit=1&showtitle=false&type=js"></script>
+								</a>
 						</div>
 						<!-- he bg -->
 					</div>
@@ -190,7 +193,8 @@
 							<h3 class="a1" data-animate="fadeInDown">Chievo</h3>
 							<a data-rel="prettyPhoto" href="img/loghi/chievo.png"
 								class="dmbutton a2" data-animate="fadeInUp"><i
-								class="fa fa-search"></i></a>
+								class="fa fa-search"></i><script src="//rss.bloople.net/?url=http%3A%2F%2Fwww.gazzetta.it%2Frss%2FSquadre%2FChievo.xml&detail=-1&limit=1&showtitle=false&type=js"></script>
+								</a>
 						</div>
 						<!-- he bg -->
 					</div>
@@ -208,7 +212,8 @@
 							<h3 class="a1" data-animate="fadeInDown">Crotone</h3>
 							<a data-rel="prettyPhoto" href="img/loghi/crotone.png"
 								class="dmbutton a2" data-animate="fadeInUp"><i
-								class="fa fa-search"></i></a>
+								class="fa fa-search"></i><script src="//rss.bloople.net/?url=http%3A%2F%2Fwww.gazzetta.it%2Frss%2FSquadre%2FCrotone.xml&detail=&limit=1&showtitle=false&type=js"></script>
+								</a>
 						</div>
 						<!-- he bg -->
 					</div>
@@ -226,7 +231,8 @@
 							<h3 class="a1" data-animate="fadeInDown">Fiorentina</h3>
 							<a data-rel="prettyPhoto" href="img/loghi/fiorentina.png"
 								class="dmbutton a2" data-animate="fadeInUp"><i
-								class="fa fa-search"></i></a>
+								class="fa fa-search"></i><script src="//rss.bloople.net/?url=http%3A%2F%2Fwww.gazzetta.it%2Frss%2FSquadre%2FFiorentina.xml&detail=&limit=1&showtitle=false&type=js"></script>
+								</a>
 						</div>
 						<!-- he bg -->
 					</div>
@@ -244,7 +250,8 @@
 							<h3 class="a1" data-animate="fadeInDown">Genoa</h3>
 							<a data-rel="prettyPhoto" href="img/loghi/genoa.png"
 								class="dmbutton a2" data-animate="fadeInUp"><i
-								class="fa fa-search"></i></a>
+								class="fa fa-search"></i><script src="//rss.bloople.net/?url=http%3A%2F%2Fwww.gazzetta.it%2Frss%2FSquadre%2FGenoa.xml&detail=&limit=1&showtitle=false&type=js"></script>
+								</a>
 						</div>
 						<!-- he bg -->
 					</div>
@@ -262,7 +269,8 @@
 							<h3 class="a1" data-animate="fadeInDown">Hellas Verona</h3>
 							<a data-rel="prettyPhoto" href="img/loghi/hellas.png"
 								class="dmbutton a2" data-animate="fadeInUp"><i
-								class="fa fa-search"></i></a>
+								class="fa fa-search"></i><script src="//rss.bloople.net/?url=http%3A%2F%2Fwww.gazzetta.it%2Frss%2FSquadre%2FVerona.xml&detail=&limit=1&showtitle=false&type=js"></script>
+								</a>
 						</div>
 						<!-- he bg -->
 					</div>
@@ -280,7 +288,8 @@
 							<h3 class="a1" data-animate="fadeInDown">Inter</h3>
 							<a data-rel="prettyPhoto" href="img/loghi/inter.png"
 								class="dmbutton a2" data-animate="fadeInUp"><i
-								class="fa fa-search"></i></a>
+								class="fa fa-search"></i><script src="//rss.bloople.net/?url=http%3A%2F%2Fwww.gazzetta.it%2Frss%2FSquadre%2FInter.xml&detail=&limit=1&showtitle=false&type=js"></script>
+								</a>
 						</div>
 						<!-- he bg -->
 					</div>
@@ -298,7 +307,8 @@
 							<h3 class="a1" data-animate="fadeInDown">Juventus</h3>
 							<a data-rel="prettyPhoto" href="img/loghi/juventus.png"
 								class="dmbutton a2" data-animate="fadeInUp"><i
-								class="fa fa-search"></i></a>
+								class="fa fa-search"></i><script src="//rss.bloople.net/?url=http%3A%2F%2Fwww.gazzetta.it%2Frss%2FSquadre%2FJuventus.xml&detail=&limit=1&showtitle=false&type=js"></script>
+								</a>
 						</div>
 						<!-- he bg -->
 					</div>
@@ -316,7 +326,8 @@
 							<h3 class="a1" data-animate="fadeInDown">Lazio</h3>
 							<a data-rel="prettyPhoto" href="img/loghi/lazio.png"
 								class="dmbutton a2" data-animate="fadeInUp"><i
-								class="fa fa-search"></i></a>
+								class="fa fa-search"></i><script src="//rss.bloople.net/?url=http%3A%2F%2Fwww.gazzetta.it%2Frss%2FSquadre%2FLazio.xml&detail=&limit=1&showtitle=false&type=js"></script>
+								</a>
 						</div>
 						<!-- he bg -->
 					</div>
@@ -334,7 +345,8 @@
 							<h3 class="a1" data-animate="fadeInDown">Milan</h3>
 							<a data-rel="prettyPhoto" href="img/loghi/milan.png"
 								class="dmbutton a2" data-animate="fadeInUp"><i
-								class="fa fa-search"></i></a>
+								class="fa fa-search"></i><script src="//rss.bloople.net/?url=http%3A%2F%2Fwww.gazzetta.it%2Frss%2FSquadre%2FMilan.xml&detail=&limit=1&showtitle=false&type=js"></script>
+								</a>
 						</div>
 						<!-- he bg -->
 					</div>
@@ -352,7 +364,8 @@
 							<h3 class="a1" data-animate="fadeInDown">Napoli</h3>
 							<a data-rel="prettyPhoto" href="img/loghi/napoli.png"
 								class="dmbutton a2" data-animate="fadeInUp"><i
-								class="fa fa-search"></i></a>
+								class="fa fa-search"></i><script src="//rss.bloople.net/?url=http%3A%2F%2Fwww.gazzetta.it%2Frss%2FSquadre%2FNapoli.xml&detail=&limit=1&showtitle=false&type=js"></script>
+								</a>
 						</div>
 						<!-- he bg -->
 					</div>
@@ -370,7 +383,8 @@
 							<h3 class="a1" data-animate="fadeInDown">Roma</h3>
 							<a data-rel="prettyPhoto" href="img/loghi/roma.png"
 								class="dmbutton a2" data-animate="fadeInUp"><i
-								class="fa fa-search"></i></a>
+								class="fa fa-search"></i><script src="//rss.bloople.net/?url=http%3A%2F%2Fwww.gazzetta.it%2Frss%2FSquadre%2FRoma.xml&detail=&limit=1&showtitle=false&type=js"></script>
+								</a>
 						</div>
 						<!-- he bg -->
 					</div>
@@ -388,7 +402,8 @@
 							<h3 class="a1" data-animate="fadeInDown">Sampdoria</h3>
 							<a data-rel="prettyPhoto" href="img/loghi/sampdoria.png"
 								class="dmbutton a2" data-animate="fadeInUp"><i
-								class="fa fa-search"></i></a>
+								class="fa fa-search"></i><script src="//rss.bloople.net/?url=http%3A%2F%2Fwww.gazzetta.it%2Frss%2FSquadre%2FSampdoria.xml&detail=&limit=1&showtitle=false&type=js"></script>
+								</a>
 						</div>
 						<!-- he bg -->
 					</div>
@@ -406,7 +421,8 @@
 							<h3 class="a1" data-animate="fadeInDown">Sassuolo</h3>
 							<a data-rel="prettyPhoto" href="img/loghi/sassuolo.png"
 								class="dmbutton a2" data-animate="fadeInUp"><i
-								class="fa fa-search"></i></a>
+								class="fa fa-search"></i><script src="//rss.bloople.net/?url=http%3A%2F%2Fwww.gazzetta.it%2Frss%2FSquadre%2FSassuolo.xml&detail=&limit=1&showtitle=false&type=js"></script>
+								</a>
 						</div>
 						<!-- he bg -->
 					</div>
@@ -424,7 +440,8 @@
 							<h3 class="a1" data-animate="fadeInDown">SPAL</h3>
 							<a data-rel="prettyPhoto" href="img/loghi/spal.png"
 								class="dmbutton a2" data-animate="fadeInUp"><i
-								class="fa fa-search"></i></a>
+								class="fa fa-search"></i><script src="//rss.bloople.net/?url=http%3A%2F%2Fwww.gazzetta.it%2Frss%2FSquadre%2FSpal.xml&detail=&limit=1&showtitle=false&type=js"></script>
+								</a>
 						</div>
 						<!-- he bg -->
 					</div>
@@ -442,7 +459,8 @@
 							<h3 class="a1" data-animate="fadeInDown">Torino</h3>
 							<a data-rel="prettyPhoto" href="img/loghi/torino.png"
 								class="dmbutton a2" data-animate="fadeInUp"><i
-								class="fa fa-search"></i></a>
+								class="fa fa-search"></i><script src="//rss.bloople.net/?url=http%3A%2F%2Fwww.gazzetta.it%2Frss%2FSquadre%2FTorino.xml&detail=&limit=1&showtitle=false&type=js"></script>
+								</a>
 						</div>
 						<!-- he bg -->
 					</div>
@@ -460,7 +478,8 @@
 							<h3 class="a1" data-animate="fadeInDown">Udinese</h3>
 							<a data-rel="prettyPhoto" href="img/loghi/udinese.png"
 								class="dmbutton a2" data-animate="fadeInUp"><i
-								class="fa fa-search"></i></a>
+								class="fa fa-search"></i><script src="//rss.bloople.net/?url=http%3A%2F%2Fwww.gazzetta.it%2Frss%2FSquadre%2FUdinese.xml&detail=&limit=1&showtitle=false&type=js"></script>
+								</a>
 						</div>
 						<!-- he bg -->
 					</div>
