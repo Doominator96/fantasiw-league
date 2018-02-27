@@ -28,6 +28,7 @@ public class Formazione2 extends HttpServlet {
 			e.printStackTrace();
 		}
 		resp.getWriter().print(formazione.minDate + "," + formazione.maxDate);
-	    }
+		
+	}
 
 }

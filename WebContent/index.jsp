@@ -3,10 +3,7 @@
     <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>FantaSiw</title>
-</head>
+<jsp:include page="header.jsp"></jsp:include>
 <body>
 <link href="https://fonts.googleapis.com/css?family=Open+Sans|Sedgwick+Ave+Display" rel="stylesheet">
 <link rel="stylesheet" href="css/login2.css">
@@ -22,7 +19,6 @@
 	<div class="grid"  class="center">
 
 		<h1>FantaSiw League</h1>
-
 
 		<form class="form login" method="GET" action="login">
 
@@ -41,14 +37,15 @@
 			</div>
 
 			<div class="form_field">
-				<input id="button" type="submit" name="accesso" value="Sign In" href="sendData">
+				<input type="submit" id="button" onclick="login()" name="accesso" value="Sign In">
 			</div>
 
-		</form>
 
 		<p class="text--center">
 			Non sei registrato? <a href="registrazione.html">Registrati</a>
 		</p>
+		
+		</form>
 		
 <c:if test="${wrong}">
 		<script>

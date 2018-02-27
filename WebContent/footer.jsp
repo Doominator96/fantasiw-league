@@ -45,8 +45,9 @@
 	<script src="js/jquery.hoverex.min.js"></script>
 	<script src="js/jquery.prettyPhoto.js"></script>
 	<script src="js/jquery.isotope.min.js"></script>
-	<script type="text/javascript" src="js/formazione.js"></script>
 	<script src="js/custom.js"></script>
 	<script src="js/popup.js"></script>
 	<script src="js/redirect.js"></script>
 	<script src="https://unpkg.com/sweetalert2@7.12.14/dist/sweetalert2.all.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+	
