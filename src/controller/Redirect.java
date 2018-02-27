@@ -15,10 +15,9 @@ public class Redirect extends HttpServlet{
 		
 		String page = req.getParameter("pageUrl");
 		
-		resp.sendRedirect(page);
-//		RequestDispatcher requestDispatcher; 
-//		requestDispatcher = req.getRequestDispatcher(page);
-//		requestDispatcher.forward(req, resp);
+		RequestDispatcher requestDispatcher; 
+		requestDispatcher = req.getRequestDispatcher(page);
+		requestDispatcher.forward(req, resp);
 	}
 
 }
