@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONArray;
 import model.Giocatore;
 import model.RosaUtente;
 import persistence.DatabaseManager;
@@ -17,7 +19,7 @@ import persistence.dao.RosaUtenteDao;
 public class GiocatoriRosa extends HttpServlet {
 
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		long selectedRosa=0;
 		if(req.getParameter("rose1")!=null)
@@ -28,6 +30,9 @@ public class GiocatoriRosa extends HttpServlet {
 				.getDaoFactory().getRosaUtenteDAO();
 			List<Giocatore> giocatori=rdao.findByPrimaryKeyJoin(selectedRosa);
 			req.setAttribute("giocatori", giocatori);
+			
+			String players = (new JSONArray(giocatori).toString());
+			resp.getWriter().print(players);
 		
 			System.out.println(selectedRosa);
 		RequestDispatcher dispacher = req.getRequestDispatcher("roseUtente");

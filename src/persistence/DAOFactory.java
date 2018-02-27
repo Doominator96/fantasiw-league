@@ -2,6 +2,7 @@ package persistence;
 
 
 import persistence.dao.AfferisceDao;
+import persistence.dao.FormazioneDao;
 import persistence.dao.GiocatoreDao;
 import persistence.dao.LegaDao;
 import persistence.dao.RosaUtenteDao;
@@ -34,6 +35,8 @@ public abstract class DAOFactory {
 	public abstract GiocatoreDao getGiocatoreDAO();
 	
 	public abstract AfferisceDao getAfferisceDAO();
+	
+	public abstract FormazioneDao getFormazioneDAO();
 
 	public abstract LegaDao getLegaDAO();
 	

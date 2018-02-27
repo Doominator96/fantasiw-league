@@ -17,6 +17,7 @@ public void dropDatabase(){
 	Connection connection = dataSource.getConnection();
 	try {
 		String delete = "drop SEQUENCE if EXISTS sequenza_id;"
+				+ "drop table if exists formazione;"
 				+ "drop table if exists afferisce;"
 				+ "drop table if exists rosa;"
 				+ "drop table if exists lega;"
@@ -50,7 +51,8 @@ public void createDatabase(){
 				+ "create table lega(\"id\" bigint primary key,nome varchar(255),password varchar(255));"
 				+ "create table rosa (\"id\" bigint primary key, nome varchar(255),budget int, utente varchar(255) REFERENCES utente(\"username\"),lega bigint REFERENCES lega(\"id\"),punteggio int,vittorie int,pareggi int,sconfitte int,golFatti int,golSubiti int);"
 				+ "create table giocatore(\"id\" bigint primary key,cognome varchar(255),squadra varchar(255),ruolo varchar(255),costo int);"
-				+ "create table afferisce(\"id\" bigint primary key,giocatore bigint REFERENCES giocatore(\"id\"),rosa bigint REFERENCES rosa(\"id\"));";
+				+ "create table afferisce(\"id\" bigint primary key,giocatore bigint REFERENCES giocatore(\"id\"),rosa bigint REFERENCES rosa(\"id\"));"
+				+ "create table formazione(\"id\" bigint primary key,giocatore bigint REFERENCES giocatore(\"id\"),rosa bigint REFERENCES rosa(\"id\"));";
 		
 		PreparedStatement statement = connection.prepareStatement(create);
 		
@@ -87,6 +89,9 @@ public  void resetDatabase() {
 			statement = connection.prepareStatement(delete);
 			
 			delete = "delete FROM afferisce";
+			statement = connection.prepareStatement(delete);
+			
+			delete = "delete FROM formazione";
 			statement = connection.prepareStatement(delete);
 			
 			delete = "delete FROM lega";

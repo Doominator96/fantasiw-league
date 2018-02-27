@@ -1,6 +1,7 @@
 package persistence;
 
 import persistence.dao.AfferisceDao;
+import persistence.dao.FormazioneDao;
 import persistence.dao.GiocatoreDao;
 import persistence.dao.LegaDao;
 import persistence.dao.RosaUtenteDao;
@@ -38,6 +39,10 @@ public class PostgresDAOFactory extends DAOFactory {
 	@Override
 	public AfferisceDao getAfferisceDAO() {
 		return new AfferisceDaoJDBC(dataSource);
+	}
+	
+	public FormazioneDao getFormazioneDAO() {
+		return new FormazioneDaoJDBC(dataSource);
 	}
 
 	@Override
