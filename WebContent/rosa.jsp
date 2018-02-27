@@ -35,7 +35,7 @@
 					aria-expanded="true">Centrocampisti</a></li>
 				<li class="" id="a"><a href="#tab_4" data-toggle="tab"
 					aria-expanded="true">Attaccanti</a></li>
-					<li class="pull-right"><H1 id="budget">Budget: 250 CR</H1></li>
+					<li class="pull-right"><H1 id="budget">Budget: 180 CR</H1></li>
 			</ul>
 
 

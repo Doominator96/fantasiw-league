@@ -32,7 +32,7 @@ public class RosaUtente {
 	}
 	public RosaUtente(String nome,int punteggio,int vittorie,int pareggi,int sconfitte, int golFatti, int golSubiti) {
 		this.nome = nome;
-		this.budget=250;
+		this.budget=180;
 		this.punteggio = punteggio;
 		this.vittorie = vittorie;
 		this.pareggi = pareggi;
@@ -42,7 +42,7 @@ public class RosaUtente {
 	}
 	public RosaUtente(String nome) {
 		this.nome=nome;
-		this.budget=250;
+		this.budget=180;
 		this.punteggio=0;
 		this.vittorie=0;
 		this.pareggi = 0;

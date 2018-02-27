@@ -29,7 +29,7 @@ function calcolaCrediti() {
 	var difensor=document.getElementById('def');
 	var centrocampist=document.getElementById('mid');
 	var attaccant=document.getElementById('str');
-	var budgetAttuale = 250 - sum;
+	var budgetAttuale = 180 - sum;
 	$('#budget').html("Budget: " + budgetAttuale + " CR");
 	$('#giocatoriTot').html("Totale: " + players + " / 25 ");
 	$('#portieri').html("Portieri: " + gk + " / 3");
