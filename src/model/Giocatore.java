@@ -1,5 +1,7 @@
 package model;
 
+import java.util.HashMap;
+
 public class Giocatore {
 	
 	private long id;
@@ -7,8 +9,11 @@ public class Giocatore {
 	private String squadra;
 	private String ruolo;
 	private int costo;
+	private HashMap<String, Integer> statistiche;
 	
 	public Giocatore() {
+		statistiche = new HashMap<>();
+		
 	}
 	
 	public Giocatore(String cognome, String squadra, String ruolo, int costo) {
@@ -55,6 +60,16 @@ public class Giocatore {
 	public String toString() {
 		return cognome+" "+squadra+" "+ruolo+" "+costo;
 	}
+
+	public HashMap<String, Integer> getStatistiche() {
+		return statistiche;
+	}
+
+	public void setStatistiche(HashMap<String, Integer> statistiche) {
+		this.statistiche = statistiche;
+	}
+	
+	
 	
 
 }
