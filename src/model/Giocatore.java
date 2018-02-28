@@ -12,10 +12,8 @@ public class Giocatore {
 	private HashMap<String, Integer> statistiche;
 	private double voto;
 
-	public Giocatore(String _ruolo, int _costo) {
+	public Giocatore() {
 		
-		ruolo = _ruolo;
-		costo = _costo;
 		statistiche = new HashMap<>();
 		voto = 6.0;
 		String n = "Niente";
@@ -251,14 +249,4 @@ public class Giocatore {
 
 	}
 	
-	public static void main(String[] args) {
-		Giocatore g1 = new Giocatore("CENTROCAMPISTA",15);
-		Giocatore g2 = new Giocatore("PORTIERE", 15);
-		g1.calcolaVoto();
-		g2.calcolaVoto();
-		
-		System.out.println(g1.voto);
-		System.out.println(g2.voto);
-	}
-
 }
