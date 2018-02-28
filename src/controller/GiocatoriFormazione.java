@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.json.JSONArray;
 
@@ -19,11 +20,13 @@ public class GiocatoriFormazione extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		long selectedRosa=0;
-		if(req.getParameter("roseU")!=null)
+		HttpSession session = req.getSession();
+		if(req.getParameter("rosaU")!=null)
 		{
-		   selectedRosa=Long.parseLong(req.getParameter("roseU"));
+		   selectedRosa=Long.parseLong(req.getParameter("rosaU"));
 		}
 		System.out.println(selectedRosa);
+		session.setAttribute("rosaCU", selectedRosa);     
 		RosaUtenteDao rdao =DatabaseManager.getInstance()
 				.getDaoFactory().getRosaUtenteDAO();
 		List<Giocatore> portieri = rdao.findByPrimaryKeyJoinRuolo(selectedRosa,"PORTIERE");
@@ -46,7 +49,9 @@ public class GiocatoriFormazione extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		long selectedRosa=Long.parseLong(req.getParameter("rosaU"));
+		HttpSession session = req.getSession();
 		System.out.println(selectedRosa);
+		session.setAttribute("rosaCU", selectedRosa);     
 		RosaUtenteDao rdao =DatabaseManager.getInstance()
 				.getDaoFactory().getRosaUtenteDAO();
 			List<Giocatore> portieri = rdao.findByPrimaryKeyJoinRuolo(selectedRosa,"PORTIERE");

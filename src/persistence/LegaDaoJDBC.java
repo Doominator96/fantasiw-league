@@ -7,9 +7,12 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 
+import model.Giocatore;
 import model.Lega;
 import model.Utente;
+import persistence.dao.GiocatoreDao;
 import persistence.dao.LegaDao;
+import persistence.dao.UtenteDao;
 
 public class LegaDaoJDBC implements LegaDao {
 	private DataSource dataSource;
@@ -23,11 +26,13 @@ public class LegaDaoJDBC implements LegaDao {
 		try {
 			Long id = IdBroker.getId(connection);
 			lega.setId(id);
-			String insert = "insert into lega(id,nome,password) values (?,?,?)";
+			String insert = "insert into lega(id,nome,password,amministratore) values (?,?,?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
 			statement.setLong(1, lega.getId());
 			statement.setString(2, lega.getNome());
 			statement.setString(3, lega.getPassword());
+			statement.setString(4, lega.getAmministratore().getUserName());
+
 			statement.executeUpdate();
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
@@ -54,6 +59,9 @@ public class LegaDaoJDBC implements LegaDao {
 				lega.setId(result.getLong("id"));
 				lega.setNome(result.getString("nome"));
 				lega.setPassword(result.getString("password"));
+				UtenteDao utenteDao = DatabaseManager.getInstance().getDaoFactory().getUtenteDAO();
+				Utente amministratore = utenteDao.findByPrimaryKey(result.getString("amministratore"));
+				lega.setAmministratore(amministratore);
 			}
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
@@ -82,6 +90,9 @@ public class LegaDaoJDBC implements LegaDao {
 				lega.setId(result.getLong("id"));
 				lega.setNome(result.getString("nome"));
 				lega.setPassword(result.getString("password"));
+				UtenteDao utenteDao = DatabaseManager.getInstance().getDaoFactory().getUtenteDAO();
+				Utente amministratore = utenteDao.findByPrimaryKey(result.getString("amministratore"));
+				lega.setAmministratore(amministratore);
 			}
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
@@ -110,6 +121,9 @@ public class LegaDaoJDBC implements LegaDao {
 				lega.setId(result.getLong("id"));
 				lega.setNome(result.getString("nome"));
 				lega.setPassword(result.getString("password"));
+				UtenteDao utenteDao = DatabaseManager.getInstance().getDaoFactory().getUtenteDAO();
+				Utente amministratore = utenteDao.findByPrimaryKey(result.getString("amministratore"));
+				lega.setAmministratore(amministratore);
 
 				leghe.add(lega);
 			}
@@ -139,6 +153,9 @@ public class LegaDaoJDBC implements LegaDao {
 				lega.setId(result.getLong("id"));
 				lega.setNome(result.getString("nome"));
 				lega.setPassword(result.getString("password"));
+				UtenteDao utenteDao = DatabaseManager.getInstance().getDaoFactory().getUtenteDAO();
+				Utente amministratore = utenteDao.findByPrimaryKey(result.getString("amministratore"));
+				lega.setAmministratore(amministratore);
 				
 				leghe.add(lega);
 			}
@@ -168,6 +185,9 @@ public class LegaDaoJDBC implements LegaDao {
 				lega.setId(result.getLong("id"));
 				lega.setNome(result.getString("nome"));
 				lega.setPassword(result.getString("password"));
+				UtenteDao utenteDao = DatabaseManager.getInstance().getDaoFactory().getUtenteDAO();
+				Utente amministratore = utenteDao.findByPrimaryKey(result.getString("amministratore"));
+				lega.setAmministratore(amministratore);
 			}
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
@@ -185,11 +205,12 @@ public class LegaDaoJDBC implements LegaDao {
 	public void update(Lega lega) {
 		Connection connection = this.dataSource.getConnection();
 		try {
-			String update = "update lega SET nome = ?,password = ? WHERE id=?";
+			String update = "update lega SET nome = ?,password = ?,amministratore = ? WHERE id=?";
 			PreparedStatement statement = connection.prepareStatement(update);
 			statement.setLong(1, lega.getId());
 			statement.setString(2, lega.getNome());
 			statement.setString(3, lega.getPassword());
+			statement.setString(4, lega.getAmministratore().getUserName());
 			statement.executeUpdate();
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());

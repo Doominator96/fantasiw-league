@@ -13,6 +13,7 @@ import com.sun.net.httpserver.HttpServer;
 
 import model.Lega;
 import model.Utente;
+import persistence.DAOFactory;
 import persistence.PostgresDAOFactory;
 import persistence.dao.LegaDao;
 import persistence.dao.UtenteDao;
@@ -23,7 +24,8 @@ public class CreaLega extends HttpServlet {
 		HttpSession session=req.getSession();
 		String nome = req.getParameter("nome");
 		String password = req.getParameter("password");
-		Lega lg=new Lega(nome,password);
+		String amministratore=(String) session.getAttribute("username");
+		Lega lg=new Lega(nome,password,PostgresDAOFactory.getDAOFactory(DAOFactory.POSTGRESQL).getUtenteDAO().findByPrimaryKey(session.getAttribute("username").toString()));
 		LegaDao legaDao = PostgresDAOFactory.getInstance().getLegaDAO();	
 		legaDao.save(lg);				  
 			session.setAttribute("lega", lg);

@@ -25,9 +25,9 @@ public class CreaFormazione extends HttpServlet {
 		FormazioneDao formazioneDao = PostgresDAOFactory.getInstance().getFormazioneDAO();
 		GiocatoreDao giocatoreDao = PostgresDAOFactory.getInstance().getGiocatoreDAO();
 		RosaUtenteDao rosaUtenteDao = PostgresDAOFactory.getInstance().getRosaUtenteDAO();
-		RosaUtente rs = rosaUtenteDao.findByPrimaryKey((long) session.getAttribute("rosaCorrente"));
+		RosaUtente rs = rosaUtenteDao.findByPrimaryKey((long) session.getAttribute("rosaCU"));
 		Giocatore giocatore = new Giocatore();
-		formazioneDao.deleteFromRosa((long) session.getAttribute("rosaCorrente"));
+		formazioneDao.deleteFromRosa((long) session.getAttribute("rosaCU"));
 		for (int i = 0; i < ids.length; i++) {
 			giocatore = giocatoreDao.findByPrimaryKey(Long.parseLong(ids[i]));
 			Formazione formazione = new Formazione(giocatore, rs);

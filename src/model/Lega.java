@@ -5,13 +5,14 @@ public class Lega {
 	private long id;
 	private String nome;
 	private String password;
-	
+	private Utente amministratore;
 	public Lega() {
 	}
 
-	public Lega(String nome, String password) {
+	public Lega(String nome, String password,Utente amministratore) {
 		this.nome = nome;
 		this.password=password;
+		this.amministratore=amministratore;
 	}
 
 	public Lega(long id, String nome, String password) {
@@ -42,6 +43,14 @@ public class Lega {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public Utente getAmministratore() {
+		return amministratore;
+	}
+
+	public void setAmministratore(Utente amministratore) {
+		this.amministratore = amministratore;
 	}
 	
 	

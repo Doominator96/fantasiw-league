@@ -8,8 +8,8 @@
 		</script>
 	</c:if>  
 
-<link rel="stylesheet" href="css/popup.css">
 <jsp:include page="header.jsp"></jsp:include>
+<link rel="stylesheet" href="css/popup.css">
 <body>
 <jsp:include page="navbar.jsp"></jsp:include>
 
