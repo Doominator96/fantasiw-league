@@ -142,6 +142,44 @@ public class RosaUtenteDaoJDBC implements RosaUtenteDao {
 		}
 		return rosa;
 	}
+	public RosaUtente findByNome(String nome) {
+		Connection connection = this.dataSource.getConnection();
+		RosaUtente rosa = null;
+		try {
+			PreparedStatement statement;
+			String query = "select * from rosa where nome = ?";
+			statement = connection.prepareStatement(query);
+			statement.setString(1, nome);
+			ResultSet result = statement.executeQuery();
+			if (result.next()) {
+				rosa = new RosaUtente();
+				rosa.setId(result.getLong("id"));
+				rosa.setNome(result.getString("nome"));
+				rosa.setBudget(result.getInt("budget"));
+				rosa.setGolFatti(result.getInt("golFatti"));
+				rosa.setGolSubiti(result.getInt("golSubiti"));
+				rosa.setPareggi(result.getInt("pareggi"));
+				rosa.setPunteggio(result.getInt("punteggio"));
+				rosa.setSconfitte(result.getInt("sconfitte"));
+				rosa.setVittorie(result.getInt("vittorie"));
+				Utente ut=new Utente(result.getString("utente"));
+				rosa.setUtente(ut);
+				Lega lg=new Lega();
+				LegaDao ldao = DatabaseManager.getInstance().getDaoFactory().getLegaDAO();
+				lg=ldao.findByPrimaryKey(result.getLong("lega"));
+				rosa.setLega(lg);
+			}
+		} catch (SQLException e) {
+			throw new PersistenceException(e.getMessage());
+		} finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				throw new PersistenceException(e.getMessage());
+			}
+		}
+		return rosa;
+	}
 	
 	public List<Lega> findByUtente(String user) {
 		Connection connection = this.dataSource.getConnection();

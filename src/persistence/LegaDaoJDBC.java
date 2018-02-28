@@ -154,6 +154,33 @@ public class LegaDaoJDBC implements LegaDao {
 		return leghe;
 	}
 	
+	public Lega findByNome(String nome) {
+		Connection connection = this.dataSource.getConnection();
+		Lega lega = null;
+		try {
+			PreparedStatement statement;
+			String query = "select * from lega where nome = ?";
+			statement = connection.prepareStatement(query);
+			statement.setString(1, nome);
+			ResultSet result = statement.executeQuery();
+			if (result.next()) {
+				lega = new Lega();
+				lega.setId(result.getLong("id"));
+				lega.setNome(result.getString("nome"));
+				lega.setPassword(result.getString("password"));
+			}
+		} catch (SQLException e) {
+			throw new PersistenceException(e.getMessage());
+		} finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				throw new PersistenceException(e.getMessage());
+			}
+		}
+		return lega;
+	}
+	
 
 	public void update(Lega lega) {
 		Connection connection = this.dataSource.getConnection();

@@ -11,6 +11,7 @@ public interface RosaUtenteDao {
 	
 	public void save(RosaUtente rosa);  // Create
 	public RosaUtente findByPrimaryKey(Long id);     // Retrieve
+	public RosaUtente findByNome(String nome);
 	public List<Giocatore> findByPrimaryKeyJoin(Long id);
 	public List<RosaUtente> findAll();
 	public List<RosaUtente> findAllUtente(String username);

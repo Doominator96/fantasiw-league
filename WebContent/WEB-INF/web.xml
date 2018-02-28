@@ -126,5 +126,23 @@
     <url-pattern>/creaAfferiscono</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+    <servlet-name>NomeLegaServlet</servlet-name>
+    <servlet-class>controller.NomeLega</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>NomeLegaServlet</servlet-name>
+    <url-pattern>/nomeLega</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>NomeRosaServlet</servlet-name>
+    <servlet-class>controller.NomeRosa</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>NomeRosaServlet</servlet-name>
+    <url-pattern>/nomeRosa</url-pattern>
+  </servlet-mapping>
+  
   
 </web-app>

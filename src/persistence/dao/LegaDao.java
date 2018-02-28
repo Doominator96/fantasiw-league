@@ -13,5 +13,6 @@ public interface LegaDao {
 	public void update(Lega lega); //Update
 	public void delete(Lega lega); //Delete	
 	public List<Lega> findByUtente(String username);
+	public Lega findByNome(String nome);
 	public Lega findByCredential(String nome,String password);
 }

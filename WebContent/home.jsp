@@ -593,5 +593,6 @@
 <jsp:include page="footer.jsp"></jsp:include>
 
 <script src="js/home.js"></script>
+<script src="js/controllaNomi.js"></script>
 </body>
 </html>
