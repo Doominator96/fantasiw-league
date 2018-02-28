@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -13,6 +15,7 @@ import model.Utente;
 import persistence.dao.GiocatoreDao;
 import persistence.dao.LegaDao;
 import persistence.dao.UtenteDao;
+import utility.GiocatoriComparator;
 
 public class LegaDaoJDBC implements LegaDao {
 	private DataSource dataSource;
@@ -169,6 +172,34 @@ public class LegaDaoJDBC implements LegaDao {
 			}
 		}
 		return leghe;
+	}
+	
+	public List<Giocatore> findByPrimaryKeyLega(Long id) {
+		List<Giocatore> giocatori = new ArrayList<Giocatore>();
+		Connection connection = this.dataSource.getConnection();
+		try {
+			PreparedStatement statement;
+			String query = "select g from lega as l, giocatore as g , afferisce as a, rosa as r where r.lega=l.id and l.id=? AND r.id=a.rosa and a.giocatore=g.id";
+			statement = connection.prepareStatement(query);
+			statement.setLong(1, id);
+			ResultSet result = statement.executeQuery();
+			while (result.next()) {
+				GiocatoreDao giocatoreDao = new GiocatoreDaoJDBC(dataSource);
+				Giocatore giocatore = giocatoreDao.findByPrimaryKey(result.getLong("giocatore"));
+				giocatori.add(giocatore);
+			}
+		} catch (SQLException e) {
+			throw new PersistenceException(e.getMessage());
+		} finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				throw new PersistenceException(e.getMessage());
+			}
+		}
+		Collections.sort(giocatori,GiocatoriComparator.COMPARATOR);
+		Collections.reverse(giocatori);
+		return giocatori;
 	}
 	
 	public Lega findByNome(String nome) {

@@ -2,6 +2,7 @@ package persistence.dao;
 
 import java.util.List;
 
+import model.Giocatore;
 import model.Lega;
 import model.Utente;
 
@@ -15,4 +16,6 @@ public interface LegaDao {
 	public List<Lega> findByUtente(String username);
 	public Lega findByNome(String nome);
 	public Lega findByCredential(String nome,String password);
+	public List<Giocatore> findByPrimaryKeyLega(Long id);
+
 }

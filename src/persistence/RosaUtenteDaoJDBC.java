@@ -100,6 +100,13 @@ public class RosaUtenteDaoJDBC implements RosaUtenteDao {
 		Collections.reverse(giocatori);
 		return giocatori;
 	}
+	
+	
+	
+	
+	
+	
+	
 	public List<Giocatore> findByPrimaryKeyJoinRuolo(Long id,String ruolo) {
 		List<Giocatore> giocatori = new ArrayList<Giocatore>();
 		Connection connection = this.dataSource.getConnection();

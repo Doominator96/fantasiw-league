@@ -162,13 +162,31 @@
     <url-pattern>/giocatoriFormazione</url-pattern>
   </servlet-mapping>
   
-      <servlet>
+  <servlet>
     <servlet-name>CreaFormazioneServlet</servlet-name>
     <servlet-class>controller.CreaFormazione</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>CreaFormazioneServlet</servlet-name>
     <url-pattern>/creaFormazione</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>LegheCalcolaFormazioneServlet</servlet-name>
+    <servlet-class>controller.LegheCalcolaFormazione</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LegheCalcolaFormazioneServlet</servlet-name>
+    <url-pattern>/legheCalcolaFormazione</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>RoseCalcolaFormazioneServlet</servlet-name>
+    <servlet-class>controller.RoseCalcolaFormazione</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RoseCalcolaFormazioneServlet</servlet-name>
+    <url-pattern>/roseCalcolaFormazione</url-pattern>
   </servlet-mapping>
   
 </web-app>
