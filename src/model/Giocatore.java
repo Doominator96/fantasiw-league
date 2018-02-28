@@ -12,7 +12,10 @@ public class Giocatore {
 	private HashMap<String, Integer> statistiche;
 	private double voto;
 
-	public Giocatore() {
+	public Giocatore(String _ruolo, int _costo) {
+		
+		ruolo = _ruolo;
+		costo = _costo;
 		statistiche = new HashMap<>();
 		voto = 6.0;
 		String n = "Niente";
@@ -104,6 +107,7 @@ public class Giocatore {
 		if (ruolo != "PORTIERE") {
 			for (int i = 0; i < 3; i++) {
 				String key = calcolaGol();
+				System.out.println("Esito Giocatore: "+ key);
 				if (key != "Niente") {
 					statistiche.put(key, statistiche.get(key) + 1);
 
@@ -122,11 +126,13 @@ public class Giocatore {
 			}
 
 			String yellow = calcolaGiallo();
+			System.out.println("Esito Giallo: "+ yellow);
 			statistiche.put(yellow, statistiche.get(yellow) + 1);
 			if (yellow == "Giallo")
 				voto -= 0.5;
 		} else {
 			String keyR = calcolaPortiereRigore();
+			System.out.println("Esito Rigore Portiere: "+ keyR);
 
 			statistiche.put(keyR, statistiche.get(keyR) + 1);
 			switch (keyR) {
@@ -142,6 +148,7 @@ public class Giocatore {
 
 			for (int i = 0; i < 3; i++) {
 				keyT = calcolaPortiereTiri();
+				System.out.println("Esito Tiro Portiere: "+ keyT);
 				statistiche.put(keyT, statistiche.get(keyT) + 1);
 
 				switch (keyT) {
@@ -233,15 +240,25 @@ public class Giocatore {
 
 	public String calcolaPortiereTiri() {
 
-		double block = costo * 6;
+		double block = costo * 5;
 
 		double rand = Math.random() * 100 + 1;
 		if (rand >= 0 && rand <= block) {
 			return "Tiro Parato";
 		}
 
-		return "Gol subito";
+		return "Gol Subito";
 
+	}
+	
+	public static void main(String[] args) {
+		Giocatore g1 = new Giocatore("CENTROCAMPISTA",15);
+		Giocatore g2 = new Giocatore("PORTIERE", 15);
+		g1.calcolaVoto();
+		g2.calcolaVoto();
+		
+		System.out.println(g1.voto);
+		System.out.println(g2.voto);
 	}
 
 }
