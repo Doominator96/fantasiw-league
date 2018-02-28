@@ -9,72 +9,31 @@
     max-width: 10%;
     color: black;
 }
-.P1{
-	left:33%;
-    top:43%;
-	
-}
-.D1{
-	left:33%;
-    top:43%;
-	
-	
-}
-.D2{
-	left:33%;
-    top:43%;
-	
-}
-.D3{
-	left:33%;
-    top:43%;
-	
-}
-.D4{
-	left:33%;
-    top:43%;
-	
-}
-.C1{
-	left:33%;
-    top:43%;
-	
-}
-.C2{
-	left:33%;
-    top:43%;
-	
-}
-.C3{
-	left:33%;
-    top:43%;
-	
-}
-.C4{
-	left:33%;
-    top:43%;
-	
-}
-.A1{
-	left:33%;
-    top:43%;
-	
-}
-.A2{
-	left:33%;
-    top:43%;
-	
-}
-
-
 
 .pitch {
 	background: #26A65B;
 	border-radius: 5px;
-	margin: 0 16px;
+	margin: 0 2%;
 	display: inline-block;
 }
 
+input[type=submit] {
+    border-radius: 10px;
+    margin-bottom: 1em;
+    padding: .7em 1em ;
+    width: 100%;
+    cursor: pointer;
+    border: 0;
+    background-color: #2BB673;
+    color: #FFF !important;
+    font-weight: bold;
+    font-size: 1.3em;
+    border: 0;
+    opacity: 1 !important;
+    text-indent: 0;
+    -webkit-transform: none;
+            transform: none;
+}
 .pitch h4 {
 	position: absolute;
 	color: #eee;
@@ -151,7 +110,9 @@
 	transition: .3s linear all;
 	z-index: 1;
 }
-
+.a{
+	cursor:pointer;
+}
 .pos:hover {
 	color: #BDC3C7;
 	background: #34495e;
@@ -190,10 +151,13 @@ h2 {
 
 .popup span {
   cursor: pointer;
-  right: -30%;
+  right: -10%;
   top: -30%;
 }
 
 .visible{
   display:block;
+}
+.select2-results__option[aria-selected=true] {
+ 	   display: none;
 }

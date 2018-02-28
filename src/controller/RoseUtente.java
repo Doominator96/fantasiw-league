@@ -22,7 +22,7 @@ public class RoseUtente extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession();
 		RosaUtenteDao rdao = DatabaseManager.getInstance().getDaoFactory().getRosaUtenteDAO();
-		String utenteLoggato = session.getAttribute("username").toString();
+		String utenteLoggato = req.getParameter("username");//session.getAttribute("username").toString();
 		List<RosaUtente> roseG = rdao.findAllUtente(utenteLoggato);
 		req.setAttribute("roseG", roseG);
 
