@@ -19,5 +19,6 @@ public interface RosaUtenteDao {
 	public void update(RosaUtente rosa); //Update
 	public void delete(RosaUtente rosa); //Delete	
 	public List<RosaUtente> findAllLega(Long legaId); 
-	
+	public List<Giocatore> findByPrimaryKeyJoinRuolo(Long id,String ruolo);
+
 }

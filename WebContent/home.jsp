@@ -1,13 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
-<!DOCTYPE html>
-<html lang="en">
+
+<c:if test="${not loggato}">
+		<script>
+		window.location = "index.jsp";
+		</script>
+	</c:if>  
+
+<link rel="stylesheet" href="css/popup.css">
 <jsp:include page="header.jsp"></jsp:include>
 <body>
 <jsp:include page="navbar.jsp"></jsp:include>
 
-<link rel="stylesheet" href="css/popup.css">
 
 
 <div id="headerwrap">
@@ -559,9 +564,9 @@
 		</div>
 
 	</div>
-	<! --/row -->
+	<!-- /row -->
 </div>
-<! --/container -->
+<!-- /container -->
 
 <!-- *****************************************************************************************************************
 	 Collaborazioni
@@ -578,17 +583,12 @@
 			</div>
 		</div>
 	</div>
-	<! --/row -->
+	<!-- /row -->
 </div>
-<! --/container -->
-</div>
-<! --/cwrap -->
+<!-- /container -->
 
-	<c:if test="${not loggato}">
-		<script>
-		window.location = "index.jsp";
-		</script>
-	</c:if>  
+
+	
 	
 <jsp:include page="footer.jsp"></jsp:include>
 

@@ -120,6 +120,7 @@ function calcolaCrediti() {
 //		
 }
 function conferma(){
+	document.getElementById("conferma").disabled=true;
 	var div = document.getElementById('rosaG');
 	var ids="";
 	for (i = 0; i < div.childNodes.length; i++){

@@ -19,45 +19,47 @@
 			</div><!-- /row -->
 	    </div> <!-- /container -->
 	</div><!-- /blue -->
-
-<form action="giocatoriRosa" method="POST">
-				<select name="rose1" class="form-control" id="rose1" style="width:350px ; margin-left:2%" onchange="this.form.submit()">
+			<form action="giocatoriFormazione" method="POST">
+				<select name="rosaU" class="form-control" id="rosaU" style="width:350px ; margin-left:2%" onchange="this.form.submit()">
 				<option >Scegli una Squadra</option>
-					<c:forEach items="${roseG}" var="r">
-						<option value="${r.id}">${r.nome} Lega: ${r.lega.nome}</option>
+					<c:forEach items="${roseF}" var="rf">
+						<option value="${rf.id}">${rf.nome} Lega: ${rf.lega.nome}</option>
 					</c:forEach>
 				</select>
-			</form>
-
+				</form>	
 <div class="popup">
  <div id="sel1">
  <h3>Scegli Portiere</h3>
 <select id="portieri" class="js-example-basic-multiple" name="states[]" multiple="multiple">
-  <option value="AL">port</option>
-  <option value="WY">Wyoming</option>
+  <c:forEach items="${por}" var="p">
+	<option value="${p.id}">${p.cognome} ${p.costo} &#8354</option>
+  </c:forEach>
 </select>
 </div>
 <div id="sel2">
  <h3>Scegli Difensori</h3>
 <select id="difensori" class="js-example-basic-multiple" name="states[]" multiple="multiple">
-  <option value="AL">dif</option>
-  <option value="WY">c</option>
+  <c:forEach items="${dif}" var="d">
+	<option value="${d.id}">${d.cognome} ${d.costo} &#8354</option>
+  </c:forEach>
 </select>
 </div>
 <div id="sel3">
  <h3>Scegli Centrocampisti</h3>
 
 <select id="centrocampisti" class="js-example-basic-multiple" name="states[]" multiple="multiple">
-  <option value="AL">ccwadwadwadsafsaf</option>
-  <option value="WY">wrt</option>
+  <c:forEach items="${cen}" var="c">
+	<option value="${c.id}">${c.cognome} ${c.costo} &#8354</option>
+  </c:forEach>
 </select>
 </div>
 <div id="sel4">
  <h3>Scegli Attaccanti</h3>
 
 <select id="attaccanti" class="js-example-basic-multiple" name="states[]" multiple="multiple">
-  <option value="AL">att</option>
-  <option value="WY">eqrqfq</option>
+  <c:forEach items="${att}" var="a">
+	<option value="${a.id}">${a.cognome} ${a.costo} &#8354</option>
+  </c:forEach>
 </select>
  </div>
  <span id="close" style="position: absolute;right: 3%;top: 5%;"><?xml version="1.0" encoding="iso-8859-1"?>
@@ -95,8 +97,8 @@
 		<h3 style="color: green">Tempo Restante Per Mettere La Formazione: </h3>
 <H2 id="Timer"></H2>
 </br>
-<input type="submit" value="Conferma Rosa" id="conferma" onclick="conferma();" disabled="false" style="background: grey"></input>
-			<input type="submit" value="Azzera" style="background: red" onclick="location.href='listaGiocatori';"></input> 
+<input type="submit" value="Conferma Formazione" id="conferma" onclick="confermaF();"></input>
+
 </div>
 
 <div class="pitch" id="m1"style="display: table">

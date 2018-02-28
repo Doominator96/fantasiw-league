@@ -144,5 +144,31 @@
     <url-pattern>/nomeRosa</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+    <servlet-name>RoseFormazioneServlet</servlet-name>
+    <servlet-class>controller.RoseFormazione</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RoseFormazioneServlet</servlet-name>
+    <url-pattern>/roseFormazione</url-pattern>
+  </servlet-mapping>
+  
+    <servlet>
+    <servlet-name>GiocatoriFormazioneServlet</servlet-name>
+    <servlet-class>controller.GiocatoriFormazione</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GiocatoriFormazioneServlet</servlet-name>
+    <url-pattern>/giocatoriFormazione</url-pattern>
+  </servlet-mapping>
+  
+      <servlet>
+    <servlet-name>CreaFormazioneServlet</servlet-name>
+    <servlet-class>controller.CreaFormazione</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CreaFormazioneServlet</servlet-name>
+    <url-pattern>/creaFormazione</url-pattern>
+  </servlet-mapping>
   
 </web-app>

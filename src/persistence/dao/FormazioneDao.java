@@ -11,4 +11,5 @@ public interface FormazioneDao {
 	public List<Formazione> findAll();       
 	public void update(Formazione formazione); //Update
 	public void delete(Formazione formazione); //Delete
+	public void deleteFromRosa(Long rosa); //Delete
 }

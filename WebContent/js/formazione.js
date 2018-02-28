@@ -14,24 +14,43 @@ $(document).ready(function() {
 
 		}
 	});
-	$.ajax({
-		type:'GET',
-		url: 'roseUtente',
-		data:{
-			 username: '<%= Session["username"] %>' 
-		},
-		success: function(data) {
-			var options = '';
-			$.each(data, function(index, value) {
-			    options += '<option value="' + value.abc + '" text="' + value.abc + '" />';
-			});
-
-			$('#portieri').append(options);
-		}
-	});
 });
 
 var time;
+
+function confermaF(){
+	document.getElementById("conferma").disabled=true;
+	var portieri=$("#portieri").select2("val");
+	var difensori=$("#difensori").select2("val");
+	var centrocampisti=$("#centrocampisti").select2("val");
+	var attaccanti=$("#attaccanti").select2("val");
+
+	var ids=portieri+","+difensori+","+centrocampisti+","+attaccanti;
+	
+	$.ajax({
+	    url:"creaFormazione",
+	    type:"POST",
+	    data:{
+	    	id:ids
+	    },
+	    success:function(data){
+	    	swal({
+	    		  title: 'Formazione Creata Con Successo',
+	    		  type: 'success',
+	    		  showCancelButton: false,
+	    		  confirmButtonColor: '#3085d6',
+	    		  confirmButtonText: 'OK'
+	    		}).then((result) => {
+	    		  if (result.value) {
+	    			  document.location.href="home.jsp";
+	    		  }
+	    		  else
+	    			  document.location.href="home.jsp";
+	    		})
+	    	
+	    },
+	});
+}
 
 function count(data) {
 	var date = data.split(",")
@@ -68,7 +87,11 @@ function countDown(countDownDatemin) {
 			+ minutes + "m " + seconds + "s ";
 
 	
-//	if (distance < 0) {
-//		
-//	}
+	if (distance < 0) {
+		document.getElementById("Timer").innerHTML = "Tempo Scaduto!";
+		document.getElementById("conferma").disabled=true;
+		document.getElementById("conferma").style.background= "grey";
+
+
+	}
 }

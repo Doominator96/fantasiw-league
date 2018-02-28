@@ -100,6 +100,34 @@ public class RosaUtenteDaoJDBC implements RosaUtenteDao {
 		Collections.reverse(giocatori);
 		return giocatori;
 	}
+	public List<Giocatore> findByPrimaryKeyJoinRuolo(Long id,String ruolo) {
+		List<Giocatore> giocatori = new ArrayList<Giocatore>();
+		Connection connection = this.dataSource.getConnection();
+		try {
+			PreparedStatement statement;
+			String query = "select * from afferisce as a , giocatore as g where a.rosa=? AND g.id=a.giocatore AND g.ruolo=?";
+			statement = connection.prepareStatement(query);
+			statement.setLong(1, id);
+			statement.setString(2, ruolo);
+			ResultSet result = statement.executeQuery();
+			while (result.next()) {
+
+				GiocatoreDao giocatoreDao = new GiocatoreDaoJDBC(dataSource);
+				Giocatore giocatore = giocatoreDao.findByPrimaryKey(result.getLong("giocatore"));
+				giocatori.add(giocatore);
+
+			}
+		} catch (SQLException e) {
+			throw new PersistenceException(e.getMessage());
+		} finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				throw new PersistenceException(e.getMessage());
+			}
+		}
+		return giocatori;
+	}
 
 	/*
 	 * versione con Lazy Load

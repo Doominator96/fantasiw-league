@@ -145,6 +145,24 @@ public class FormazioneDaoJDBC implements FormazioneDao{
 			}
 		}
 		
+		
+	}
+	public void deleteFromRosa(Long rosa) {
+		Connection connection = this.dataSource.getConnection();
+		try {
+			String delete = "delete FROM formazione WHERE rosa = ? ";
+			PreparedStatement statement = connection.prepareStatement(delete);
+			statement.setLong(1, rosa);
+			statement.executeUpdate();
+		} catch (SQLException e) {
+			throw new PersistenceException(e.getMessage());
+		} finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				throw new PersistenceException(e.getMessage());
+			}
+		}
 	}
 
 }
