@@ -1,50 +1,4 @@
-//package controller;
-//
-//import java.io.IOException;
-//import java.util.List;
-//
-//import javax.servlet.ServletException;
-//import javax.servlet.http.HttpServlet;
-//import javax.servlet.http.HttpServletRequest;
-//import javax.servlet.http.HttpServletResponse;
-//import javax.servlet.http.HttpSession;
-//
-//import persistence.DatabaseManager;
-//import persistence.UtenteCredenziali;
-//import persistence.dao.UtenteDao;
-//
-//public class Login extends HttpServlet{
-//	
-//	@Override
-//	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//		String username = req.getParameter("username");
-//		String password = req.getParameter("password");
-//		HttpSession session=req.getSession();
-//		System.out.println(username);
-//		System.out.println(password);
-//		UtenteDao dao =DatabaseManager.getInstance()
-//				.getDaoFactory().getUtenteDAO();
-//		
-//		UtenteCredenziali user = dao.findByPrimaryKeyCredential(username);
-//			
-//			if(user == null) {
-//				System.out.println("user");
-//				resp.getWriter().print("wuser");
-//				return;
-//			}
-//			else if(!user.getPassword().equals(password)) {
-//				System.out.println("pass");
-//				resp.getWriter().print("wpass");
-//				return;
-//			}
-////			 if(session.getAttribute("username") == null)
-////				 session.setAttribute("username", user);
-//				System.out.println("else");
-//				resp.getWriter().println("true");
-//				
-//	}
-//
-//}
+
 package controller;
 
 import java.io.IOException;
@@ -98,9 +52,6 @@ public class Login extends HttpServlet {
 			disp.forward(req, resp);
 		} else {
 		    req.setAttribute("wrong", true);
-//			out.println("<script type='text/javascript'>");
-//			RequestDispatcher dispatcher = req.getRequestDispatcher("js/swal.js");
-//			out.println("</script>");
 			
 			RequestDispatcher disp;
 			disp = req.getRequestDispatcher("/index.jsp");

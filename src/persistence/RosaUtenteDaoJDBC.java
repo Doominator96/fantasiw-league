@@ -298,6 +298,14 @@ public class RosaUtenteDaoJDBC implements RosaUtenteDao {
 	public void setPunteggio(long id,float punti,int golF,int golS) {
 		Connection connection = this.dataSource.getConnection();
 		try {
+			String query ="Select * from rosa where id= ?";
+			PreparedStatement statement1 = connection.prepareStatement(query);
+			statement1.setLong(1, id);
+			ResultSet result=statement1.executeQuery();
+			result.next();
+			punti+=result.getFloat("punteggio");
+			golF+=result.getInt("golFatti");
+			golS+=result.getInt("golSubiti");
 			String update = "update rosa SET punteggio = ?,golFatti = ?, golSubiti = ? WHERE id=?";
 			PreparedStatement statement = connection.prepareStatement(update);
 			statement.setFloat(1, punti);

@@ -25,7 +25,6 @@ public class GiocatoriRosa extends HttpServlet {
 		
 		HttpSession session=req.getSession();
 		long selectedRosa=0;
-		System.out.println(req.getParameter("rose1"));
 		if(req.getParameter("rose1")!=null)
 		{
 			   selectedRosa=Long.parseLong(req.getParameter("rose1"));
@@ -44,8 +43,6 @@ public class GiocatoriRosa extends HttpServlet {
 			String players = (new JSONArray(giocatori).toString());
 			resp.getWriter().print(players);
 		
-			System.out.println(selectedRosa);
-		System.out.println(players);
 		
 	
 	}
@@ -64,7 +61,6 @@ public class GiocatoriRosa extends HttpServlet {
 			String players = (new JSONArray(giocatori).toString());
 			resp.getWriter().print(players);
 		
-			System.out.println(selectedRosa);
 		RequestDispatcher dispacher = req.getRequestDispatcher("roseUtente");
 		dispacher.forward(req, resp);
 		

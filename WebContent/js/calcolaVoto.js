@@ -29,7 +29,7 @@ function stampaGiocatori(){
 		success : function(result){
 			$('#tab').html("");
 			$.each(JSON.parse(result), function(key,val){
-			$('#tab').append("<tr id=\""+val.id+"\"><td>"+val.cognome+"</td><td>"+val.squadra+"</td><td class='golS'>"+val.statistiche.GolSubito+"</td><td class='gol'>"+val.statistiche.Gol+"</td><td>"+val.statistiche.Rigore+"</td><td>"+val.statistiche.RigoreSbagliato+"</td><td>"+val.statistiche.Assist+"</td><td>"+val.statistiche.Giallo+"</td><td class='points'>"+val.voto+"</td></tr>");
+			$('#tab').append("<tr id=\""+val.id+"\"><td>"+val.cognome+"</td><td>"+val.squadra+"</td><td class='golS'>"+val.statistiche.GolSubito+"</td><td class='golF'>"+val.statistiche.Gol+"</td><td>"+val.statistiche.Rigore+"</td><td>"+val.statistiche.RigoreSbagliato+"</td><td>"+val.statistiche.Assist+"</td><td>"+val.statistiche.Giallo+"</td><td class='points'>"+val.voto+"</td></tr>");
 			})
 		}
 	}); 
@@ -43,6 +43,7 @@ function calc(){
 			legaSel:$(" #leghe").val()	
 		},
 		success:function(result){
+			location.href="legheCalcolaFormazione";
 			var sum = 0;
 			var golFatti=0;
 			var golSubiti=0;
@@ -71,9 +72,6 @@ function calc(){
 			        golSubiti += parseFloat(value);
 			    }
 			});
-			alert(sum);
-			alert(golFatti);
-			alert(golSubiti);
 			$.ajax({
 				url:'aggiornaClassifica',
 				type:'POST',

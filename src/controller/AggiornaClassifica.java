@@ -17,8 +17,6 @@ public class AggiornaClassifica extends HttpServlet {
 		float punti=Float.parseFloat(req.getParameter("punti"));
 		int golF=Integer.parseInt(req.getParameter("golF"));
 		int golS=Integer.parseInt(req.getParameter("golS"));
-		System.out.println(punti);
-		System.out.println(req.getParameter("rose1").toString());
 		RosaUtenteDao rdao =DatabaseManager.getInstance()
 				.getDaoFactory().getRosaUtenteDAO();
 		rdao.setPunteggio(Long.parseLong(req.getParameter("rose1")), punti, golF, golS);

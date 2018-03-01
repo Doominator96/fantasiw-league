@@ -30,7 +30,6 @@ public class classifica extends HttpServlet {
 			List<RosaUtente> rose = rdao.findAllLega(selectedItem);//Lega(Long.parseLong(selected_Lega));
 			req.setAttribute("rose", rose);
 		
-			System.out.println(selectedItem);
 		RequestDispatcher dispacher = req.getRequestDispatcher("leghe");
 		dispacher.forward(req, resp);
 		
