@@ -61,7 +61,7 @@ function calc(){
 			    var value = $(this).text();
 			    // add only if the value is number
 			    if(!isNaN(value) && value.length != 0) {
-			        golFatti += parseFloat(value);
+			        golFatti += parseInt(value);
 			    }
 			});
 			$(".golS").each(function() {
@@ -69,7 +69,7 @@ function calc(){
 			    var value = $(this).text();
 			    // add only if the value is number
 			    if(!isNaN(value) && value.length != 0) {
-			        golSubiti += parseFloat(value);
+			        golSubiti += parseInt(value);
 			    }
 			});
 			$.ajax({
@@ -82,6 +82,13 @@ function calc(){
 					rose1:$("#rose").val()
 				},
 			});
+			swal({
+				  type: 'success',
+				  title: 'Hai Totalizzato '+ sum+ ' punti',
+				  showConfirmButton: false,
+				  timer: 1500
+				})
+				
 		}
 	});
 }

@@ -6,7 +6,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <jsp:include page="header.jsp"></jsp:include>
-<link type="stylesheet" href="css/popup.css">
+<link href="css/popup.css" rel="stylesheet">
+
 <body>
 <jsp:include page="navbar.jsp"></jsp:include>
 <!-- *****************************************************************************************************************
@@ -63,9 +64,10 @@
 		</div>
 	</div>
 </div>
-<input type="submit" value="Calcola Voti" onclick="calc()">
+<input type="submit" id="calcola" disabled="true" value="Calcola Voti" onclick="calc()" style="background-color: grey">
 </body>
 <jsp:include page="footer.jsp"></jsp:include>
 <script type="text/javascript" src="js/calcolaVoto.js"></script>
+<script type="text/javascript" src="js/formazione.js"></script>
 
 </html>

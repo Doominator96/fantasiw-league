@@ -44,7 +44,6 @@ function move442() {
 	$("#centrocampisti").val([]);
 	$("#attaccanti").val([]);
 	
-	$("#portieri").select2({ width: '80%',maximumSelectionLength: '4' });
 	$("#difensori").select2({ width: '80%',maximumSelectionLength: '4' });
 	$("#centrocampisti").select2({ width: '80%',maximumSelectionLength: '4' });
 	$("#attaccanti").select2({ width: '80%',maximumSelectionLength: '2' });
