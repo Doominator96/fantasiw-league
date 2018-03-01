@@ -10,7 +10,7 @@ public class RoseComparator {
 	    // This is where the sorting happens.
 		 public int compare(RosaUtente r1, RosaUtente r2)
 		    {
-		        int differenzaPunti = r1.getPunteggio() - r2.getPunteggio();
+		        float differenzaPunti = r1.getPunteggio() - r2.getPunteggio();
 		        if (differenzaPunti == 0) {
 		        	int differenzaVittorie=r1.getVittorie() - r2.getVittorie();
 		        	if (differenzaVittorie == 0) {
@@ -23,7 +23,7 @@ public class RoseComparator {
 		        	return differenzaVittorie; 
 		        }
 		        else
-		        return differenzaPunti;
+		        return (int)differenzaPunti;
 		    }
 	    };
 }

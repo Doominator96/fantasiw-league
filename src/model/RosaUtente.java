@@ -7,7 +7,7 @@ public class RosaUtente {
 	private int budget;
 	private Utente utente;
 	private Lega lega;
-	private int punteggio;
+	private float punteggio;
 	private int vittorie;
 	private int pareggi;
 	private int sconfitte;
@@ -17,7 +17,7 @@ public class RosaUtente {
 	public RosaUtente() {
 	}
 
-	public RosaUtente(String nome, int budget, Utente utente, Lega lega, int punteggio, int vittorie, int pareggi,
+	public RosaUtente(String nome, int budget, Utente utente, Lega lega, float punteggio, int vittorie, int pareggi,
 			int sconfitte, int golFatti, int golSubiti) {
 		this.nome = nome;
 		this.budget = budget;
@@ -30,7 +30,7 @@ public class RosaUtente {
 		this.golFatti = golFatti;
 		this.golSubiti = golSubiti;
 	}
-	public RosaUtente(String nome,int punteggio,int vittorie,int pareggi,int sconfitte, int golFatti, int golSubiti) {
+	public RosaUtente(String nome,float punteggio,int vittorie,int pareggi,int sconfitte, int golFatti, int golSubiti) {
 		this.nome = nome;
 		this.budget=180;
 		this.punteggio = punteggio;
@@ -91,11 +91,11 @@ public class RosaUtente {
 		this.lega = lega;
 	}
 
-	public int getPunteggio() {
+	public float getPunteggio() {
 		return punteggio;
 	}
 
-	public void setPunteggio(int punteggio) {
+	public void setPunteggio(float punteggio) {
 		this.punteggio = punteggio;
 	}
 

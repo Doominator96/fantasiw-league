@@ -13,20 +13,19 @@ public class Giocatore {
 	private double voto;
 
 	public Giocatore() {
-		
+
 		statistiche = new HashMap<>();
-		voto = 6.0;
 		String n = "Niente";
 		String goal = "Gol";
 		String rig = "Rigore";
-		String rigS = "Rigore Sbagliato";
+		String rigS = "RigoreSbagliato";
 		String ass = "Assist";
 		String gial = "Giallo";
 		String ros = "Rosso";
 
-		String pRig = "Rigore Parato";
-		String pTir = "Tiro Parato";
-		String pGol = "Gol Subito";
+		String pRig = "RigoreParato";
+		String pTir = "TiroParato";
+		String pGol = "GolSubito";
 
 		statistiche.put(n, 0);
 		statistiche.put(goal, 0);
@@ -100,69 +99,78 @@ public class Giocatore {
 		this.statistiche = statistiche;
 	}
 
-	public double calcolaVoto() {
+	public double calcolaVotoHashMap() {
+		voto=6.0;
+		for (String key : statistiche.keySet()) {
+			if (!key.equals("Niente")) {
+				switch (key) {
+				case "Gol":
+					voto += 3*statistiche.get(key);
+					break;
+				case "Rigore":
+					voto += 2*statistiche.get(key);
+					break;
+				case "RigoreSbagliato":
+					voto -= 3*statistiche.get(key);
+					break;
+				case "RigoreParato":
+					voto += 3*statistiche.get(key);
+					break;
+				case "GolSubito":
+					voto -= 1*statistiche.get(key);
+					break;
+				case "Giallo":
+					voto -=0.5*statistiche.get(key);
+				case "TiroParato":
+					voto +=0.5*statistiche.get(key);
+				}
+			}
 
-		if (ruolo != "PORTIERE") {
+		}
+		return voto;
+	}
+
+	public double getVoto() {
+		return voto;
+	}
+
+	public void setVoto(double voto) {
+		this.voto = voto;
+	}
+
+	public void calcolaVoto() {
+		if (!ruolo.equals("PORTIERE")) {
 			for (int i = 0; i < 3; i++) {
 				String key = calcolaGol();
-				System.out.println("Esito Giocatore: "+ key);
-				if (key != "Niente") {
+				System.out.println("Esito Giocatore: " + key);
+				if (!key.equals("Niente")) {
 					statistiche.put(key, statistiche.get(key) + 1);
 
-					switch (key) {
-					case "Gol":
-						voto += 3;
-						break;
-					case "Rigore":
-						voto += 2;
-						break;
-					case "Rigore Sbagliato":
-						voto -= 3;
-						break;
-					}
 				}
 			}
 
 			String yellow = calcolaGiallo();
-			System.out.println("Esito Giallo: "+ yellow);
+			System.out.println("Esito Giallo: " + yellow);
 			statistiche.put(yellow, statistiche.get(yellow) + 1);
-			if (yellow == "Giallo")
-				voto -= 0.5;
 		} else {
 			String keyR = calcolaPortiereRigore();
-			System.out.println("Esito Rigore Portiere: "+ keyR);
+			System.out.println("Esito Rigore Portiere: " + keyR);
 
 			statistiche.put(keyR, statistiche.get(keyR) + 1);
-			switch (keyR) {
-			case "Rigore Parato":
-				voto += 3;
-				break;
-			case "Gol Subito":
-				voto -= 1;
-				break;
-			}
+		
 
 			String keyT;
 
 			for (int i = 0; i < 3; i++) {
 				keyT = calcolaPortiereTiri();
-				System.out.println("Esito Tiro Portiere: "+ keyT);
+				System.out.println("Esito Tiro Portiere: " + keyT);
 				statistiche.put(keyT, statistiche.get(keyT) + 1);
 
-				switch (keyT) {
-				case "Tiro Parato":
-					voto += 0.5;
-					break;
-				case "Gol Subito":
-					voto -= 1;
-					break;
-				}
 
 			}
 
 		}
 
-		return voto;
 	}
 
 	public String calcolaGiallo() {
@@ -175,13 +183,12 @@ public class Giocatore {
 	}
 
 	public String calcolaGol() {
-
 		double probVal = 0;
-		if (ruolo == "ATTACCANTE")
+		if (ruolo.equals("ATTACCANTE")) {
 			probVal = 1.9;
-		else if (ruolo == "CENTROCAMPISTA")
+		} else if (ruolo.equals("CENTROCAMPISTA"))
 			probVal = 1.4;
-		else if (ruolo == "DIFENSORE")
+		else if (ruolo.equals("DIFENSORE"))
 			probVal = 1.2;
 
 		double probability = costo * probVal;
@@ -195,7 +202,7 @@ public class Giocatore {
 				if (penaltyScore >= 0 && penaltyScore <= 70) {
 					return "Rigore"; // RIGORE SEGNATO
 				} else {
-					return "Rigore Sbagliato"; // RIGORE SBAGLIATO
+					return "RigoreSbagliato"; // RIGORE SBAGLIATO
 				}
 			}
 
@@ -206,20 +213,20 @@ public class Giocatore {
 		return "Niente";
 	}
 
-//	public String calcolaAssist() {
-//		double probVal = 0;
-//		if (ruolo == "CENTROCAMPISTA")
-//			probVal = 2.8;
-//		else if (ruolo == "DIFENSORE")
-//			probVal = 2.8;
-//
-//		double probability = costo * probVal;
-//		double assist = Math.random() * 100 + 1;
-//
-//		if (assist >= 0 && assist <= probability) {
-//			return "Assist";
-//		}
-//	}
+	// public String calcolaAssist() {
+	// double probVal = 0;
+	// if (ruolo == "CENTROCAMPISTA")
+	// probVal = 2.8;
+	// else if (ruolo == "DIFENSORE")
+	// probVal = 2.8;
+	//
+	// double probability = costo * probVal;
+	// double assist = Math.random() * 100 + 1;
+	//
+	// if (assist >= 0 && assist <= probability) {
+	// return "Assist";
+	// }
+	// }
 
 	public String calcolaPortiereRigore() {
 		// Prova rigore
@@ -229,9 +236,9 @@ public class Giocatore {
 			double rand = Math.random() * 100 + 1;
 
 			if (rand >= 0 && rand <= block) { // PARA
-				return "Rigore Parato";
+				return "RigoreParato";
 			}
-			return "Gol Subito"; // SUBISCE
+			return "GolSubito"; // SUBISCE
 		}
 		return "Niente";
 	}
@@ -242,11 +249,11 @@ public class Giocatore {
 
 		double rand = Math.random() * 100 + 1;
 		if (rand >= 0 && rand <= block) {
-			return "Tiro Parato";
+			return "TiroParato";
 		}
 
-		return "Gol Subito";
+		return "GolSubito";
 
 	}
-	
+
 }

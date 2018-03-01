@@ -69,6 +69,7 @@ function count(data) {
 	countDown(countDownDatemin);
 }
 function countDown(countDownDatemin) {
+	var tempomax=0;
 	// Get todays date and time
 	var now = new Date().getTime();
 
@@ -91,7 +92,5 @@ function countDown(countDownDatemin) {
 		document.getElementById("Timer").innerHTML = "Tempo Scaduto!";
 		document.getElementById("conferma").disabled=true;
 		document.getElementById("conferma").style.background= "grey";
-
-
-	}
+	}			
 }

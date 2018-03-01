@@ -30,7 +30,7 @@
 <div class="popup">
  <div id="sel1">
  <h3>Scegli Portiere</h3>
-<select id="portieri" class="js-example-basic-multiple" name="states[]" multiple="multiple">
+ <select id="portieri" class="js-example-basic-multiple" name="states[]" multiple="multiple">
   <c:forEach items="${por}" var="p">
 	<option value="${p.id}">${p.cognome} ${p.costo} &#8354</option>
   </c:forEach>

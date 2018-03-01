@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head>
 <jsp:include page="header.jsp"></jsp:include>
-</head>
+<link type="text/css" href="css/popup.css">
 <body>
 <jsp:include page="navbar.jsp"></jsp:include>
 <!-- *****************************************************************************************************************
@@ -19,20 +21,17 @@
 	</div><!-- /blue -->
 	
 	<h2 class="centered">Scegli Lega</h2>
-<select id="leghe" class="js-example-basic-single col-md-12" name="state">
-  <option value="AL">Alabama</option>
-  <option value="WY">Wyoming</option>
+<select id="leghe" class="js-example-basic-single col-md-12" name="state" onChange="stampaRose()">
+ <c:forEach items="${leg}" var="l">
+	<option value="${l.id}">${l.nome}</option>
+  </c:forEach>
 </select>
 </br>
 </br>
 
 	<h2 class="centered">Scegli Rosa</h2>
+<select id="rose" class="js-example-basic-single col-md-12" name="state" onchange="stampaGiocatori()">
 
-
-
-<select id="rose" class="js-example-basic-single col-md-12" name="state">
-  <option value="AL">Alabama</option>
-  <option value="WY">Wyoming</option>
 </select>
 
 </br>
@@ -46,36 +45,27 @@
 				<table class="table  table-hover" id="table">
 					<thead>
 						<tr class="info">
-							<th>Numero</th>
 							<th>Cognome</th>
 							<th>Squadra</th>
+							<th>Gol Subiti</th>
 							<th>Gol</th>
 							<th>Rigore</th>
 							<th>Rigore Sbagliato</th>
-							<th>Voto </th>
+							<th>Assist</th>
+							<th>C. Giallo</th>
+							<th>Voto</th>
 						</tr>
 					</thead>
-					<tbody>
-						<c:set var="count" value="1" scope="page" />
-						<c:forEach items="${rose}" var="r">
-							<tr>
-								<td>${count}</td>
-								<td>${g.cognome}</td>
-								<td>${g.squadra}</td>
-								<td><span class="badge  badge-info"></span></td>
-								<td>${r.golFatti}</td>
-								<td>${r.golSubiti}</td>
-								<td class="human"><span class="label  label-primary">${r.punteggio}</span>
-								</td>
-							</tr>
-							<c:set var="count" value="${count + 1}" scope="page" />
-						</c:forEach>
+					<tbody id="tab">
+					</tbody>
 				</table>
 			</div>
 		</div>
 	</div>
 </div>
+<input type="submit" value="Calcola Voti" onclick="calc()">
 </body>
 <jsp:include page="footer.jsp"></jsp:include>
 <script type="text/javascript" src="js/calcolaVoto.js"></script>
+
 </html>

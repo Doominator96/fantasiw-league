@@ -43,7 +43,7 @@ public class RosaUtenteDaoJDBC implements RosaUtenteDao {
 			statement.setInt(3, rosa.getBudget());
 			statement.setString(4, rosa.getUtente().getUserName());
 			statement.setLong(5, rosa.getLega().getId());
-			statement.setInt(6, rosa.getPunteggio());
+			statement.setFloat(6, rosa.getPunteggio());
 			statement.setInt(7, rosa.getVittorie());
 			statement.setInt(8, rosa.getPareggi());
 			statement.setInt(9, rosa.getSconfitte());
@@ -101,7 +101,35 @@ public class RosaUtenteDaoJDBC implements RosaUtenteDao {
 		return giocatori;
 	}
 	
-	
+	public List<Giocatore> findByPrimaryKeyFormazione(Long id) {
+		List<Giocatore> giocatori = new ArrayList<Giocatore>();
+		Connection connection = this.dataSource.getConnection();
+		try {
+			PreparedStatement statement;
+			String query = "select * from formazione as f , giocatore as g where f.rosa=? AND g.id=f.giocatore";
+			statement = connection.prepareStatement(query);
+			statement.setLong(1, id);
+			ResultSet result = statement.executeQuery();
+			while (result.next()) {
+
+				GiocatoreDao giocatoreDao = new GiocatoreDaoJDBC(dataSource);
+				Giocatore giocatore = giocatoreDao.findByPrimaryKey(result.getLong("giocatore"));
+				giocatori.add(giocatore);
+
+			}
+		} catch (SQLException e) {
+			throw new PersistenceException(e.getMessage());
+		} finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				throw new PersistenceException(e.getMessage());
+			}
+		}
+		Collections.sort(giocatori,GiocatoriComparator.COMPARATOR);
+		Collections.reverse(giocatori);
+		return giocatori;
+	}
 	
 	
 	
@@ -156,7 +184,7 @@ public class RosaUtenteDaoJDBC implements RosaUtenteDao {
 				rosa.setGolFatti(result.getInt("golFatti"));
 				rosa.setGolSubiti(result.getInt("golSubiti"));
 				rosa.setPareggi(result.getInt("pareggi"));
-				rosa.setPunteggio(result.getInt("punteggio"));
+				rosa.setPunteggio(result.getFloat("punteggio"));
 				rosa.setSconfitte(result.getInt("sconfitte"));
 				rosa.setVittorie(result.getInt("vittorie"));
 				Utente ut=new Utente(result.getString("utente"));
@@ -194,7 +222,7 @@ public class RosaUtenteDaoJDBC implements RosaUtenteDao {
 				rosa.setGolFatti(result.getInt("golFatti"));
 				rosa.setGolSubiti(result.getInt("golSubiti"));
 				rosa.setPareggi(result.getInt("pareggi"));
-				rosa.setPunteggio(result.getInt("punteggio"));
+				rosa.setPunteggio(result.getFloat("punteggio"));
 				rosa.setSconfitte(result.getInt("sconfitte"));
 				rosa.setVittorie(result.getInt("vittorie"));
 				Utente ut=new Utente(result.getString("utente"));
@@ -266,6 +294,27 @@ public class RosaUtenteDaoJDBC implements RosaUtenteDao {
 			}
 		}
 		return rose;
+	}
+	public void setPunteggio(long id,float punti,int golF,int golS) {
+		Connection connection = this.dataSource.getConnection();
+		try {
+			String update = "update rosa SET punteggio = ?,golFatti = ?, golSubiti = ? WHERE id=?";
+			PreparedStatement statement = connection.prepareStatement(update);
+			statement.setFloat(1, punti);
+			statement.setInt(2, golF);
+			statement.setInt(3, golS);
+			statement.setLong(4, id);
+			statement.executeUpdate();
+		} catch (SQLException e) {
+			throw new PersistenceException(e.getMessage());
+		} finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				throw new PersistenceException(e.getMessage());
+			}
+		}
+		
 	}
 
 	public List<RosaUtente> findAllUtente(String username) {

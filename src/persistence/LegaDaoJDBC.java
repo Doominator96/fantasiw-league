@@ -179,7 +179,7 @@ public class LegaDaoJDBC implements LegaDao {
 		Connection connection = this.dataSource.getConnection();
 		try {
 			PreparedStatement statement;
-			String query = "select g from lega as l, giocatore as g , afferisce as a, rosa as r where r.lega=l.id and l.id=? AND r.id=a.rosa and a.giocatore=g.id";
+			String query = "select * from lega as l, giocatore as g , afferisce as a, rosa as r where r.lega=l.id and l.id=? AND r.id=a.rosa and a.giocatore=g.id";
 			statement = connection.prepareStatement(query);
 			statement.setLong(1, id);
 			ResultSet result = statement.executeQuery();

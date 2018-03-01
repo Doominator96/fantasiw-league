@@ -189,4 +189,22 @@
     <url-pattern>/roseCalcolaFormazione</url-pattern>
   </servlet-mapping>
   
+   <servlet>
+    <servlet-name>CalcolaVotiServlet</servlet-name>
+    <servlet-class>controller.CalcolaVoti</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CalcolaVotiServlet</servlet-name>
+    <url-pattern>/calcolaVoti</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>AggiornaClassificaServlet</servlet-name>
+    <servlet-class>controller.AggiornaClassifica</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AggiornaClassificaServlet</servlet-name>
+    <url-pattern>/aggiornaClassifica</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

@@ -24,20 +24,21 @@ public class LegheCalcolaFormazione extends HttpServlet {
 		
 		RosaUtenteDao rdao=DatabaseManager.getInstance().getDaoFactory().getRosaUtenteDAO();
 		String utenteLoggato = session.getAttribute("username").toString();
-		List<Lega> leghe = rdao.findByUtente(utenteLoggato);
-		List<Lega> leghe2 = new ArrayList<>();
-		for(int i=0;i<leghe.size();i++) {
+		List<Lega> leghe3 = rdao.findByUtente(utenteLoggato);
+		List<Lega> leghe4 = new ArrayList<>();
+		for(int i=0;i<leghe3.size();i++) {
 			boolean presente=false;
-			for(int j=0;j<leghe2.size();j++)
-				if(leghe.get(i).getId()==leghe2.get(j).getId())
+			for(int j=0;j<leghe4.size();j++)
+				if(leghe3.get(i).getId()==leghe4.get(j).getId())
 					presente=true;
 			if(!presente)
-				leghe2.add(leghe.get(i));
+				leghe4.add(leghe3.get(i));
 		}
-		req.setAttribute("leghe", leghe2);
-
-		RequestDispatcher dispacher = req.getRequestDispatcher("roseCalcolaFormazione");
-		dispacher.forward(req, resp);
+		req.setAttribute("leg", leghe4);
+		session.setAttribute("leg", leghe4);
+		
+		RequestDispatcher dispatcher = req.getRequestDispatcher("calcolaGiornata.jsp");
+		dispatcher.forward(req, resp);
 
 	}
 	@Override

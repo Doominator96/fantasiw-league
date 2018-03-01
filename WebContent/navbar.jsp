@@ -14,7 +14,7 @@
 					<li ><a href="home.jsp">HOME</a></li>
 					<li><a href="leghe">CLASSIFICA</a></li>
 					<li><a  href="roseFormazione">FORMAZIONE</a></li>
-					<li><a href="calcolaGiornata.jsp">CALCOLA GIORNATA</a></li>
+					<li><a href="legheCalcolaFormazione">CALCOLA GIORNATA</a></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown">UTENTE <b class="caret"></b></a>
 						<ul class="dropdown-menu">

@@ -20,5 +20,8 @@ public interface RosaUtenteDao {
 	public void delete(RosaUtente rosa); //Delete	
 	public List<RosaUtente> findAllLega(Long legaId); 
 	public List<Giocatore> findByPrimaryKeyJoinRuolo(Long id,String ruolo);
+	public List<Giocatore> findByPrimaryKeyFormazione(Long id);
+	public void setPunteggio(long id,float punti,int golF,int golS);
+
 
 }
