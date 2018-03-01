@@ -64,60 +64,7 @@ function calcolaCrediti() {
         document.getElementById("a").style.display = "none";
 
 }
-//	if(players==2){
-//		swal({
-//			  title: 'Vuoi Salvare la tua rosa?',
-//			  text: "Non sara' possibile modificarla successivamente",
-//			  type: 'warning',
-//			  showCancelButton: true,
-//			  confirmButtonColor: '#3085d6',
-//			  cancelButtonColor: '#d33',
-//			  confirmButtonText: 'Salva la Rosa!',
-//			  cancelButtonText: 'Azzera la Rosa!',
-//			  confirmButtonClass: 'btn btn-success',
-//			  cancelButtonClass: 'btn btn-danger',
-//			  buttonsStyling: false,
-//			  reverseButtons: true
-//			}).then((result) => {
-//			  if (result.value) {
-//				  $.ajax({
-//					  type: 'GET',
-//					  url:'listaGiocatori'
-//						  
-//					});
-////			    swal(
-////			    		
-////			      'Deleted!',
-////			      'Your file has been deleted.',
-////			      'success'
-////			    )
-//			  } else if (
-//			    // Read more about handling dismissals
-//			    result.dismiss === swal.DismissReason.cancel
-//			  ) {
-//				  $.ajax({
-//					  type: 'POST',
-//					  url:'listaGiocatori'
-//					});
-//			  }
-//			})}
-	
-	
-	
-	
-//	for (j = 0; j < portier.childNodes.length; j++) {
-//		var cPor = "#" + portier.childNodes[j].id;
-//		var pors = portier.childNodes[j].innerHTML.split(" ");
-//		alert(pors);
-//		var costoP = Number(pors[pors.length - 2])
-//		alert("dsadwadw");
-//		if ($(cPor).val()>budgetAttuale)
-//			document.getElementById(cPor).style.display = "none";
-//		if(costoP>budgetAttuale)
-//			document.getElementById(cPor).style.display = "none";
-//	 
-//	}
-//		
+
 }
 function conferma(){
 	document.getElementById("conferma").disabled=true;

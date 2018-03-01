@@ -21,8 +21,7 @@ public void dropDatabase(){
 				+ "drop table if exists afferisce;"
 				+ "drop table if exists rosa;"
 				+ "drop table if exists lega;"
-				+ "drop table if exists utente;"
-				+ "drop table if exists giocatore;";
+				+ "drop table if exists utente;";
 		PreparedStatement statement = connection.prepareStatement(delete);
 		
 		statement.executeUpdate();

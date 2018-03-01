@@ -28,8 +28,7 @@ public class RoseCalcolaFormazione extends HttpServlet {
 
 		String rosL=(new JSONArray(roseL).toString());  
 		resp.getWriter().print(rosL);
-//		RequestDispatcher dispacher = req.getRequestDispatcher("legheCalcolaFormazione");
-//		dispacher.forward(req, resp);
+
 		
 }
 }
