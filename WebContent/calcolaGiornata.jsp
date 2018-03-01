@@ -64,7 +64,7 @@
 		</div>
 	</div>
 </div>
-<input type="submit" id="calcola" disabled="true" value="Calcola Voti" onclick="calc()" style="background-color: grey">
+<input type="submit" id="calcola"  value="Calcola Voti" onclick="calc()" ><!--disabled="true"  style="background-color: grey"-->
 </body>
 <jsp:include page="footer.jsp"></jsp:include>
 <script type="text/javascript" src="js/calcolaVoto.js"></script>

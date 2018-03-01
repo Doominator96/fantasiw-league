@@ -84,6 +84,7 @@
     <servlet-name>RoseUtenteServlet</servlet-name>
     <url-pattern>/roseUtente</url-pattern>
   </servlet-mapping>
+  
   <servlet>
     <servlet-name>GiocatoriRosaServlet</servlet-name>
     <servlet-class>controller.GiocatoriRosa</servlet-class>
