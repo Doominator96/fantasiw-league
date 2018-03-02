@@ -24,9 +24,13 @@ public class RoseFormazione extends HttpServlet {
 		HttpSession session = req.getSession();
 		RosaUtenteDao rdao = DatabaseManager.getInstance().getDaoFactory().getRosaUtenteDAO();
 		String utenteLoggato = session.getAttribute("username").toString();
+		for(int i=0;i<rdao.findAll().size();i++) {
+			if(rdao.findByPrimaryKeyJoin(rdao.findAll().get(i).getId()).isEmpty())
+				rdao.delete(rdao.findAll().get(i));
+			}
 		List<RosaUtente> roseF = rdao.findAllUtente(utenteLoggato);
 		req.setAttribute("roseF", roseF);
-
+	
 			RequestDispatcher dispacher = req.getRequestDispatcher("formazione2.jsp");
 			dispacher.forward(req, resp);
 	}
@@ -35,6 +39,10 @@ public class RoseFormazione extends HttpServlet {
 		HttpSession session = req.getSession();
 		RosaUtenteDao rdao = DatabaseManager.getInstance().getDaoFactory().getRosaUtenteDAO();
 		String utenteLoggato = session.getAttribute("username").toString();
+		for(int i=0;i<rdao.findAll().size();i++) {
+			if(rdao.findByPrimaryKeyJoin(rdao.findAll().get(i).getId()).isEmpty())
+				rdao.delete(rdao.findAll().get(i));
+			}
 		List<RosaUtente> roseF = rdao.findAllUtente(utenteLoggato);
 		req.setAttribute("roseF", roseF);
 

@@ -23,7 +23,9 @@ public class RoseCalcolaFormazione extends HttpServlet {
 		HttpSession session=req.getSession();
 		RosaUtenteDao rdao = DatabaseManager.getInstance().getDaoFactory().getRosaUtenteDAO();
 		
+
 		List<RosaUtente> roseL = rdao.findAllLega(Long.parseLong(req.getParameter("legaSel")));
+	
 		session.setAttribute("roseL", roseL);
 
 		String rosL=(new JSONArray(roseL).toString());  

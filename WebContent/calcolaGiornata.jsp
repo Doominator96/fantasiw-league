@@ -63,11 +63,12 @@
 			</div>
 		</div>
 	</div>
-</div>
-<input type="submit" id="calcola"  value="Calcola Voti" onclick="calc()" ><!--disabled="true"  style="background-color: grey"-->
+</div>	
+<input type="submit" id="calcola"  value="Calcola Voti" disabled="true"  style="background-color: grey" onclick="calc()" style="display:${uguali}" ><!--disabled="true"  style="background-color: grey"-->
 </body>
+
 <jsp:include page="footer.jsp"></jsp:include>
 <script type="text/javascript" src="js/calcolaVoto.js"></script>
-<script type="text/javascript" src="js/formazione.js"></script>
+<script type="text/javascript" src="js/tempoCalcolo.js"></script>
 
 </html>

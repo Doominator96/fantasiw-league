@@ -60,7 +60,7 @@
 							<th>Posizione</th>
 							<th>Nome</th>
 							<th>Utente</th>
-							<th>Giornate Vinte</th>
+							<th>Punteggio Giornata</th>
 							<th>Gol Fatti</th>
 							<th>Gol Subiti</th>
 							<th>Punteggio Tot.</th>
@@ -73,7 +73,7 @@
 								<td>${count}</td>
 								<td>${r.nome}</td>
 								<td>${r.utente }</td>
-								<td><span class="badge  badge-info">${r.vittorie}</span></td>
+								<td><span class="badge  badge-info">${r.giornataPrec}</span></td>
 								<td>${r.golFatti}</td>
 								<td>${r.golSubiti}</td>
 								<td class="human"><span class="label  label-primary">${r.punteggio}</span>

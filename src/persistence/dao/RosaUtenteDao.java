@@ -22,6 +22,7 @@ public interface RosaUtenteDao {
 	public List<Giocatore> findByPrimaryKeyJoinRuolo(Long id,String ruolo);
 	public List<Giocatore> findByPrimaryKeyFormazione(Long id);
 	public void setPunteggio(long id,float punti,int golF,int golS);
+	public void setCalcolato(long id,float giornataPrec);
 
 
 }

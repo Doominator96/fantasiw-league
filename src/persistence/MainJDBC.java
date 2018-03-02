@@ -18,27 +18,27 @@ public class MainJDBC {
 
 	public static void main(String args[]) throws FileNotFoundException {
 
-//		DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.POSTGRESQL);
-//		UtilDao util = factory.getUtilDAO();
-//		util.dropDatabase();
-//
-//		util.createDatabase();
-//
-//		File csvFile = new File("giocatori.csv");
-//		GiocatoreDao giocatoreDao = factory.getGiocatoreDAO();
-//		UtenteDao utenteDao = factory.getUtenteDAO();
-//		RosaUtenteDao rosaUtenteDao = factory.getRosaUtenteDAO();
-//		AfferisceDao afferisceDao = factory.getAfferisceDAO();
-//		LegaDao legaDao=factory.getLegaDAO();
-//		
-//	
-//			Scanner csvScanner = new Scanner(csvFile);
-//			while (csvScanner.hasNext()) {
-//				String nextLine = csvScanner.nextLine();
-//				String[] giocatore = nextLine.split(",");
-//				giocatoreDao.save(new Giocatore(giocatore[0], giocatore[1], giocatore[2], Integer.parseInt(giocatore[3])));
-//			}
-//			csvScanner.close();
+		DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.POSTGRESQL);
+		UtilDao util = factory.getUtilDAO();
+		util.dropDatabase();
+
+		util.createDatabase();
+
+		File csvFile = new File("giocatori.csv");
+		GiocatoreDao giocatoreDao = factory.getGiocatoreDAO();
+		UtenteDao utenteDao = factory.getUtenteDAO();
+		RosaUtenteDao rosaUtenteDao = factory.getRosaUtenteDAO();
+		AfferisceDao afferisceDao = factory.getAfferisceDAO();
+		LegaDao legaDao=factory.getLegaDAO();
+		
+	
+			Scanner csvScanner = new Scanner(csvFile);
+			while (csvScanner.hasNext()) {
+				String nextLine = csvScanner.nextLine();
+				String[] giocatore = nextLine.split(",");
+				giocatoreDao.save(new Giocatore(giocatore[0], giocatore[1], giocatore[2], Integer.parseInt(giocatore[3])));
+			}
+			csvScanner.close();
 
 		
 	}

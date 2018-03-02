@@ -202,4 +202,23 @@
     <url-pattern>/aggiornaClassifica</url-pattern>
   </servlet-mapping>
   
+    <servlet>
+    <servlet-name>ControllaUtenteFormazioneServlet</servlet-name>
+    <servlet-class>controller.ControllaUtenteFormazione</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ControllaUtenteFormazioneServlet</servlet-name>
+    <url-pattern>/controllaUtenteFormazione</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+    <servlet-name>AzzeraCalcolatoServlet</servlet-name>
+    <servlet-class>controller.AzzeraCalcolato</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AzzeraCalcolatoServlet</servlet-name>
+    <url-pattern>/azzeraCalcolato</url-pattern>
+  </servlet-mapping>
+  
+  
 </web-app>

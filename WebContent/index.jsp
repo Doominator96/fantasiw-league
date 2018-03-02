@@ -42,7 +42,7 @@
 
 
 		<p class="text--center">
-			Non sei registrato? <a href="registrazione.html">Registrati</a>
+			Non sei registrato? <a href="registrazione.jsp">Registrati</a>
 		</p>
 		
 		</form>

@@ -32,46 +32,38 @@ function stampaGiocatori(){
 			$('#tab').append("<tr id=\""+val.id+"\"><td>"+val.cognome+"</td><td>"+val.squadra+"</td><td class='golS'>"+val.statistiche.GolSubito+"</td><td class='golF'>"+val.statistiche.Gol+"</td><td>"+val.statistiche.Rigore+"</td><td>"+val.statistiche.RigoreSbagliato+"</td><td>"+val.statistiche.Assist+"</td><td>"+val.statistiche.Giallo+"</td><td class='points'>"+val.voto+"</td></tr>");
 			})
 		}
-	}); 
-}
-
-function calc(){
+	});
 	$.ajax({
-		url:'calcolaVoti',
-		type:'POST',
+		url:'controllaUtenteFormazione',
+		type: 'GET',
 		data:{
-			legaSel:$(" #leghe").val()	
+			rose1:$("#rose").val()
 		},
-		success:function(result){
-			location.href="legheCalcolaFormazione";
+		success : function(result){
+			$("#calcola").css("display", result);
+		
+		}
+	});
+}
+function aggiornaRisultati(){
+
+	$.ajax({
+		url:'giocatoriRosa',
+		type: 'GET',
+		data:{
+			rose1:$("#rose").val()
+		},
+		success : function(result){
 			var sum = 0;
 			var golFatti=0;
 			var golSubiti=0;
-			// iterate through each td based on class and add the values
-			$(".points").each(function() {
-
-			    var value = $(this).text();
-			    // add only if the value is number
-			    if(!isNaN(value) && value.length != 0) {
-			        sum += parseFloat(value);
-			    }
-			});
-			$(".golF").each(function() {
-
-			    var value = $(this).text();
-			    // add only if the value is number
-			    if(!isNaN(value) && value.length != 0) {
-			        golFatti += parseInt(value);
-			    }
-			});
-			$(".golS").each(function() {
-
-			    var value = $(this).text();
-			    // add only if the value is number
-			    if(!isNaN(value) && value.length != 0) {
-			        golSubiti += parseInt(value);
-			    }
-			});
+			$('#tab').html("");
+			$.each(JSON.parse(result), function(key,val){
+			$('#tab').append("<tr id=\""+val.id+"\"><td>"+val.cognome+"</td><td>"+val.squadra+"</td><td class='golS'>"+val.statistiche.GolSubito+"</td><td class='golF'>"+val.statistiche.Gol+"</td><td>"+val.statistiche.Rigore+"</td><td>"+val.statistiche.RigoreSbagliato+"</td><td>"+val.statistiche.Assist+"</td><td>"+val.statistiche.Giallo+"</td><td class='points'>"+val.voto+"</td></tr>");
+			sum+=parseFloat(val.voto);
+			golFatti+=parseInt(val.statistiche.Gol);
+			golSubiti+=parseInt(val.statistiche.GolSubito);
+			})	
 			$.ajax({
 				url:'aggiornaClassifica',
 				type:'POST',
@@ -82,13 +74,37 @@ function calc(){
 					rose1:$("#rose").val()
 				},
 			});
+		}
+	}); 
+}
+
+function calc(){
+	$.ajax({
+		url:'calcolaVoti',
+		type:'POST',
+		data:{
+			rose1:$("#rose").val(),
+			legaSel:$(" #leghe").val()	
+		},
+		success:function(result){
+			if(result=="calcolata"){
+				swal({
+						  type: 'error',
+						  title: 'I Voti Per La Giornata Corrente Sono Gia\' Stati Calcolati!',
+						  confirmButtonText: 'OK'
+
+						})
+			}
+			else{
 			swal({
-				  type: 'success',
-				  title: 'Hai Totalizzato '+ sum+ ' punti',
-				  showConfirmButton: false,
-				  timer: 1500
-				})
-				
+				  title: 'Calcolando Voti!',
+				  text: 'Attendere Qualche Secondo',
+				  timer: 5000,
+				  onOpen: () => {
+				    swal.showLoading()
+				  }})
+			aggiornaRisultati();
+			}
 		}
 	});
 }

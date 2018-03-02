@@ -39,11 +39,15 @@ public class GiocatoriRosa extends HttpServlet {
 				giocatori.get(i).setStatistiche(lega.getStats(giocatori.get(i).getId()));
 				giocatori.get(i).calcolaVotoHashMap();
 			}
+			session.setAttribute("utenteRosa", rosaUt.getUtente().getUserName());
 			req.setAttribute("giocatori", giocatori);
 			String players = (new JSONArray(giocatori).toString());
 			resp.getWriter().print(players);
-		
-		
+			
+			if (session.getAttribute("utenteRosa").equals(session.getAttribute("username")))
+				session.setAttribute("uguali", "block");
+			else
+				session.setAttribute("uguali", "none");
 	
 	}
 	@Override

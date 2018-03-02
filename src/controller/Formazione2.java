@@ -50,7 +50,6 @@ public class Formazione2 extends HttpServlet {
 			Date oggi = new Date(); // Data di oggi
 
 			SimpleDateFormat sdf = new SimpleDateFormat("yyy-MM-dd"); // Qui decido il formato di visualizzazione
-			System.out.println( sdf.format( oggi ) );
 			
 			String footballApiMD = response.getBody()
 					.toString();

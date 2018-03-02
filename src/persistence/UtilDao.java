@@ -21,7 +21,8 @@ public void dropDatabase(){
 				+ "drop table if exists afferisce;"
 				+ "drop table if exists rosa;"
 				+ "drop table if exists lega;"
-				+ "drop table if exists utente;";
+				+ "drop table if exists utente;"
+				+ "drop table if exists giocatore";
 		PreparedStatement statement = connection.prepareStatement(delete);
 		
 		statement.executeUpdate();
@@ -48,7 +49,7 @@ public void createDatabase(){
 		String create = "create SEQUENCE sequenza_id;"
 				+ "create table utente(\"username\" varchar(255) primary key,email varchar(255),password varchar(255));"
 				+ "create table lega(\"id\" bigint primary key,nome varchar(255),password varchar(255),amministratore varchar(255) REFERENCES utente(\"username\"));"
-				+ "create table rosa (\"id\" bigint primary key, nome varchar(255),budget int, utente varchar(255) REFERENCES utente(\"username\"),lega bigint REFERENCES lega(\"id\"),punteggio float,vittorie int,pareggi int,sconfitte int,golFatti int,golSubiti int);"
+				+ "create table rosa (\"id\" bigint primary key, nome varchar(255),budget int, utente varchar(255) REFERENCES utente(\"username\"),lega bigint REFERENCES lega(\"id\"),punteggio float,giornataPrec float,golFatti int,golSubiti int);"
 				+ "create table giocatore(\"id\" bigint primary key,cognome varchar(255),squadra varchar(255),ruolo varchar(255),costo int);"
 				+ "create table afferisce(\"id\" bigint primary key,giocatore bigint REFERENCES giocatore(\"id\"),rosa bigint REFERENCES rosa(\"id\"));"
 				+ "create table formazione(\"id\" bigint primary key,giocatore bigint REFERENCES giocatore(\"id\"),rosa bigint REFERENCES rosa(\"id\"));";

@@ -25,9 +25,14 @@ public class classifica extends HttpServlet {
 		{
 		   selectedItem=Long.parseLong(req.getParameter("legas"));
 		}
+		
 		RosaUtenteDao rdao =DatabaseManager.getInstance()
 				.getDaoFactory().getRosaUtenteDAO();
-			List<RosaUtente> rose = rdao.findAllLega(selectedItem);//Lega(Long.parseLong(selected_Lega));
+		for(int i=0;i<rdao.findAll().size();i++) {
+		if(rdao.findByPrimaryKeyJoin(rdao.findAll().get(i).getId()).isEmpty())
+			rdao.delete(rdao.findAll().get(i));
+		}
+		List<RosaUtente> rose = rdao.findAllLega(selectedItem);//Lega(Long.parseLong(selected_Lega));
 			req.setAttribute("rose", rose);
 		
 		RequestDispatcher dispacher = req.getRequestDispatcher("leghe");

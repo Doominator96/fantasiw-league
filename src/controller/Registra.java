@@ -28,8 +28,15 @@ public class Registra extends HttpServlet {
 		String username = req.getParameter("username");
 		String email = req.getParameter("email");
 		String password = req.getParameter("password");
-		Utente ut = new Utente(username, email, password);
 		UtenteDao utenteDao = PostgresDAOFactory.getInstance().getUtenteDAO();
+		if(utenteDao.findByPrimaryKey(username)!=null) {
+				req.setAttribute("esistente", true);
+				
+				RequestDispatcher dispacher = req.getRequestDispatcher("registrazione.jsp");
+				dispacher.forward(req, resp);
+		}
+		else {
+		Utente ut = new Utente(username, email, password);
 		utenteDao.save(ut);
 		utenteDao.setPassword(ut, password);
 
@@ -38,6 +45,6 @@ public class Registra extends HttpServlet {
 
 		RequestDispatcher dispacher = req.getRequestDispatcher("index.jsp");
 		dispacher.forward(req, resp);
-
+		}
 	}
 }

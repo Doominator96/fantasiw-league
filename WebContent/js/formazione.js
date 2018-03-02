@@ -75,7 +75,7 @@ function countDown(countDownDatemin) {
 
 	// Find the distance between now an the count down date
 	var distance = countDownDatemin - now;
-	var distance2=countDownDatemax - now;
+	var distance2=(countDownDatemax+86400000) - now;
 	// Time calculations for days, hours, minutes and seconds
 	var days = Math.floor(distance / (1000 * 60 * 60 * 24));
 	var hours = Math.floor((distance % (1000 * 60 * 60 * 24))
@@ -83,16 +83,14 @@ function countDown(countDownDatemin) {
 	var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
 	var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-	// Display the result in the element with id="demo"
+	// Display the result in the element with id="Timer"
 	document.getElementById("Timer").innerHTML = days + "d " + hours + "h "
 			+ minutes + "m " + seconds + "s ";
 
-	
-	if (distance < 0&& distance2>0) {
+	if (distance < 0) {
 		document.getElementById("Timer").innerHTML = "Tempo Scaduto!";
 		document.getElementById("conferma").disabled=true;
 		document.getElementById("conferma").style.background= "grey";
-		document.getElementById("calcola").disabled=false;
-		document.getElementById("calcola").style.background="#2BB673"
-	}			
+		
+	}				
 }

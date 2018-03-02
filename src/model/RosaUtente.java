@@ -8,35 +8,29 @@ public class RosaUtente {
 	private Utente utente;
 	private Lega lega;
 	private float punteggio;
-	private int vittorie;
-	private int pareggi;
-	private int sconfitte;
+	private float giornataPrec;
 	private int golFatti;
 	private int golSubiti;
 
 	public RosaUtente() {
 	}
 
-	public RosaUtente(String nome, int budget, Utente utente, Lega lega, float punteggio, int vittorie, int pareggi,
+	public RosaUtente(String nome, int budget, Utente utente, Lega lega, float punteggio, float giornataPrec, int pareggi,
 			int sconfitte, int golFatti, int golSubiti) {
 		this.nome = nome;
 		this.budget = budget;
 		this.utente = utente;
 		this.lega = lega;
 		this.punteggio = punteggio;
-		this.vittorie = vittorie;
-		this.pareggi = pareggi;
-		this.sconfitte = sconfitte;
+		this.giornataPrec = giornataPrec;
 		this.golFatti = golFatti;
 		this.golSubiti = golSubiti;
 	}
-	public RosaUtente(String nome,float punteggio,int vittorie,int pareggi,int sconfitte, int golFatti, int golSubiti) {
+	public RosaUtente(String nome,float punteggio,float giornataPrec,int pareggi,int sconfitte, int golFatti, int golSubiti) {
 		this.nome = nome;
 		this.budget=180;
 		this.punteggio = punteggio;
-		this.vittorie = vittorie;
-		this.pareggi = pareggi;
-		this.sconfitte = sconfitte;
+		this.giornataPrec = giornataPrec;
 		this.golFatti = golFatti;
 		this.golSubiti = golSubiti;
 	}
@@ -44,9 +38,7 @@ public class RosaUtente {
 		this.nome=nome;
 		this.budget=180;
 		this.punteggio=0;
-		this.vittorie=0;
-		this.pareggi = 0;
-		this.sconfitte = 0;
+		this.giornataPrec=0;
 		this.golFatti = 0;
 		this.golSubiti = 0;
 	}
@@ -99,28 +91,12 @@ public class RosaUtente {
 		this.punteggio = punteggio;
 	}
 
-	public int getVittorie() {
-		return vittorie;
+	public float getGiornataPrec() {
+		return giornataPrec;
 	}
 
-	public void setVittorie(int vittorie) {
-		this.vittorie = vittorie;
-	}
-
-	public int getPareggi() {
-		return pareggi;
-	}
-
-	public void setPareggi(int pareggi) {
-		this.pareggi = pareggi;
-	}
-
-	public int getSconfitte() {
-		return sconfitte;
-	}
-
-	public void setSconfitte(int sconfitte) {
-		this.sconfitte = sconfitte;
+	public void setGiornataPrec(float giornataPrec) {
+		this.giornataPrec = giornataPrec;
 	}
 
 	public int getGolFatti() {

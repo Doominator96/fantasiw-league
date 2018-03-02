@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -11,16 +12,18 @@ import model.RosaUtente;
 import persistence.DatabaseManager;
 import persistence.dao.RosaUtenteDao;
 
-public class AggiornaClassifica extends HttpServlet {
+public class AzzeraCalcolato extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		float punti=Float.parseFloat(req.getParameter("punti"));
-		int golF=Integer.parseInt(req.getParameter("golF"));
-		int golS=Integer.parseInt(req.getParameter("golS"));
+		
 		RosaUtenteDao rdao =DatabaseManager.getInstance()
 				.getDaoFactory().getRosaUtenteDAO();
-		rdao.setPunteggio(Long.parseLong(req.getParameter("rose1")), punti, golF, golS);
-		rdao.setCalcolato(Long.parseLong(req.getParameter("rose1")), punti);
+		List<RosaUtente> roseTot=rdao.findAll();
+		
+		for(int i=0;i<roseTot.size();i++)
+			rdao.setCalcolato(roseTot.get(i).getId(), 0);
+		
+		System.out.println("CalcoloDisponibile");
 	}
 
 }
