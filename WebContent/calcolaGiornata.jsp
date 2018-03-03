@@ -68,7 +68,7 @@
 </body>
 
 <jsp:include page="footer.jsp"></jsp:include>
-<script type="text/javascript" src="js/calcolaVoto.js"></script>
 <script type="text/javascript" src="js/tempoCalcolo.js"></script>
+<script type="text/javascript" src="js/calcolaVoto.js"></script>
 
 </html>

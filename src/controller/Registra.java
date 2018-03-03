@@ -14,14 +14,6 @@ import persistence.dao.UtenteDao;
 
 public class Registra extends HttpServlet {
 
-	// @Override
-	// protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-	// throws ServletException, IOException {
-	// RequestDispatcher dispacher =
-	// req.getRequestDispatcher("index.html");
-	// dispacher.forward(req, resp);
-	// }
-
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// HttpSession session=req.getSession();

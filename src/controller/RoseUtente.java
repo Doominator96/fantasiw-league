@@ -22,11 +22,7 @@ public class RoseUtente extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession();
 		RosaUtenteDao rdao = DatabaseManager.getInstance().getDaoFactory().getRosaUtenteDAO();
-		String utenteLoggato = session.getAttribute("username").toString();
-		for(int i=0;i<rdao.findAll().size();i++) {
-			if(rdao.findByPrimaryKeyJoin(rdao.findAll().get(i).getId()).isEmpty())
-				rdao.delete(rdao.findAll().get(i));
-		}
+		String utenteLoggato = session.getAttribute("username").toString();	
 		List<RosaUtente> roseG = rdao.findAllUtente(utenteLoggato);
 		req.setAttribute("roseG", roseG);
 		
@@ -40,11 +36,6 @@ public class RoseUtente extends HttpServlet {
 		RosaUtenteDao rdao = DatabaseManager.getInstance().getDaoFactory().getRosaUtenteDAO();
 		String utenteLoggato = session.getAttribute("username").toString();
 		List<RosaUtente> roseG = rdao.findAllUtente(utenteLoggato);
-		for(int i=0;i<roseG.size();i++) {
-			if(rdao.findByPrimaryKeyJoin(roseG.get(i).getId()).isEmpty())
-				rdao.delete(roseG.get(i));
-		}
-
 		req.setAttribute("roseG", roseG);
 
 		RequestDispatcher dispacher = req.getRequestDispatcher("squadra.jsp");

@@ -30,7 +30,6 @@ $(document).ready(function() {
 					/ (1000 * 60 * 60));
 			var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
 			var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-			
 			if(distance2 < 0){
 				document.getElementById("calcola").disabled=false;
 				document.getElementById("calcola").style.background="#2BB673"

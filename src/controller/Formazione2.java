@@ -103,7 +103,7 @@ public class Formazione2 extends HttpServlet {
 			// Pattern.compile("when\"\\:\\s+\"\\w+,\\s+(\\w+\\s+\\d+\\s+\\d+)");
 			
 			String footballApiDate = Unirest
-					.get("http://api.football-data.org/v1/competitions/456/fixtures?matchday=" + 27) //matchDay
+					.get("http://api.football-data.org/v1/competitions/456/fixtures?matchday=" + 25) //matchDay
 					.header("X-Auth-Token", "c2dc16848c4c4607a87ea9bcbd4cd2f4")
 					.header("Accept", "application/json").asJson().getBody()
 					.toString();
